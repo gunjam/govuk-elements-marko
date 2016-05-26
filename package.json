@@ -1,0 +1,37 @@
+{
+  "name": "dwp-marko-components",
+  "description": "GOV.UK elements as Marko components.",
+  "version": "0.1.0",
+  "keywords": [
+    "marko-taglib",
+    "marko",
+    "gov.uk",
+    "dwp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gunjam/dwp-marko-components.git"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/xo"
+  },
+  "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
+  "maintainers": [
+    "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
+  ],
+  "devDependencies": {
+    "xo": "^0.15.0"
+  },
+  "license": "Apache-2.0",
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "env": [
+      "node",
+      "mocha"
+    ],
+    "ignores": [
+      "**/*.marko.js"
+    ]
+  }
+}

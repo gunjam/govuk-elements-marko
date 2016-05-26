@@ -1,0 +1,10 @@
+{
+  "@name":  "string",
+  "@maxlength": "integer",
+  "@error": "object",
+  "@label": "string",
+  "@hint": "string",
+  "@value": "string",
+  "@required": "boolean",
+  "@rows": "integer"
+}

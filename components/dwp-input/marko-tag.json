@@ -1,0 +1,9 @@
+{
+  "@name":  "string",
+  "@id": "string",
+  "@error": "object",
+  "@label": "string",
+  "@hint": "string",
+  "@value": "string",
+  "@maxlength": "integer"
+}

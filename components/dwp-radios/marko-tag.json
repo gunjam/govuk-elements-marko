@@ -1,0 +1,14 @@
+{
+  "@legend": "string",
+  "@name": "string",
+  "@error": "object",
+  "@value": "string",
+  "@inline": "boolean",
+  "@radios <radio>[]": {
+    "@value": "string",
+    "@label": "string",
+    "@hint": "string",
+    "@reveal": "string",
+    "@id": "string"
+  }
+}

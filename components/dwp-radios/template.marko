@@ -1,0 +1,35 @@
+<div class="form-group ${data.error ? 'error' : ''} ${data.inline ? 'inline' : ''}">
+  <fieldset>
+
+    <legend>
+      <span class="visuallyhidden">
+        ${data.legend}
+      </span>
+      <span if(data.error) id="error-message-${data.name}"
+        class="error-message">
+        ${data.error.msg}
+      </span>
+    </legend>
+
+    <for(radio in data.radios | status-var=loop)>
+      <var radioId=(radio.id ? radio.id : "radio-" + data.name + "-" + loop.getIndex())/>
+
+      <label for=radioId class="block-label" data-target=radio.reveal>
+        <input id=radioId name=data.name value=radio.value
+          checked=(radio.value === data.value) type="radio"/>
+
+        <if(radio.hint)>
+          <span class="heading-small">
+            ${radio.label}
+          </span>
+          <br/>
+          ${radio.hint}
+        </if>
+        <else>
+          ${radio.label}
+        </else>
+      </label>
+    </for>
+
+  </fieldset>
+</div>

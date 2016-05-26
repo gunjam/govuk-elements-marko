@@ -1,0 +1,13 @@
+{
+  "@legend": "string",
+  "@name": "string",
+  "@error": "object",
+  "@values": "object",
+  "@checkboxes <checkbox>[]": {
+    "@value": "string",
+    "@label": "string",
+    "@hint": "string",
+    "@reveal": "string",
+    "@id": "string"
+  }
+}

@@ -1,0 +1,22 @@
+<script marko-init>
+  const inputId = data.id ? data.id : `input-${data.name}`;
+</script>
+
+<div class="form-group ${(data.error ? 'error' : '')}">
+
+  <label for=inputId>
+    <span class="form-label">
+      ${data.label}
+    </span>
+    <span if(data.hint) class="form-hint">
+      ${data.hint}
+    </span>
+    <span if(data.error) id="error-message-${data.name}" class="error-message">
+      ${data.error.msg}
+    </span>
+  </label>
+  <input class="form-control" type="text" id=inputId
+    name=data.name value=data.value autocomplete="off"
+    maxlength=data.maxlength />
+
+</div>

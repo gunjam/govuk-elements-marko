@@ -1,0 +1,36 @@
+<div class="form-group ${(data.error ? 'error' : '')}">
+  <fieldset>
+
+    <legend if(data.legend)>
+      <span class="visuallyhidden">
+        ${data.legend}
+      </span>
+      <span if(data.error) id="error-message-${data.name}"
+        class="error-message">
+        ${data.error.msg}
+      </span>
+    </legend>
+
+    <for(checkbox in data.checkboxes | status-var=loop)>
+      <var checkboxId=(checkbox.id ? checkbox.id : "checkbox-" + data.name + "-" + loop.getIndex())/>
+
+      <label for=checkboxId class="block-label" data-target=checkbox.reveal>
+        <input id=checkboxId name=data.name value=checkbox.value
+          checked=(data.values.indexOf(checkbox.value) > (-1) ? "checked" : "")
+          type="checkbox"/>
+
+        <if(checkbox.hint)>
+          <span class="heading-small">
+            ${checkbox.label}
+          </span>
+          <br/>
+          ${checkbox.hint}
+        </if>
+        <else>
+          ${checkbox.label}
+        </else>
+      </label>
+    </for>
+
+  </fieldset>
+</div>

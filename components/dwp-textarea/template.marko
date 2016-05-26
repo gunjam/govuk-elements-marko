@@ -1,0 +1,16 @@
+<div class="form-group ${(data.error ? 'error' : '')}">
+  <label for="input-${data.name}">
+    <span class="form-label">
+      ${data.label}
+    </span>
+    <span if(data.hint) class="form-hint">
+      ${data.hint}
+    </span>
+    <span if(data.error) id="error-message-${data.name}" class="error-message">
+      ${data.error.msg}
+    </span>
+  </label>
+  <textarea class="form-control" rows=(data.rows ? data.rows : 8)
+    maxlength=data.maxlength name=data.name
+    id="input-${data.name}">${data.value}</textarea>
+</div>
