@@ -1,9 +1,15 @@
 {
-  "@name":  "string",
+  "@name": {
+    "required": true,
+    "type": "string"
+  },
+  "@label": {
+    "required": true,
+    "type": "string"
+  },
+  "@hint": "string",
   "@id": "string",
   "@error": "object",
-  "@label": "string",
-  "@hint": "string",
   "@value": "string",
   "@maxlength": "integer"
 }
