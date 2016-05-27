@@ -1,8 +1,5 @@
-<script marko-init>
-  const inputId = data.id ? data.id : `input-${data.name}`;
-</script>
-
-<div class="form-group ${(data.error ? 'error' : '')}">
+<div class="form-group${(data.error ? ' error' : '')}">
+  <var inputId=(data.id ? data.id : `input-${data.name}`)/>
 
   <label for=inputId>
     <span class="form-label">
