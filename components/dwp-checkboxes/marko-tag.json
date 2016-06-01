@@ -1,11 +1,23 @@
 {
-  "@legend": "string",
-  "@name": "string",
+  "@legend": {
+    "required": true,
+    "type": "string"
+  },
+  "@name": {
+    "required": true,
+    "type": "string"
+  },
   "@error": "object",
   "@values": "object",
   "@checkboxes <checkbox>[]": {
-    "@value": "string",
-    "@label": "string",
+    "@value": {
+      "required": true,
+      "type": "string"
+    },
+    "@label": {
+      "required": true,
+      "type": "string"
+    },
     "@hint": "string",
     "@reveal": "string",
     "@id": "string"
