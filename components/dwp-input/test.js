@@ -1,3 +1,5 @@
+'use strict';
+
 require('marko/node-require').install();
 
 const marko = require('marko');
