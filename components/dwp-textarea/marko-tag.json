@@ -1,10 +1,16 @@
 {
-  "@name":  "string",
-  "@maxlength": "integer",
-  "@error": "object",
-  "@label": "string",
+  "@name": {
+    "required": true,
+    "type": "string"
+  },
+  "@label": {
+    "required": true,
+    "type": "string"
+  },
   "@hint": "string",
+  "@id": "string",
+  "@error": "object",
   "@value": "string",
-  "@required": "boolean",
+  "@maxlength": "integer",
   "@rows": "integer"
 }
