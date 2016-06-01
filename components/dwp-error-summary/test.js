@@ -4,8 +4,13 @@ require('marko/node-require').install();
 
 const marko = require('marko');
 const {expect} = require('chai');
+let tc;
 
 describe('<dwp-error-summary/>', () => {
+  beforeEach(() => {
+    tc += '.';
+  });
+
   it('should render a header, summary and list of error links', () => {
     const templateSrc =
       `<dwp-error-summary heading=data.heading summary=data.summary
@@ -20,7 +25,7 @@ describe('<dwp-error-summary/>', () => {
       }
     };
 
-    const output = marko.load('test', templateSrc).renderSync(data);
+    const output = marko.load(tc, templateSrc).renderSync(data);
 
     expect(output).to.equal(
       '<div class="error-summary" role="group" ' +
@@ -48,7 +53,7 @@ describe('<dwp-error-summary/>', () => {
       summary: 'Fix your errors.'
     };
 
-    const output = marko.load('test', templateSrc).renderSync(data);
+    const output = marko.load(tc, templateSrc).renderSync(data);
 
     expect(output).to.equal('');
   });
