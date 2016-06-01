@@ -288,5 +288,44 @@ describe('<dwp-checkboxes/>', () => {
         '</div>'
       );
     });
+
+    it('should add a data-target attr to label when provided reveal id', () => {
+      const templateSrc =
+        `<dwp-checkboxes legend=data.legend name=data.name>
+           <dwp-checkboxes:checkbox value=data.checkbox.value
+             reveal=data.checkbox.reveal hint=data.checkbox.hint
+             label=data.checkbox.label/>
+         </dwp-checkboxes>`;
+
+      const data = {
+        legend: 'Favourite colour?',
+        name: 'colour',
+        checkbox: {
+          reveal: 'spooky-ghost',
+          label: 'Grey',
+          value: 'grey',
+          hint: 'This is the colour of a ghost'
+        }
+      };
+
+      const output = marko.load(tc, templateSrc).renderSync(data);
+
+      expect(output).to.equal(
+        '<div class="form-group">' +
+          '<fieldset>' +
+            '<legend>' +
+              '<span class="visuallyhidden">Favourite colour?</span>' +
+            '</legend>' +
+            '<label for="checkbox-colour-0" class="block-label" ' +
+              'data-target="spooky-ghost">' +
+              '<input id="checkbox-colour-0" name="colour" value="grey" ' +
+                'type="checkbox">' +
+              '<span class="heading-small">Grey</span><br>' +
+              'This is the colour of a ghost' +
+            '</label>' +
+          '</fieldset>' +
+        '</div>'
+      );
+    });
   });
 });
