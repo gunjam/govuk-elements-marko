@@ -9,7 +9,7 @@
   },
   "@error": "object",
   "@value": "string",
-  "@inline": "boolean",
+  "@layout": "string",
   "@radios <radio>[]": {
     "@value": {
       "required": true,

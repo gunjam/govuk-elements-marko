@@ -1,4 +1,4 @@
-<div class="form-group${data.error ? ' error' : ''}${data.inline ? ' inline' : ''}">
+<div class="form-group${data.layout}${data.error ? ' error' : ''}">
   <fieldset>
 
     <legend>
@@ -12,7 +12,7 @@
     </legend>
 
     <for(radio in data.radios | status-var=loop)>
-      <var radioId=(radio.id ? radio.id : "radio-" + data.name + "-" + loop.getIndex())/>
+      <var radioId=(radio.id ? radio.id : `radio-${data.name}-${loop.getIndex()}`)/>
 
       <label for=radioId class="block-label" data-target=radio.reveal>
         <input id=radioId name=data.name value=radio.value type="radio"

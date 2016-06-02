@@ -51,7 +51,7 @@ describe('<dwp-radios/>', () => {
     const output = marko.load(tc, templateSrc).renderSync({});
 
     expect(output).to.equal(
-      '<div class="form-group">' +
+      '<div class="form-group inline">' +
         '<fieldset>' +
           '<legend>' +
             '<span class="visuallyhidden">Happy or sad?</span>' +
@@ -88,7 +88,7 @@ describe('<dwp-radios/>', () => {
     const error = $('legend > span.visuallyhidden + span.error-message').text();
     const errorId = $('.error-message').attr('id');
 
-    expect(formGroupClasses).to.equal('form-group error');
+    expect(formGroupClasses).to.equal('form-group inline error');
     expect(error).to.equal(data.error.msg);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
@@ -115,7 +115,7 @@ describe('<dwp-radios/>', () => {
     const output = marko.load(tc, templateSrc).renderSync(data);
 
     expect(output).to.equal(
-      '<div class="form-group">' +
+      '<div class="form-group inline">' +
         '<fieldset>' +
           '<legend>' +
             '<span class="visuallyhidden">Happy or sad?</span>' +
@@ -132,6 +132,89 @@ describe('<dwp-radios/>', () => {
         '</fieldset>' +
       '</div>'
     );
+  });
+
+  it('should remove inline style if there is more than 2 radios', () => {
+    const templateSrc =
+      `<dwp-radios legend=data.legend name=data.name>
+         <dwp-radios:radio label=value=data.radios[0].label
+           value=data.radios[0].value/>
+         <dwp-radios:radio label=value=data.radios[1].label
+           value=data.radios[1].value/>
+         <dwp-radios:radio label=value=data.radios[2].label
+           value=data.radios[2].value/>
+       </dwp-radios>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      name: 'mood',
+      radios: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'},
+        {label: 'Neither', value: 'neither'}
+      ]
+    };
+
+    const output = marko.load(tc, templateSrc).renderSync(data);
+    const $ = cheerio.load(output);
+    const classes = $('div.form-group').attr('class');
+
+    expect(classes).to.equal('form-group');
+  });
+
+  it('should set inline style when layout attribute is "inline"', () => {
+    const templateSrc =
+      `<dwp-radios legend=data.legend name=data.name layout=data.layout>
+         <dwp-radios:radio label=value=data.radios[0].label
+           value=data.radios[0].value/>
+         <dwp-radios:radio label=value=data.radios[1].label
+           value=data.radios[1].value/>
+         <dwp-radios:radio label=value=data.radios[2].label
+           value=data.radios[2].value/>
+       </dwp-radios>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      layout: 'inline',
+      name: 'mood',
+      radios: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'},
+        {label: 'Neither', value: 'neither'}
+      ]
+    };
+
+    const output = marko.load(tc, templateSrc).renderSync(data);
+    const $ = cheerio.load(output);
+    const classes = $('div.form-group').attr('class');
+
+    expect(classes).to.equal('form-group inline');
+  });
+
+  it('should remove inline style when layout attribute is "stacked"', () => {
+    const templateSrc =
+      `<dwp-radios legend=data.legend name=data.name layout=data.layout>
+         <dwp-radios:radio label=value=data.radios[0].label
+           value=data.radios[0].value/>
+         <dwp-radios:radio label=value=data.radios[1].label
+           value=data.radios[1].value/>
+       </dwp-radios>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      layout: 'stacked',
+      name: 'mood',
+      radios: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'}
+      ]
+    };
+
+    const output = marko.load(tc, templateSrc).renderSync(data);
+    const $ = cheerio.load(output);
+    const classes = $('div.form-group').attr('class');
+
+    expect(classes).to.equal('form-group');
   });
 
   describe('<dwp-radios:radio/>', () => {
@@ -188,7 +271,7 @@ describe('<dwp-radios/>', () => {
       const output = marko.load(tc, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group">' +
+        '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
@@ -251,24 +334,33 @@ describe('<dwp-radios/>', () => {
     it('should add a form hint using the hint attribute', () => {
       const templateSrc =
         `<dwp-radios legend=data.legend name=data.name>
-           <dwp-radios:radio value=data.checkbox.value
-             hint=data.checkbox.hint label=data.checkbox.label/>
+           <dwp-radios:radio value=data.radios[0].value
+             label=data.radios[0].label/>
+           <dwp-radios:radio value=data.radios[1].value
+             label=data.radios[1].label/>
          </dwp-radios>`;
 
       const data = {
         legend: 'Happy or sad?',
         name: 'mood',
-        checkbox: {
-          label: 'Happy',
-          value: 'happy',
-          hint: 'Select this if you are smiling'
-        }
+        radios: [
+          {
+            label: 'Happy',
+            value: 'happy',
+            hint: 'Select this if you are smiling'
+          },
+          {
+            label: 'Sad',
+            value: 'sad',
+            hint: 'This is the mood of a ghost'
+          }
+        ]
       };
 
       const output = marko.load(tc, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group">' +
+        '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
@@ -276,8 +368,12 @@ describe('<dwp-radios/>', () => {
             '<label for="radio-mood-0" class="block-label">' +
               '<input id="radio-mood-0" name="mood" value="happy" ' +
                 'type="radio">' +
-              '<span class="heading-small">Happy</span><br>' +
-              'Select this if you are smiling' +
+              'Happy' +
+            '</label>' +
+            '<label for="radio-mood-1" class="block-label">' +
+              '<input id="radio-mood-1" name="mood" value="sad" ' +
+                'type="radio">' +
+              'Sad' +
             '</label>' +
           '</fieldset>' +
         '</div>'
@@ -314,7 +410,7 @@ describe('<dwp-radios/>', () => {
       const output = marko.load(tc, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group">' +
+        '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
