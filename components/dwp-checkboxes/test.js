@@ -143,7 +143,7 @@ describe('<dwp-checkboxes/>', () => {
     );
   });
 
-  describe('<dwp-checkboxes:dwp-checkbox/>', () => {
+  describe('<dwp-checkboxes:checkbox/>', () => {
     it('should error if you don\'t supply a label attribute', () => {
       const templateSrc =
         `<dwp-checkboxes legend="Favourite colour?" name="colour">
