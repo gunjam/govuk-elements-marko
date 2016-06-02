@@ -1,12 +1,24 @@
 {
-  "@legend": "string",
-  "@name": "string",
+  "@legend": {
+    "required": true,
+    "type": "string"
+  },
+  "@name": {
+    "required": true,
+    "type": "string"
+  },
   "@error": "object",
   "@value": "string",
   "@inline": "boolean",
   "@radios <radio>[]": {
-    "@value": "string",
-    "@label": "string",
+    "@value": {
+      "required": true,
+      "type": "string"
+    },
+    "@label": {
+      "required": true,
+      "type": "string"
+    },
     "@hint": "string",
     "@reveal": "string",
     "@id": "string"
