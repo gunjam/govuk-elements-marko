@@ -5,11 +5,11 @@ require('marko/node-require').install();
 const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
-let tc;
+const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-radios/>', () => {
-  beforeEach(() => {
-    tc += '_';
+  afterEach(() => {
+    delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a name attribute', () => {
@@ -20,7 +20,7 @@ describe('<dwp-radios/>', () => {
        </dwp-radios>`;
 
     try {
-      marko.load(tc, templateSrc);
+      marko.load(templatePath, templateSrc);
     } catch (error) {
       return assert(true);
     }
@@ -36,7 +36,7 @@ describe('<dwp-radios/>', () => {
        </dwp-radios>`;
 
     try {
-      marko.load(tc, templateSrc);
+      marko.load(templatePath, templateSrc);
     } catch (error) {
       return assert(true);
     }
@@ -48,7 +48,7 @@ describe('<dwp-radios/>', () => {
     const templateSrc =
       '<dwp-radios name="mood" legend="Happy or sad?"/>';
 
-    const output = marko.load(tc, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderSync({});
 
     expect(output).to.equal(
       '<div class="form-group inline">' +
@@ -82,7 +82,7 @@ describe('<dwp-radios/>', () => {
       }
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
     const error = $('legend > span.visuallyhidden + span.error-message').text();
@@ -112,7 +112,7 @@ describe('<dwp-radios/>', () => {
       value: 'happy'
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
 
     expect(output).to.equal(
       '<div class="form-group inline">' +
@@ -155,7 +155,7 @@ describe('<dwp-radios/>', () => {
       ]
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -184,7 +184,7 @@ describe('<dwp-radios/>', () => {
       ]
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -210,7 +210,7 @@ describe('<dwp-radios/>', () => {
       ]
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -226,7 +226,7 @@ describe('<dwp-radios/>', () => {
          </dwp-radios>`;
 
       try {
-        marko.load(tc, templateSrc);
+        marko.load(templatePath, templateSrc);
       } catch (error) {
         return assert(true);
       }
@@ -242,7 +242,7 @@ describe('<dwp-radios/>', () => {
          </dwp-radios>`;
 
       try {
-        marko.load(tc, templateSrc);
+        marko.load(templatePath, templateSrc);
       } catch (error) {
         return assert(true);
       }
@@ -268,7 +268,7 @@ describe('<dwp-radios/>', () => {
         ]
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +
@@ -304,7 +304,7 @@ describe('<dwp-radios/>', () => {
         checkbox: {label: 'Happy', value: 'happy'}
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=happy]').attr('id');
 
@@ -324,7 +324,7 @@ describe('<dwp-radios/>', () => {
         checkbox: {label: 'Happy', value: 'happy', id: 'my-checkbox'}
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=happy]').attr('id');
 
@@ -357,7 +357,7 @@ describe('<dwp-radios/>', () => {
         ]
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +
@@ -407,7 +407,7 @@ describe('<dwp-radios/>', () => {
         ]
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +

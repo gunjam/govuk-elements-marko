@@ -6,10 +6,14 @@ const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
 const template = require('./template.marko');
+const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-textarea/>', () => {
+  afterEach(() => {
+    delete require.cache[`${templatePath}.js`];
+  });
+
   it('should error if you don\'t supply a name attribute', () => {
-    const templatePath = 'template.marko';
     const templateSrc = '<dwp-textarea label=data.label/>';
 
     try {
@@ -22,7 +26,6 @@ describe('<dwp-textarea/>', () => {
   });
 
   it('should error if you don\'t supply a label attribute', () => {
-    const templatePath = 'template.marko';
     const templateSrc = '<dwp-textarea name=data.name/>';
 
     try {

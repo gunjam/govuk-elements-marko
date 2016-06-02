@@ -5,11 +5,11 @@ require('marko/node-require').install();
 const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
-let tc;
+const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-checkboxes/>', () => {
-  beforeEach(() => {
-    tc += '.';
+  afterEach(() => {
+    delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a name attribute', () => {
@@ -20,7 +20,7 @@ describe('<dwp-checkboxes/>', () => {
        </dwp-checkboxes>`;
 
     try {
-      marko.load(tc, templateSrc);
+      marko.load(templatePath, templateSrc);
     } catch (error) {
       return assert(true);
     }
@@ -36,7 +36,7 @@ describe('<dwp-checkboxes/>', () => {
        </dwp-checkboxes>`;
 
     try {
-      marko.load(tc, templateSrc);
+      marko.load(templatePath, templateSrc);
     } catch (error) {
       return assert(true);
     }
@@ -48,7 +48,7 @@ describe('<dwp-checkboxes/>', () => {
     const templateSrc =
       '<dwp-checkboxes name="colour" legend="Favourite colour?"/>';
 
-    const output = marko.load(tc, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderSync({});
 
     expect(output).to.equal(
       '<div class="form-group">' +
@@ -82,7 +82,7 @@ describe('<dwp-checkboxes/>', () => {
       }
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
     const error = $('legend > span.visuallyhidden + span.error-message').text();
@@ -115,7 +115,7 @@ describe('<dwp-checkboxes/>', () => {
       values: ['red', 'green']
     };
 
-    const output = marko.load(tc, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
 
     expect(output).to.equal(
       '<div class="form-group">' +
@@ -152,7 +152,7 @@ describe('<dwp-checkboxes/>', () => {
          </dwp-checkboxes>`;
 
       try {
-        marko.load(tc, templateSrc);
+        marko.load(templatePath, templateSrc);
       } catch (error) {
         return assert(true);
       }
@@ -168,7 +168,7 @@ describe('<dwp-checkboxes/>', () => {
          </dwp-checkboxes>`;
 
       try {
-        marko.load(tc, templateSrc);
+        marko.load(templatePath, templateSrc);
       } catch (error) {
         return assert(true);
       }
@@ -194,7 +194,7 @@ describe('<dwp-checkboxes/>', () => {
         ]
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +
@@ -230,7 +230,7 @@ describe('<dwp-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red'}
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=red]').attr('id');
 
@@ -250,7 +250,7 @@ describe('<dwp-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red', id: 'my-checkbox'}
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=red]').attr('id');
 
@@ -270,7 +270,7 @@ describe('<dwp-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red', hint: 'Blood is this colour'}
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +
@@ -308,7 +308,7 @@ describe('<dwp-checkboxes/>', () => {
         }
       };
 
-      const output = marko.load(tc, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +
