@@ -51,8 +51,27 @@ describe('<dwp-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderSync({});
 
     expect(output).to.equal(
-      '<div class="form-group inline">' +
-        '<fieldset>' +
+      '<h2 class="heading-medium">Happy or sad?</h2>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
+          '<legend>' +
+            '<span class="visuallyhidden">Happy or sad?</span>' +
+          '</legend>' +
+        '</fieldset>' +
+      '</div>'
+    );
+  });
+
+  it('should render heading as h1 if only-question attr is true', () => {
+    const templateSrc =
+      '<dwp-radios name="mood" legend="Happy or sad?" only-question="true"/>';
+
+    const output = marko.load(templatePath, templateSrc).renderSync({});
+
+    expect(output).to.equal(
+      '<h1 class="heading-xlarge">Happy or sad?</h1>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
           '<legend>' +
             '<span class="visuallyhidden">Happy or sad?</span>' +
           '</legend>' +
@@ -88,7 +107,7 @@ describe('<dwp-radios/>', () => {
     const error = $('legend > span.visuallyhidden + span.error-message').text();
     const errorId = $('.error-message').attr('id');
 
-    expect(formGroupClasses).to.equal('form-group inline error');
+    expect(formGroupClasses).to.equal('form-group error');
     expect(error).to.equal(data.error.msg);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
@@ -115,8 +134,9 @@ describe('<dwp-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderSync(data);
 
     expect(output).to.equal(
-      '<div class="form-group inline">' +
-        '<fieldset>' +
+      '<h2 class="heading-medium">Happy or sad?</h2>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
           '<legend>' +
             '<span class="visuallyhidden">Happy or sad?</span>' +
           '</legend>' +
@@ -157,9 +177,9 @@ describe('<dwp-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('div > fieldset').attr('class');
 
-    expect(classes).to.equal('form-group');
+    expect(classes).to.equal(undefined);
   });
 
   it('should set inline style when layout attribute is "inline"', () => {
@@ -186,9 +206,9 @@ describe('<dwp-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('div > fieldset').attr('class');
 
-    expect(classes).to.equal('form-group inline');
+    expect(classes).to.equal('inline');
   });
 
   it('should remove inline style when layout attribute is "stacked"', () => {
@@ -212,9 +232,9 @@ describe('<dwp-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('div > fieldset').attr('class');
 
-    expect(classes).to.equal('form-group');
+    expect(classes).to.equal(undefined);
   });
 
   describe('<dwp-radios:radio/>', () => {
@@ -271,8 +291,9 @@ describe('<dwp-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<h2 class="heading-medium">Happy or sad?</h2>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
             '</legend>' +
@@ -360,8 +381,9 @@ describe('<dwp-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<h2 class="heading-medium">Happy or sad?</h2>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
             '</legend>' +
@@ -410,8 +432,9 @@ describe('<dwp-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderSync(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<h2 class="heading-medium">Happy or sad?</h2>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
               '<span class="visuallyhidden">Happy or sad?</span>' +
             '</legend>' +
