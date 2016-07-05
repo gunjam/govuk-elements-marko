@@ -5,6 +5,7 @@ require('marko/node-require').install();
 const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
+
 const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-checkboxes/>', () => {
@@ -21,7 +22,7 @@ describe('<dwp-checkboxes/>', () => {
 
     try {
       marko.load(templatePath, templateSrc);
-    } catch (error) {
+    } catch (err) {
       return assert(true);
     }
 
@@ -37,7 +38,7 @@ describe('<dwp-checkboxes/>', () => {
 
     try {
       marko.load(templatePath, templateSrc);
-    } catch (error) {
+    } catch (err) {
       return assert(true);
     }
 
@@ -153,7 +154,7 @@ describe('<dwp-checkboxes/>', () => {
 
       try {
         marko.load(templatePath, templateSrc);
-      } catch (error) {
+      } catch (err) {
         return assert(true);
       }
 
@@ -169,7 +170,7 @@ describe('<dwp-checkboxes/>', () => {
 
       try {
         marko.load(templatePath, templateSrc);
-      } catch (error) {
+      } catch (err) {
         return assert(true);
       }
 

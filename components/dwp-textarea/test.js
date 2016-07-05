@@ -6,6 +6,7 @@ const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
 const template = require('./template.marko');
+
 const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-textarea/>', () => {
@@ -18,7 +19,7 @@ describe('<dwp-textarea/>', () => {
 
     try {
       marko.load(templatePath, templateSrc);
-    } catch (error) {
+    } catch (err) {
       return assert(true);
     }
 
@@ -30,7 +31,7 @@ describe('<dwp-textarea/>', () => {
 
     try {
       marko.load(templatePath, templateSrc);
-    } catch (error) {
+    } catch (err) {
       return assert(true);
     }
 

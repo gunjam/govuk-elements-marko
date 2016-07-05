@@ -4,6 +4,7 @@ require('marko/node-require').install();
 
 const marko = require('marko');
 const {expect} = require('chai');
+
 const templatePath = 'fakeTemplate.marko';
 
 describe('<dwp-error-summary/>', () => {
