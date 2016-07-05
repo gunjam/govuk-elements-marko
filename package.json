@@ -21,9 +21,10 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
-    "marko": "^3.4.0",
+    "cheerio": "^0.20.0",
+    "marko": "^3.7.1",
     "mocha": "^2.5.3",
-    "xo": "^0.15.0"
+    "xo": "^0.16.0"
   },
   "license": "Apache-2.0",
   "xo": {
@@ -35,6 +36,9 @@
     ],
     "ignores": [
       "**/*.marko.js"
-    ]
+    ],
+    "rules": {
+      "max-lines": 0
+    }
   }
 }
