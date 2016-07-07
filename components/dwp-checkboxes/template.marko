@@ -11,7 +11,7 @@
     </legend>
 
     <for(checkbox in data.checkboxes | status-var=loop)>
-      <var checkboxId=(checkbox.id ? checkbox.id : `checkbox-${data.name}-${loop.getIndex()}`)/>
+      <var checkboxId=(checkbox.id || `checkbox-${data.name}-${loop.getIndex()}`)/>
 
       <label for=checkboxId class="block-label" data-target=checkbox.reveal>
         <input id=checkboxId name=data.name value=checkbox.value type="checkbox"

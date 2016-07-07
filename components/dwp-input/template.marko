@@ -1,5 +1,5 @@
 <div class="form-group${(data.error ? ' error' : '')}">
-  <var inputId=(data.id ? data.id : `input-${data.name}`)/>
+  <var inputId=(data.id || `input-${data.name}`)/>
 
   <label for=inputId>
     <span class="form-label">

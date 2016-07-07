@@ -1,5 +1,5 @@
 <div class="form-group${(data.error ? ' error' : '')}">
-  <var inputId=(data.id ? data.id : `textarea-${data.name}`)/>
+  <var inputId=(data.id || `textarea-${data.name}`)/>
 
   <label for=inputId>
     <span class="form-label">
