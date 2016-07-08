@@ -1,0 +1,19 @@
+{
+  "@name": {
+    "required": true,
+    "type": "string"
+  },
+  "@legend": {
+    "required": true,
+    "type": "string"
+  },
+  "@hint": {
+    "required": true,
+    "type": "string"
+  },
+  "@id": "string",
+  "@error": "object",
+  "@value": "object",
+  "@maxyear": "string",
+  "@lang": "string"
+}
