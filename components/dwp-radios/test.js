@@ -54,7 +54,7 @@ describe('<dwp-radios/>', () => {
       '<div class="form-group inline">' +
         '<fieldset>' +
           '<legend>' +
-            '<span class="visuallyhidden">Happy or sad?</span>' +
+            '<span class="form-label">Happy or sad?</span>' +
           '</legend>' +
         '</fieldset>' +
       '</div>'
@@ -85,7 +85,7 @@ describe('<dwp-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderSync(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
-    const error = $('legend > span.visuallyhidden + span.error-message').text();
+    const error = $('legend > span.form-label + span.error-message').text();
     const errorId = $('.error-message').attr('id');
 
     expect(formGroupClasses).to.equal('form-group inline error');
@@ -118,7 +118,7 @@ describe('<dwp-radios/>', () => {
       '<div class="form-group inline">' +
         '<fieldset>' +
           '<legend>' +
-            '<span class="visuallyhidden">Happy or sad?</span>' +
+            '<span class="form-label">Happy or sad?</span>' +
           '</legend>' +
           '<label for="radio-mood-0" class="block-label">' +
             '<input id="radio-mood-0" name="mood" value="happy" type="radio" ' +
@@ -217,6 +217,33 @@ describe('<dwp-radios/>', () => {
     expect(classes).to.equal('form-group');
   });
 
+  it('should add vissuallyhidden class to legend if hide-legend true', () => {
+    const templateSrc =
+      `<dwp-radios legend=data.legend name=data.name layout=data.layout
+         hide-legend=(true)>
+         <dwp-radios:radio label=value=data.radios[0].label
+           value=data.radios[0].value/>
+         <dwp-radios:radio label=value=data.radios[1].label
+           value=data.radios[1].value/>
+       </dwp-radios>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      layout: 'stacked',
+      name: 'mood',
+      radios: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'}
+      ]
+    };
+
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const $ = cheerio.load(output);
+    const classes = $('legend > span:first-child').attr('class');
+
+    expect(classes).to.equal('visuallyhidden');
+  });
+
   describe('<dwp-radios:radio/>', () => {
     it('should error if you don\'t supply a label attribute', () => {
       const templateSrc =
@@ -274,7 +301,7 @@ describe('<dwp-radios/>', () => {
         '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Happy or sad?</span>' +
+              '<span class="form-label">Happy or sad?</span>' +
             '</legend>' +
             '<label for="radio-mood-0" class="block-label">' +
               '<input id="radio-mood-0" name="mood" value="happy" ' +
@@ -363,7 +390,7 @@ describe('<dwp-radios/>', () => {
         '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Happy or sad?</span>' +
+              '<span class="form-label">Happy or sad?</span>' +
             '</legend>' +
             '<label for="radio-mood-0" class="block-label">' +
               '<input id="radio-mood-0" name="mood" value="happy" ' +
@@ -413,7 +440,7 @@ describe('<dwp-radios/>', () => {
         '<div class="form-group inline">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Happy or sad?</span>' +
+              '<span class="form-label">Happy or sad?</span>' +
             '</legend>' +
             '<label for="radio-mood-0" class="block-label">' +
               '<input id="radio-mood-0" name="mood" value="happy" ' +

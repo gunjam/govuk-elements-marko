@@ -2,7 +2,7 @@
   <fieldset>
 
     <legend>
-      <span class="visuallyhidden">
+      <span class=(data.hideLegend ? "visuallyhidden" : "form-label")>
         ${data.legend}
       </span>
       <span if(data.error) id="error-message-${data.name}"
