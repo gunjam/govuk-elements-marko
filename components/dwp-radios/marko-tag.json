@@ -7,8 +7,6 @@
     "required": true,
     "type": "string"
   },
-  "@only-question": "boolean",
-  "@hint": "string",
   "@error": "object",
   "@value": "string",
   "@layout": "string",

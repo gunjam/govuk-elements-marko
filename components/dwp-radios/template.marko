@@ -1,16 +1,5 @@
-<h1 if(data.onlyQuestion) class="heading-xlarge">
-  ${data.legend}
-</h1>
-<h2 else class="heading-medium">
-  ${data.legend}
-</h2>
-
-<p if(data.hint)>
-  ${data.hint}
-</p>
-
-<div class="form-group${data.error ? ' error' : ''}">
-  <fieldset class=data.layout>
+<div class="form-group${data.layout}${data.error ? ' error' : ''}">
+  <fieldset>
 
     <legend>
       <span class="visuallyhidden">
