@@ -1,0 +1,7 @@
+{
+  "@content": {
+    "required": true,
+    "type": "string"
+  },
+  "@lang": "string" 
+}
