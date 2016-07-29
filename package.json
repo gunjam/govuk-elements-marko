@@ -22,7 +22,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "cheerio": "^0.20.0",
-    "marko": "^3.7.1",
+    "marko": "^3.8.1",
     "mocha": "^2.5.3",
     "xo": "^0.16.0"
   },
