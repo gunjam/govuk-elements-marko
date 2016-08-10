@@ -21,8 +21,8 @@ describe('<dwp-error-summary/>', () => {
       heading: 'You have errors!',
       summary: 'Fix your errors.',
       errors: {
-        colour: {msg: 'Pick a colour'},
-        age: {msg: 'You are too old'}
+        colour: 'Pick a colour',
+        age: 'You are too old'
       }
     };
 

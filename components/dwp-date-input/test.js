@@ -160,7 +160,7 @@ describe('<dwp-date-input/>', () => {
       legend: 'Date of birth',
       hint: 'For example, 31 3 1980',
       name: 'birth',
-      error: {msg: 'Wrong date!'}
+      error: 'Wrong date!'
     };
 
     const templateSrc =

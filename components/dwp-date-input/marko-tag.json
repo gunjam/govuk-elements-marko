@@ -12,7 +12,7 @@
     "type": "string"
   },
   "@id": "string",
-  "@error": "object",
+  "@error": "string",
   "@value": "object",
   "@maxyear": "string",
   "@lang": "string"

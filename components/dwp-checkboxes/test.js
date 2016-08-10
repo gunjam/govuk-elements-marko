@@ -78,9 +78,7 @@ describe('<dwp-checkboxes/>', () => {
         {label: 'Red', value: 'red'},
         {label: 'Blue', value: 'blue'}
       ],
-      error: {
-        msg: 'Please pick a colour'
-      }
+      error: 'Please pick a colour'
     };
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -90,7 +88,7 @@ describe('<dwp-checkboxes/>', () => {
     const errorId = $('.error-message').attr('id');
 
     expect(formGroupClasses).to.equal('form-group error');
-    expect(error).to.equal(data.error.msg);
+    expect(error).to.equal(data.error);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
 

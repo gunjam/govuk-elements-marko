@@ -77,9 +77,7 @@ describe('<dwp-radios/>', () => {
         {label: 'Happy', value: 'happy'},
         {label: 'Sad', value: 'sad'}
       ],
-      error: {
-        msg: 'Please tell me how you feel'
-      }
+      error: 'Please tell me how you feel'
     };
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -89,7 +87,7 @@ describe('<dwp-radios/>', () => {
     const errorId = $('.error-message').attr('id');
 
     expect(formGroupClasses).to.equal('form-group inline error');
-    expect(error).to.equal(data.error.msg);
+    expect(error).to.equal(data.error);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
 

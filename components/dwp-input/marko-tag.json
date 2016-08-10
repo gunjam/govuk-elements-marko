@@ -9,7 +9,7 @@
   },
   "@hint": "string",
   "@id": "string",
-  "@error": "object",
+  "@error": "string",
   "@value": "string",
   "@maxlength": "integer"
 }

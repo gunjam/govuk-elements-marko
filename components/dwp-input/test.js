@@ -120,7 +120,7 @@ describe('<dwp-input/>', () => {
   });
 
   it('should add error message and classes when passed an error object', () => {
-    const error = {msg: 'Name is wrong'};
+    const error = 'Name is wrong';
     const name = 'full-name';
     const output = template.renderSync({
       label: 'Full name',
@@ -132,6 +132,6 @@ describe('<dwp-input/>', () => {
     const errorMsg = $('label .form-label + span.error-message').text();
 
     expect(formGroupClasses).to.equal('form-group error');
-    expect(errorMsg).to.equal(error.msg);
+    expect(errorMsg).to.equal(error);
   });
 });

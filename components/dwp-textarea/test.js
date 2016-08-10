@@ -133,7 +133,7 @@ describe('<dwp-textarea/>', () => {
   });
 
   it('should add error message and classes when passed an error object', () => {
-    const error = {msg: 'Put something in the box'};
+    const error = 'Put something in the box';
     const name = 'more-details';
     const output = template.renderSync({
       label: 'More details',
@@ -145,6 +145,6 @@ describe('<dwp-textarea/>', () => {
     const errorMsg = $('label .form-label + span.error-message').text();
 
     expect(formGroupClasses).to.equal('form-group error');
-    expect(errorMsg).to.equal(error.msg);
+    expect(errorMsg).to.equal(error);
   });
 });
