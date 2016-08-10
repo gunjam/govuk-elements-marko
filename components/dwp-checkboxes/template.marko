@@ -15,7 +15,7 @@
 
       <label for=checkboxId class="block-label" data-target=checkbox.reveal>
         <input id=checkboxId name=data.name value=checkbox.value type="checkbox"
-          checked=(data.values.indexOf(checkbox.value) > -1 ? "checked" : "")/>
+          checked=(data.values.indexOf(checkbox.value) > -1 ? "checked" : null)/>
 
         <if(checkbox.hint)>
           <span class="heading-small">
