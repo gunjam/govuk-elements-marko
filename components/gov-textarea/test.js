@@ -9,13 +9,13 @@ const template = require('./template.marko');
 
 const templatePath = 'fakeTemplate.marko';
 
-describe('<dwp-textarea/>', () => {
+describe('<gov-textarea/>', () => {
   afterEach(() => {
     delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a name attribute', () => {
-    const templateSrc = '<dwp-textarea label=data.label/>';
+    const templateSrc = '<gov-textarea label=data.label/>';
 
     try {
       marko.load(templatePath, templateSrc);
@@ -27,7 +27,7 @@ describe('<dwp-textarea/>', () => {
   });
 
   it('should error if you don\'t supply a label attribute', () => {
-    const templateSrc = '<dwp-textarea name=data.name/>';
+    const templateSrc = '<gov-textarea name=data.name/>';
 
     try {
       marko.load(templatePath, templateSrc);

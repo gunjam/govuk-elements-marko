@@ -7,13 +7,13 @@ const {expect, assert} = require('chai');
 
 const templatePath = 'fakeTemplate.marko';
 
-describe('<dwp-legal/>', () => {
+describe('<gov-legal/>', () => {
   afterEach(() => {
     delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a content attribute', () => {
-    const templateSrc = '<dwp-legal/>';
+    const templateSrc = '<gov-legal/>';
 
     try {
       marko.load(templatePath, templateSrc);
@@ -26,7 +26,7 @@ describe('<dwp-legal/>', () => {
 
   it('should render the correct markup', () => {
     const content = 'You can be fined up to £5,000 if you don’t register.';
-    const templateSrc = `<dwp-legal content=data.content/>`;
+    const templateSrc = `<gov-legal content=data.content/>`;
     const output = marko.load(templatePath, templateSrc).renderSync({content});
 
     expect(output).to.equal(
@@ -42,7 +42,7 @@ describe('<dwp-legal/>', () => {
   it('should use Welsh if lang is set to "cy"', () => {
     const content = 'Gallwch gael dirwy o hyd at £ 5,000 os nad ydych yn' +
       'cofrestru.';
-    const templateSrc = `<dwp-legal content=data.content lang="cy"/>`;
+    const templateSrc = `<gov-legal content=data.content lang="cy"/>`;
     const output = marko.load(templatePath, templateSrc).renderSync({content});
 
     expect(output).to.equal(

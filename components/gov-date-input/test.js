@@ -8,13 +8,13 @@ const {expect, assert} = require('chai');
 
 const templatePath = 'fakeTemplate.marko';
 
-describe('<dwp-date-input/>', () => {
+describe('<gov-date-input/>', () => {
   afterEach(() => {
     delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a name attribute', () => {
-    const templateSrc = '<dwp-date-input legend="Date of birth" hint="Hint"/>';
+    const templateSrc = '<gov-date-input legend="Date of birth" hint="Hint"/>';
 
     try {
       marko.load(templatePath, templateSrc);
@@ -26,7 +26,7 @@ describe('<dwp-date-input/>', () => {
   });
 
   it('should error if you don\'t supply a legend attribute', () => {
-    const templateSrc = '<dwp-date-input name="birth" hint="Hint"/>';
+    const templateSrc = '<gov-date-input name="birth" hint="Hint"/>';
 
     try {
       marko.load(templatePath, templateSrc);
@@ -38,7 +38,7 @@ describe('<dwp-date-input/>', () => {
   });
 
   it('should error if you don\'t supply a hint attribute', () => {
-    const templateSrc = '<dwp-date-input name="birth" legend="Date of birth"/>';
+    const templateSrc = '<gov-date-input name="birth" legend="Date of birth"/>';
 
     try {
       marko.load(templatePath, templateSrc);
@@ -56,7 +56,7 @@ describe('<dwp-date-input/>', () => {
     const thisYear = new Date().getFullYear();
 
     const templateSrc =
-      `<dwp-date-input name="${name}" legend="${legend}" hint="${hint}"/>`;
+      `<gov-date-input name="${name}" legend="${legend}" hint="${hint}"/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync({});
 
@@ -111,7 +111,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          id=(data.id)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -140,7 +140,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          value=(data.value)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -164,7 +164,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          error=(data.error)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -187,7 +187,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          maxyear=(data.maxyear)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -206,7 +206,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          lang=(data.lang)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);
@@ -229,7 +229,7 @@ describe('<dwp-date-input/>', () => {
     };
 
     const templateSrc =
-      `<dwp-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          lang=(data.lang)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderSync(data);

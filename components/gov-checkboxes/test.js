@@ -8,17 +8,17 @@ const {expect, assert} = require('chai');
 
 const templatePath = 'fakeTemplate.marko';
 
-describe('<dwp-checkboxes/>', () => {
+describe('<gov-checkboxes/>', () => {
   afterEach(() => {
     delete require.cache[`${templatePath}.js`];
   });
 
   it('should error if you don\'t supply a name attribute', () => {
     const templateSrc =
-      `<dwp-checkboxes legend="Favourite colour?">
-         <dwp-checkboxes:checkbox label="Red" value="red"/>
-         <dwp-checkboxes:checkbox label="Blue" value="blue"/>
-       </dwp-checkboxes>`;
+      `<gov-checkboxes legend="Favourite colour?">
+         <gov-checkboxes:checkbox label="Red" value="red"/>
+         <gov-checkboxes:checkbox label="Blue" value="blue"/>
+       </gov-checkboxes>`;
 
     try {
       marko.load(templatePath, templateSrc);
@@ -31,10 +31,10 @@ describe('<dwp-checkboxes/>', () => {
 
   it('should error if you don\'t supply a legend attribute', () => {
     const templateSrc =
-      `<dwp-checkboxes name="colour">
-         <dwp-checkboxes:checkbox label="Red" value="red"/>
-         <dwp-checkboxes:checkbox label="Blue" value="blue"/>
-       </dwp-checkboxes>`;
+      `<gov-checkboxes name="colour">
+         <gov-checkboxes:checkbox label="Red" value="red"/>
+         <gov-checkboxes:checkbox label="Blue" value="blue"/>
+       </gov-checkboxes>`;
 
     try {
       marko.load(templatePath, templateSrc);
@@ -47,7 +47,7 @@ describe('<dwp-checkboxes/>', () => {
 
   it('should render the correct markup', () => {
     const templateSrc =
-      '<dwp-checkboxes name="colour" legend="Favourite colour?"/>';
+      '<gov-checkboxes name="colour" legend="Favourite colour?"/>';
 
     const output = marko.load(templatePath, templateSrc).renderSync({});
 
@@ -64,12 +64,12 @@ describe('<dwp-checkboxes/>', () => {
 
   it('should add error message and classes when passed an error object', () => {
     const templateSrc =
-      `<dwp-checkboxes legend=data.legend name=data.name error=data.error>
-         <dwp-checkboxes:checkbox label=value=data.checkboxes[0].label
+      `<gov-checkboxes legend=data.legend name=data.name error=data.error>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[0].label
            value=data.checkboxes[0].value/>
-         <dwp-checkboxes:checkbox label=value=data.checkboxes[1].label
+         <gov-checkboxes:checkbox label=value=data.checkboxes[1].label
            value=data.checkboxes[1].value/>
-       </dwp-checkboxes>`;
+       </gov-checkboxes>`;
 
     const data = {
       legend: 'Favourite colour?',
@@ -94,14 +94,14 @@ describe('<dwp-checkboxes/>', () => {
 
   it('should check boxes which have values in the values array attr', () => {
     const templateSrc =
-      `<dwp-checkboxes legend=data.legend name=data.name values=data.values>
-         <dwp-checkboxes:checkbox label=value=data.checkboxes[0].label
+      `<gov-checkboxes legend=data.legend name=data.name values=data.values>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[0].label
            value=data.checkboxes[0].value/>
-         <dwp-checkboxes:checkbox label=value=data.checkboxes[1].label
+         <gov-checkboxes:checkbox label=value=data.checkboxes[1].label
            value=data.checkboxes[1].value/>
-         <dwp-checkboxes:checkbox label=value=data.checkboxes[2].label
+         <gov-checkboxes:checkbox label=value=data.checkboxes[2].label
            value=data.checkboxes[2].value/>
-       </dwp-checkboxes>`;
+       </gov-checkboxes>`;
 
     const data = {
       legend: 'Favourite colour?',
@@ -142,13 +142,13 @@ describe('<dwp-checkboxes/>', () => {
     );
   });
 
-  describe('<dwp-checkboxes:checkbox/>', () => {
+  describe('<gov-checkboxes:checkbox/>', () => {
     it('should error if you don\'t supply a label attribute', () => {
       const templateSrc =
-        `<dwp-checkboxes legend="Favourite colour?" name="colour">
-           <dwp-checkboxes:checkbox value="red"/>
-           <dwp-checkboxes:checkbox label="Blue" value="blue"/>
-         </dwp-checkboxes>`;
+        `<gov-checkboxes legend="Favourite colour?" name="colour">
+           <gov-checkboxes:checkbox value="red"/>
+           <gov-checkboxes:checkbox label="Blue" value="blue"/>
+         </gov-checkboxes>`;
 
       try {
         marko.load(templatePath, templateSrc);
@@ -161,10 +161,10 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should error if you don\'t supply a value attribute', () => {
       const templateSrc =
-        `<dwp-checkboxes legend="Favourite colour?" name="colour">
-           <dwp-checkboxes:checkbox label="Red"/>
-           <dwp-checkboxes:checkbox label="Blue" value="blue"/>
-         </dwp-checkboxes>`;
+        `<gov-checkboxes legend="Favourite colour?" name="colour">
+           <gov-checkboxes:checkbox label="Red"/>
+           <gov-checkboxes:checkbox label="Blue" value="blue"/>
+         </gov-checkboxes>`;
 
       try {
         marko.load(templatePath, templateSrc);
@@ -177,12 +177,12 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should render the correct markup', () => {
       const templateSrc =
-        `<dwp-checkboxes legend=data.legend name=data.name>
-           <dwp-checkboxes:checkbox value=data.checkboxes[0].value
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkboxes[0].value
              label=data.checkboxes[0].label/>
-           <dwp-checkboxes:checkbox value=data.checkboxes[1].value
+           <gov-checkboxes:checkbox value=data.checkboxes[1].value
              label=data.checkboxes[1].label/>
-         </dwp-checkboxes>`;
+         </gov-checkboxes>`;
 
       const data = {
         legend: 'Favourite colour?',
@@ -218,10 +218,10 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should set the ID as checkbox-${name}-${index} if no ID attr', () => {
       const templateSrc =
-        `<dwp-checkboxes legend=data.legend name=data.name>
-           <dwp-checkboxes:checkbox value=data.checkbox.value
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkbox.value
              label=data.checkbox.label/>
-         </dwp-checkboxes>`;
+         </gov-checkboxes>`;
 
       const data = {
         legend: 'Favourite colour?',
@@ -238,10 +238,10 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should use ID attribute value over generated ID', () => {
       const templateSrc =
-        `<dwp-checkboxes legend=data.legend name=data.name>
-           <dwp-checkboxes:checkbox value=data.checkbox.value
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkbox.value
              id=data.checkbox.id label=data.checkbox.label/>
-         </dwp-checkboxes>`;
+         </gov-checkboxes>`;
 
       const data = {
         legend: 'Favourite colour?',
@@ -258,10 +258,10 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should add a form hint using the hint attribute', () => {
       const templateSrc =
-        `<dwp-checkboxes legend=data.legend name=data.name>
-           <dwp-checkboxes:checkbox value=data.checkbox.value
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkbox.value
              hint=data.checkbox.hint label=data.checkbox.label/>
-         </dwp-checkboxes>`;
+         </gov-checkboxes>`;
 
       const data = {
         legend: 'Favourite colour?',
@@ -290,11 +290,11 @@ describe('<dwp-checkboxes/>', () => {
 
     it('should add a data-target attr to label when provided reveal id', () => {
       const templateSrc =
-        `<dwp-checkboxes legend=data.legend name=data.name>
-           <dwp-checkboxes:checkbox value=data.checkbox.value
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkbox.value
              reveal=data.checkbox.reveal hint=data.checkbox.hint
              label=data.checkbox.label/>
-         </dwp-checkboxes>`;
+         </gov-checkboxes>`;
 
       const data = {
         legend: 'Favourite colour?',

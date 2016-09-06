@@ -7,14 +7,14 @@ const {expect} = require('chai');
 
 const templatePath = 'fakeTemplate.marko';
 
-describe('<dwp-error-summary/>', () => {
+describe('<gov-error-summary/>', () => {
   afterEach(() => {
     delete require.cache[`${templatePath}.js`];
   });
 
   it('should render a header, summary and list of error links', () => {
     const templateSrc =
-      `<dwp-error-summary heading=data.heading summary=data.summary
+      `<gov-error-summary heading=data.heading summary=data.summary
          errors=data.errors/>`;
 
     const data = {
@@ -46,7 +46,7 @@ describe('<dwp-error-summary/>', () => {
 
   it('should not render if there are no errors', () => {
     const templateSrc =
-      `<dwp-error-summary heading=data.heading summary=data.summary
+      `<gov-error-summary heading=data.heading summary=data.summary
          errors=data.errors/>`;
 
     const data = {
