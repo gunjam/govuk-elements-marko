@@ -5,6 +5,9 @@
       <span class=(data.hideLegend ? "visuallyhidden" : "form-label")>
         ${data.legend}
       </span>
+      <span if(data.hint) class="form-hint">
+        ${data.hint}
+      </span>
       <span if(data.error) id="error-message-${data.name}"
         class="error-message">
         ${data.error}
@@ -12,7 +15,7 @@
     </legend>
 
     <for(radio in data.radios | status-var=loop)>
-      <var radioId=(radio.id || `radio-${data.name}-${loop.getIndex()}`)/>
+      <var radioId=(radio.id || "radio-${data.name}-${loop.getIndex()}")/>
 
       <label for=radioId class="block-label" data-target=radio.reveal>
         <input id=radioId name=data.name value=radio.value type="radio"

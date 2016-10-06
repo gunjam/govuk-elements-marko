@@ -10,6 +10,7 @@
   "@error": "string",
   "@value": "string",
   "@layout": "string",
+  "@hint": "String",
   "@hide-legend": "boolean",
   "@radios <radio>[]": {
     "@value": {

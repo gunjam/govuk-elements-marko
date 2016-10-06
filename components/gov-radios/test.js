@@ -61,6 +61,24 @@ describe('<gov-radios/>', () => {
     );
   });
 
+  it('should add a form hint using the hint attribute', () => {
+    const templateSrc =
+      '<gov-radios name="mood" legend="Happy or sad?" hint="Your mood"/>';
+
+    const output = marko.load(templatePath, templateSrc).renderSync({});
+
+    expect(output).to.equal(
+      '<div class="form-group inline">' +
+        '<fieldset>' +
+          '<legend>' +
+            '<span class="form-label">Happy or sad?</span>' +
+            '<span class="form-hint">Your mood</span>' +
+          '</legend>' +
+        '</fieldset>' +
+      '</div>'
+    );
+  });
+
   it('should add error message and classes when passed an error object', () => {
     const templateSrc =
       `<gov-radios legend=data.legend name=data.name error=data.error>
