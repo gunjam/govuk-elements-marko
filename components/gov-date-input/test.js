@@ -37,18 +37,6 @@ describe('<gov-date-input/>', () => {
     assert(false, 'missing attribute "legend" did not throw an error');
   });
 
-  it('should error if you don\'t supply a hint attribute', () => {
-    const templateSrc = '<gov-date-input name="birth" legend="Date of birth"/>';
-
-    try {
-      marko.load(templatePath, templateSrc);
-    } catch (err) {
-      return assert(true);
-    }
-
-    assert(false, 'missing attribute "hint" did not throw an error');
-  });
-
   it('should render the correct markup', () => {
     const legend = 'Date of birth';
     const hint = 'For example, 31 3 1980';
