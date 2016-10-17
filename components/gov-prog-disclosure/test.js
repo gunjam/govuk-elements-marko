@@ -26,7 +26,7 @@ describe('<gov-prog-disclosure/>', () => {
             'More information' +
           '</span>' +
         '</summary>' +
-        '<div class="panel-indent">' +
+        '<div class="panel panel-border-narrow">' +
           '<p>You can have whatever you want in here</p>' +
           '<ul>' +
             '<li>a</li>' +
