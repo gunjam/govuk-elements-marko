@@ -3,8 +3,8 @@
 const template = require('./template.marko');
 
 exports.renderer = function (input, out) {
-  out.stream.req = out.stream.req || {};
-  const language = input.lang || out.stream.req.language;
+  const req = out.global.events.req || {};
+  const language = input.lang || req.language;
   const thisYear = new Date().getFullYear();
 
   if (language === 'cy') {
