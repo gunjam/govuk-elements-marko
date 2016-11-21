@@ -65,7 +65,7 @@ describe('<gov-date-input/>', () => {
                 'Day' +
               '</label>' +
               `<input class="form-control" id="input-${name}-day" ` +
-                `type="number" name="${name}[day]" pattern="[0-9]*" min="0" ` +
+                `type="number" name="${name}-day" pattern="[0-9]*" min="0" ` +
                 'max="31" aria-describedby="birth-hint">' +
             '</div>' +
             '<div class="form-group form-group-month">' +
@@ -73,7 +73,7 @@ describe('<gov-date-input/>', () => {
                 'Month' +
               '</label>' +
               `<input class="form-control" id="input-${name}-month" ` +
-                `type="number" name="${name}[month]" pattern="[0-9]*" ` +
+                `type="number" name="${name}-month" pattern="[0-9]*" ` +
                 'min="0" max="12">' +
             '</div>' +
             '<div class="form-group form-group-year">' +
@@ -81,7 +81,7 @@ describe('<gov-date-input/>', () => {
                 'Year' +
               '</label>' +
               `<input class="form-control" type="number" ` +
-                `id="input-${name}-year" min="0" name="${name}[year]" ` +
+                `id="input-${name}-year" min="0" name="${name}-year" ` +
                 `pattern="[0-9]*" max="${thisYear}">` +
             '</div>' +
           '</div>' +
@@ -90,7 +90,7 @@ describe('<gov-date-input/>', () => {
     );
   });
 
-  it('should use ID attribute value over generated input-${name} IDs', () => {
+  it('should use ID attribute value over generated IDs', () => {
     const data = {
       legend: 'Date of birth',
       hint: 'For example, 31 3 1980',
@@ -141,6 +141,56 @@ describe('<gov-date-input/>', () => {
     expect(dayValue).to.equal(data.value.day);
     expect(monthValue).to.equal(data.value.month);
     expect(yearValue).to.equal(data.value.year);
+  });
+
+  it('should use camel cased name suffix if suffix="camel" is set', () => {
+    const data = {
+      legend: 'Date of birth',
+      hint: 'For example, 31 3 1980',
+      name: 'birth',
+      value: {day: '12', month: '12', year: '2015'},
+      suffix: 'camel'
+    };
+
+    const templateSrc =
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+         value=(data.value) suffix=(data.suffix)/>`;
+
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
+
+    const $ = cheerio.load(output);
+    const dayName = $('#input-birth-day').attr('name');
+    const monthName = $('#input-birth-month').attr('name');
+    const yearName = $('#input-birth-year').attr('name');
+
+    expect(dayName).to.equal('birthDay');
+    expect(monthName).to.equal('birthMonth');
+    expect(yearName).to.equal('birthYear');
+  });
+
+  it('should use object syntax name suffix if suffix="object" is set', () => {
+    const data = {
+      legend: 'Date of birth',
+      hint: 'For example, 31 3 1980',
+      name: 'birth',
+      value: {day: '12', month: '12', year: '2015'},
+      suffix: 'object'
+    };
+
+    const templateSrc =
+      `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
+         value=(data.value) suffix=(data.suffix)/>`;
+
+    const output = marko.load(templatePath, templateSrc).renderSync(data);
+
+    const $ = cheerio.load(output);
+    const dayName = $('#input-birth-day').attr('name');
+    const monthName = $('#input-birth-month').attr('name');
+    const yearName = $('#input-birth-year').attr('name');
+
+    expect(dayName).to.equal('birth[day]');
+    expect(monthName).to.equal('birth[month]');
+    expect(yearName).to.equal('birth[year]');
   });
 
   it('should add error message and classes when passed an error object', () => {

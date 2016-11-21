@@ -17,26 +17,26 @@
     <div class="form-date">
       <div class="form-group form-group-day">
         <label class="form-label" for="${inputId}-day">
-          ${data.dayLabel}
+          ${data.label.day}
         </label>
         <input class="form-control" id="${inputId}-day" type="number"
-          name="${data.name}[day]" pattern="[0-9]*" min="0" max="31"
+          name="${data.name}${data.suffix.day}" pattern="[0-9]*" min="0" max="31"
           value=data.value.day aria-describedby="${data.name}-hint">
       </div>
       <div class="form-group form-group-month">
         <label class="form-label" for="${inputId}-month">
-          ${data.monthLabel}
+          ${data.label.month}
         </label>
         <input class="form-control" id="${inputId}-month" type="number"
-          name="${data.name}[month]" pattern="[0-9]*" min="0" max="12"
+          name="${data.name}${data.suffix.month}" pattern="[0-9]*" min="0" max="12"
           value=data.value.month>
       </div>
       <div class="form-group form-group-year">
         <label class="form-label" for="${inputId}-year">
-          ${data.yearLabel}
+          ${data.label.year}
         </label>
         <input class="form-control" type="number" id="${inputId}-year" min="0"
-          name="${data.name}[year]" pattern="[0-9]*" max="${data.maxyear}"
+          name="${data.name}${data.suffix.year}" pattern="[0-9]*" max="${data.maxyear}"
           value=data.value.year>
       </div>
     </div>

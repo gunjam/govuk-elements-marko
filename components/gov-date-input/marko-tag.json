@@ -11,6 +11,10 @@
   "@id": "string",
   "@error": "string",
   "@value": "object",
+  "@value-day": "string",
+  "@value-month": "string",
+  "@value-year": "string",
   "@maxyear": "string",
-  "@lang": "string"
+  "@lang": "string",
+  "@suffix": "string"
 }
