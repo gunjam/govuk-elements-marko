@@ -5,7 +5,7 @@ require('marko/node-require').install();
 const marko = require('marko');
 const {expect} = require('chai');
 
-describe('<gov-date-input/>', () => {
+describe('<gov-beta-banner/>', () => {
   it('should render the correct markup', () => {
     const templateSrc = '<gov-beta-banner>Description</gov-beta-banner>';
     const output = marko.load('betaBanner', templateSrc).renderSync({});
