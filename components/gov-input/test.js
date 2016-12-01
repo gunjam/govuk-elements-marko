@@ -55,7 +55,7 @@ describe('<gov-input/>', () => {
     );
   });
 
-  it('should set the ID as input-${name} if ID attr not supplied', () => {
+  it('should set the ID as input-{name} if ID attr not supplied', () => {
     const name = 'full-name';
     const output = template.renderToString({
       label: 'Full name',
@@ -67,7 +67,7 @@ describe('<gov-input/>', () => {
     expect(inputId).to.equal(`input-${name}`);
   });
 
-  it('should use ID attribute value over generated input-${name} ID', () => {
+  it('should use ID attribute value over generated input-{name} ID', () => {
     const id = 'my-id';
     const output = template.renderToString({
       label: 'Full name',

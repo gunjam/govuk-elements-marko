@@ -334,7 +334,7 @@ describe('<gov-radios/>', () => {
       );
     });
 
-    it('should set the ID as radio-${name}-${index} if no ID attr', () => {
+    it('should set the ID as radio-{name}-{index} if no ID attr', () => {
       const templateSrc =
         `<gov-radios legend=data.legend name=data.name>
            <gov-radios:radio value=data.checkbox.value

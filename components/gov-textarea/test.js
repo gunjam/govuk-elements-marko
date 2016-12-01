@@ -55,7 +55,7 @@ describe('<gov-textarea/>', () => {
     );
   });
 
-  it('should set the ID as textarea-${name} if ID attr not supplied', () => {
+  it('should set the ID as textarea-{name} if ID attr not supplied', () => {
     const name = 'more-details';
     const output = template.renderToString({
       label: 'More details',
@@ -67,7 +67,7 @@ describe('<gov-textarea/>', () => {
     expect(textareaId).to.equal(`textarea-${name}`);
   });
 
-  it('should use ID attribute value over generated textarea-${name} ID', () => {
+  it('should use ID attribute value over generated textarea-{name} ID', () => {
     const id = 'my-id';
     const output = template.renderToString({
       label: 'More details',

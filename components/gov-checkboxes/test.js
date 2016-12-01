@@ -216,7 +216,7 @@ describe('<gov-checkboxes/>', () => {
       );
     });
 
-    it('should set the ID as checkbox-${name}-${index} if no ID attr', () => {
+    it('should set the ID as checkbox-{name}-{index} if no ID attr', () => {
       const templateSrc =
         `<gov-checkboxes legend=data.legend name=data.name>
            <gov-checkboxes:checkbox value=data.checkbox.value
