@@ -8,7 +8,7 @@ const {expect} = require('chai');
 describe('<gov-beta-banner/>', () => {
   it('should render the correct markup', () => {
     const templateSrc = '<gov-beta-banner>Description</gov-beta-banner>';
-    const output = marko.load('betaBanner', templateSrc).renderSync({});
+    const output = marko.load('betaBanner', templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<div class="phase-banner-beta">' +

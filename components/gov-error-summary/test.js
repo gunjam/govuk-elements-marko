@@ -26,7 +26,7 @@ describe('<gov-error-summary/>', () => {
       }
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal(
       '<div class="error-summary" role="group" ' +
@@ -57,7 +57,7 @@ describe('<gov-error-summary/>', () => {
       }
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal(
       '<div class="error-summary" role="group" ' +
@@ -84,7 +84,7 @@ describe('<gov-error-summary/>', () => {
       summary: 'Fix your errors.'
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal('');
   });

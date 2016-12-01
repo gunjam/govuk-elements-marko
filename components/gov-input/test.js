@@ -39,7 +39,7 @@ describe('<gov-input/>', () => {
   });
 
   it('should render the correct markup', () => {
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name: 'full-name'
     });
@@ -57,7 +57,7 @@ describe('<gov-input/>', () => {
 
   it('should set the ID as input-${name} if ID attr not supplied', () => {
     const name = 'full-name';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name
     });
@@ -69,7 +69,7 @@ describe('<gov-input/>', () => {
 
   it('should use ID attribute value over generated input-${name} ID', () => {
     const id = 'my-id';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name: 'full-name',
       id
@@ -82,7 +82,7 @@ describe('<gov-input/>', () => {
 
   it('should add a form hint using the hint attribute', () => {
     const hint = 'All your names';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name: 'full-name',
       hint
@@ -95,7 +95,7 @@ describe('<gov-input/>', () => {
 
   it('should add maxlength to input using the maxlength attribute', () => {
     const maxlength = '20';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name: 'full-name',
       maxlength
@@ -108,7 +108,7 @@ describe('<gov-input/>', () => {
 
   it('should set the value of the input using the value attribute', () => {
     const value = 'Testy McTesterson';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name: 'full-name',
       value
@@ -122,7 +122,7 @@ describe('<gov-input/>', () => {
   it('should add error message and classes when passed an error object', () => {
     const error = 'Name is wrong';
     const name = 'full-name';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'Full name',
       name,
       error

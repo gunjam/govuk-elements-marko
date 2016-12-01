@@ -46,7 +46,7 @@ describe('<gov-date-input/>', () => {
     const templateSrc =
       `<gov-date-input name="${name}" legend="${legend}" hint="${hint}"/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<div class="form-group">' +
@@ -102,7 +102,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          id=(data.id)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const dayInputId = $('input#egg-day');
     const monthInputId = $('input#egg-month');
@@ -131,7 +131,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          value=(data.value)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     const $ = cheerio.load(output);
     const dayValue = $('#input-birth-day').attr('value');
@@ -156,7 +156,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          value=(data.value) suffix=(data.suffix)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     const $ = cheerio.load(output);
     const dayName = $('#input-birth-day').attr('name');
@@ -181,7 +181,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          value=(data.value) suffix=(data.suffix)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     const $ = cheerio.load(output);
     const dayName = $('#input-birth-day').attr('name');
@@ -205,7 +205,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          error=(data.error)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const legend = $('legend').html();
 
@@ -228,7 +228,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          maxyear=(data.maxyear)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const max = $('#input-birth-year').attr('max');
 
@@ -247,7 +247,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          lang=(data.lang)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const dayText = $('[for="input-birth-day"]').text();
     const monthText = $('[for="input-birth-month"]').text();
@@ -270,7 +270,7 @@ describe('<gov-date-input/>', () => {
       `<gov-date-input name=(data.name) legend=(data.legend) hint=(data.hint)
          lang=(data.lang)/>`;
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const dayText = $('[for="input-birth-day"]').text();
     const monthText = $('[for="input-birth-month"]').text();

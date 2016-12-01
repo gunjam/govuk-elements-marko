@@ -21,8 +21,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "cheerio": "^0.22.0",
-    "marko": "^3.12.1",
-    "mocha": "^3.1.2",
+    "marko": "^3.13.0",
+    "mocha": "^3.2.0",
     "xo": "^0.17.1"
   },
   "license": "Apache-2.0",

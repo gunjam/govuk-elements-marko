@@ -27,7 +27,7 @@ describe('<gov-legal/>', () => {
   it('should render the correct markup', () => {
     const content = 'You can be fined up to £5,000 if you don’t register.';
     const templateSrc = `<gov-legal content=data.content/>`;
-    const output = marko.load(templatePath, templateSrc).renderSync({content});
+    const output = marko.load(templatePath, templateSrc).renderToString({content});
 
     expect(output).to.equal(
       '<p class="notice text">' +
@@ -43,7 +43,7 @@ describe('<gov-legal/>', () => {
     const content = 'Gallwch gael dirwy o hyd at £ 5,000 os nad ydych yn' +
       'cofrestru.';
     const templateSrc = `<gov-legal content=data.content lang="cy"/>`;
-    const output = marko.load(templatePath, templateSrc).renderSync({content});
+    const output = marko.load(templatePath, templateSrc).renderToString({content});
 
     expect(output).to.equal(
       '<p class="notice text">' +

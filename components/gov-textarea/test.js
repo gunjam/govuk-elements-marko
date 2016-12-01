@@ -39,7 +39,7 @@ describe('<gov-textarea/>', () => {
   });
 
   it('should render the correct markup', () => {
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details'
     });
@@ -57,7 +57,7 @@ describe('<gov-textarea/>', () => {
 
   it('should set the ID as textarea-${name} if ID attr not supplied', () => {
     const name = 'more-details';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name
     });
@@ -69,7 +69,7 @@ describe('<gov-textarea/>', () => {
 
   it('should use ID attribute value over generated textarea-${name} ID', () => {
     const id = 'my-id';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details',
       id
@@ -82,7 +82,7 @@ describe('<gov-textarea/>', () => {
 
   it('should add a form hint using the hint attribute', () => {
     const hint = 'Do not include bank details';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details',
       hint
@@ -95,7 +95,7 @@ describe('<gov-textarea/>', () => {
 
   it('should add maxlength to textarea using the maxlength attribute', () => {
     const maxlength = '1200';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details',
       maxlength
@@ -108,7 +108,7 @@ describe('<gov-textarea/>', () => {
 
   it('should add rows attribute to textarea using the rows attribute', () => {
     const rows = '12';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details',
       rows
@@ -121,7 +121,7 @@ describe('<gov-textarea/>', () => {
 
   it('should set the value of the textarea using the value attribute', () => {
     const value = 'I really loved this service, it was great';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name: 'more-details',
       value
@@ -135,7 +135,7 @@ describe('<gov-textarea/>', () => {
   it('should add error message and classes when passed an error object', () => {
     const error = 'Put something in the box';
     const name = 'more-details';
-    const output = template.renderSync({
+    const output = template.renderToString({
       label: 'More details',
       name,
       error

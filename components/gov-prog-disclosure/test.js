@@ -17,7 +17,7 @@ describe('<gov-prog-disclosure/>', () => {
          </ul>
        </gov-prog-disclosure>`;
 
-    const output = marko.load('test', templateSrc).renderSync({});
+    const output = marko.load('test', templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<details>' +

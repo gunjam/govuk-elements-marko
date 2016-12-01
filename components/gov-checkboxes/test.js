@@ -49,7 +49,7 @@ describe('<gov-checkboxes/>', () => {
     const templateSrc =
       '<gov-checkboxes name="colour" legend="Favourite colour?"/>';
 
-    const output = marko.load(templatePath, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<div class="form-group">' +
@@ -81,7 +81,7 @@ describe('<gov-checkboxes/>', () => {
       error: 'Please pick a colour'
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
     const error = $('legend > span.visuallyhidden + span.error-message').text();
@@ -114,7 +114,7 @@ describe('<gov-checkboxes/>', () => {
       values: ['red', 'green']
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal(
       '<div class="form-group">' +
@@ -193,7 +193,7 @@ describe('<gov-checkboxes/>', () => {
         ]
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +
@@ -229,7 +229,7 @@ describe('<gov-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red'}
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=red]').attr('id');
 
@@ -249,7 +249,7 @@ describe('<gov-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red', id: 'my-checkbox'}
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=red]').attr('id');
 
@@ -269,7 +269,7 @@ describe('<gov-checkboxes/>', () => {
         checkbox: {label: 'Red', value: 'red', hint: 'Blood is this colour'}
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +
@@ -307,7 +307,7 @@ describe('<gov-checkboxes/>', () => {
         }
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group">' +

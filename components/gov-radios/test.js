@@ -48,7 +48,7 @@ describe('<gov-radios/>', () => {
     const templateSrc =
       '<gov-radios name="mood" legend="Happy or sad?"/>';
 
-    const output = marko.load(templatePath, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<div class="form-group inline">' +
@@ -65,7 +65,7 @@ describe('<gov-radios/>', () => {
     const templateSrc =
       '<gov-radios name="mood" legend="Happy or sad?" hint="Your mood"/>';
 
-    const output = marko.load(templatePath, templateSrc).renderSync({});
+    const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
       '<div class="form-group inline">' +
@@ -98,7 +98,7 @@ describe('<gov-radios/>', () => {
       error: 'Please tell me how you feel'
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
     const error = $('legend > span.form-label + span.error-message').text();
@@ -128,7 +128,7 @@ describe('<gov-radios/>', () => {
       value: 'happy'
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal(
       '<div class="form-group inline">' +
@@ -171,7 +171,7 @@ describe('<gov-radios/>', () => {
       ]
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -200,7 +200,7 @@ describe('<gov-radios/>', () => {
       ]
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -226,7 +226,7 @@ describe('<gov-radios/>', () => {
       ]
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const classes = $('div.form-group').attr('class');
 
@@ -253,7 +253,7 @@ describe('<gov-radios/>', () => {
       ]
     };
 
-    const output = marko.load(templatePath, templateSrc).renderSync(data);
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const classes = $('legend > span:first-child').attr('class');
 
@@ -311,7 +311,7 @@ describe('<gov-radios/>', () => {
         ]
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +
@@ -347,7 +347,7 @@ describe('<gov-radios/>', () => {
         checkbox: {label: 'Happy', value: 'happy'}
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=happy]').attr('id');
 
@@ -367,7 +367,7 @@ describe('<gov-radios/>', () => {
         checkbox: {label: 'Happy', value: 'happy', id: 'my-checkbox'}
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
       const inputId = $('input[value=happy]').attr('id');
 
@@ -400,7 +400,7 @@ describe('<gov-radios/>', () => {
         ]
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +
@@ -450,7 +450,7 @@ describe('<gov-radios/>', () => {
         ]
       };
 
-      const output = marko.load(templatePath, templateSrc).renderSync(data);
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
         '<div class="form-group inline">' +
