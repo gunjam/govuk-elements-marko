@@ -280,4 +280,24 @@ describe('<gov-date-input/>', () => {
     expect(monthText).to.equal('Month');
     expect(yearText).to.equal('Year');
   });
+
+  it('should set hidden classes and add div id if hidden attr is true', () => {
+    const data = {
+      legend: 'Date of birth',
+      name: 'birth',
+      hidden: true
+    };
+
+    const templateSrc =
+      `<gov-date-input name=(data.name) legend=(data.legend)
+         hidden=(data.hidden)/>`;
+
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
+    const $ = cheerio.load(output);
+    const divClasses = $('div').attr('class');
+    const divId = $('div').attr('id');
+
+    expect(divClasses).to.equal('panel panel-border-narrow js-hidden');
+    expect(divId).to.equal('group-birth');
+  });
 });

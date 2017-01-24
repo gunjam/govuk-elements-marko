@@ -1,6 +1,7 @@
-<div class="form-group${(data.error ? ' error' : '')}">
+<div class=((data.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group') + (data.error ? ' error' : ''))
+  id=(data.hidden && 'group-${data.name}')>
   <fieldset>
-    <var inputId=(data.id || `input-${data.name}`)/>
+    <var inputId=(data.id || 'input-${data.name}')/>
 
     <legend>
       <span class="form-label-bold">
