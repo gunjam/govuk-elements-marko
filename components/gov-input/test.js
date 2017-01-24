@@ -134,4 +134,18 @@ describe('<gov-input/>', () => {
     expect(formGroupClasses).to.equal('form-group error');
     expect(errorMsg).to.equal(error);
   });
+
+  it('should set hidden classes and add div id if hidden attr is true', () => {
+    const output = template.renderToString({
+      label: 'Full name',
+      name: 'full-name',
+      hidden: true
+    });
+    const $ = cheerio.load(output);
+    const divClasses = $('div').attr('class');
+    const divId = $('div').attr('id');
+
+    expect(divClasses).to.equal('panel panel-border-narrow js-hidden');
+    expect(divId).to.equal('group-full-name');
+  });
 });

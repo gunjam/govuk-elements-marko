@@ -1,6 +1,7 @@
-<div class="form-group${(data.error ? ' error' : '')}">
-  <var inputId=(data.id || `input-${data.name}`)/>
+<div class=((data.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group') + (data.error ? ' error' : ''))
+  id=(data.hidden && 'group-${data.name}')>
 
+  <var inputId=(data.id || 'input-${data.name}')/>
   <label for=inputId>
     <span class="form-label">
       ${data.label}
@@ -14,6 +15,6 @@
   </label>
   <input class="form-control" type="text" id=inputId
     name=data.name value=data.value autocomplete="off"
-    maxlength=data.maxlength />
+    maxlength=data.maxlength/>
 
 </div>

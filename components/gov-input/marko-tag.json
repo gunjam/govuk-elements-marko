@@ -8,6 +8,7 @@
     "type": "string"
   },
   "@hint": "string",
+  "@hidden": "boolean",
   "@id": "string",
   "@error": "string",
   "@value": "string",
