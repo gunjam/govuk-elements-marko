@@ -472,5 +472,58 @@ describe('<gov-radios/>', () => {
         '</div>'
       );
     });
+
+    it('should render mark up in body at the end of the label tag', () => {
+      const templateSrc =
+        `<gov-radios legend=data.legend name=data.name>
+           <gov-radios:radio value=data.radios[0].value
+             label=data.radios[0].label/>
+           <gov-radios:radio value=data.radios[1].value
+             label=data.radios[1].label>
+             <p>Bonus paragraph</p>
+           </gov-radios:radio>
+         </gov-radios>`;
+
+      const data = {
+        legend: 'Happy or sad?',
+        name: 'mood',
+        radios: [
+          {
+            label: 'Happy',
+            value: 'happy',
+            hint: 'Select this if you are smiling'
+          },
+          {
+            reveal: 'cheer-up-message',
+            label: 'Sad',
+            value: 'sad',
+            hint: 'This is the mood of a ghost'
+          }
+        ]
+      };
+
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
+
+      expect(output).to.equal(
+        '<div class="form-group inline">' +
+          '<fieldset>' +
+            '<legend>' +
+              '<span class="form-label">Happy or sad?</span>' +
+            '</legend>' +
+            '<label for="radio-mood-0" class="block-label">' +
+              '<input id="radio-mood-0" name="mood" value="happy" ' +
+                'type="radio">' +
+              'Happy' +
+            '</label>' +
+            '<label for="radio-mood-1" class="block-label">' +
+              '<input id="radio-mood-1" name="mood" value="sad" ' +
+                'type="radio">' +
+              'Sad' +
+            '</label>' +
+            '<p>Bonus paragraph</p>' +
+          '</fieldset>' +
+        '</div>'
+      );
+    });
   });
 });

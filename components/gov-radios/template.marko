@@ -32,6 +32,8 @@
           ${radio.label}
         </else>
       </label>
+
+      <invoke if(radio.renderBody) radio.renderBody(out)/>
     </for>
 
   </fieldset>
