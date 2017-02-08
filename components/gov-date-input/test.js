@@ -300,4 +300,46 @@ describe('<gov-date-input/>', () => {
     expect(divClasses).to.equal('panel panel-border-narrow js-hidden');
     expect(divId).to.equal('group-birth');
   });
+
+  it('should use English labels if lang is set to anything else', () => {
+    const data = {
+      legend: 'Date of birth',
+      name: 'birth'
+    };
+
+    const templateSrc =
+      `<gov-date-input name=(data.name) legend=(data.legend)/>`;
+
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
+    const $ = cheerio.load(output);
+    const dayText = $('[for="input-birth-day"]').text();
+    const monthText = $('[for="input-birth-month"]').text();
+    const yearText = $('[for="input-birth-year"]').text();
+
+    expect(dayText).to.equal('Day');
+    expect(monthText).to.equal('Month');
+    expect(yearText).to.equal('Year');
+  });
+
+  it('should not add aria-describedby if there is no hint', () => {
+    const data = {
+      legend: 'Date of birth',
+      name: 'birth',
+      hidden: true
+    };
+
+    const templateSrc =
+      `<gov-date-input name=(data.name) legend=(data.legend)
+         hidden=(data.hidden)/>`;
+
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
+    const $ = cheerio.load(output);
+    const dayAria = $('#input-birth-day').attr('aria-describedby');
+    const monthAria = $('#input-birth-month').attr('aria-describedby');
+    const yearAria = $('#input-birth-year').attr('aria-describedby');
+
+    expect(dayAria).to.equal(undefined);
+    expect(monthAria).to.equal(undefined);
+    expect(yearAria).to.equal(undefined);
+  });
 });

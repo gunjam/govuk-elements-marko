@@ -22,7 +22,7 @@
         </label>
         <input class="form-control" id="${inputId}-day" type="number"
           name="${data.name}${data.suffix.day}" pattern="[0-9]*" min="0" max="31"
-          value=data.value.day aria-describedby="${data.name}-hint">
+          value=data.value.day aria-describedby=(data.hint && "${data.name}-hint")>
       </div>
       <div class="form-group form-group-month">
         <label class="form-label" for="${inputId}-month">
