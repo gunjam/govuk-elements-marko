@@ -194,6 +194,7 @@ describe('<gov-date-input/>', () => {
   });
 
   it('should add error message and classes when passed an error object', () => {
+    const thisYear = new Date().getFullYear();
     const data = {
       legend: 'Date of birth',
       hint: 'For example, 31 3 1980',
@@ -206,13 +207,49 @@ describe('<gov-date-input/>', () => {
          error=(data.error)/>`;
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
-    const $ = cheerio.load(output);
-    const legend = $('legend').html();
 
-    expect(legend).to.equal(
-      '<span class="form-label-bold">Date of birth</span>' +
-      '<span class="form-hint" id="birth-hint">For example, 31 3 1980</span>' +
-      '<span id="error-message-birth" class="error-message">Wrong date!</span>'
+    expect(output).to.equal(
+      '<div class="form-group form-group-error">' +
+        '<fieldset>' +
+          '<legend>' +
+            '<span class="form-label-bold">' +
+              data.legend +
+            '</span>' +
+            `<span class="form-hint" id="${data.name}-hint">` +
+              data.hint +
+            '</span>' +
+            '<span id="error-message-birth" class="error-message">' +
+              data.error +
+            '</span>' +
+          '</legend>' +
+          '<div class="form-date">' +
+            '<div class="form-group form-group-day">' +
+              `<label class="form-label" for="input-${data.name}-day">` +
+                'Day' +
+              '</label>' +
+              `<input class="form-control form-control-error" id="input-${data.name}-day" ` +
+                `type="number" name="${data.name}-day" pattern="[0-9]*" min="0" ` +
+                'max="31" aria-describedby="birth-hint">' +
+            '</div>' +
+            '<div class="form-group form-group-month">' +
+              `<label class="form-label" for="input-${data.name}-month">` +
+                'Month' +
+              '</label>' +
+              `<input class="form-control form-control-error" id="input-${data.name}-month" ` +
+                `type="number" name="${data.name}-month" pattern="[0-9]*" ` +
+                'min="0" max="12">' +
+            '</div>' +
+            '<div class="form-group form-group-year">' +
+              `<label class="form-label" for="input-${data.name}-year">` +
+                'Year' +
+              '</label>' +
+              `<input class="form-control form-control-error" type="number" ` +
+                `id="input-${data.name}-year" min="0" name="${data.name}-year" ` +
+                `pattern="[0-9]*" max="${thisYear}">` +
+            '</div>' +
+          '</div>' +
+        '</fieldset>' +
+      '</div>'
     );
   });
 
