@@ -1,4 +1,4 @@
-<div class=((data.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group') + (data.error ? ' error' : ''))
+<div class=((data.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group') + (data.error ? ' form-group-error' : ''))
   id=(data.hidden && 'group-${data.name}')>
 
   <var inputId=(data.id || 'input-${data.name}')/>
@@ -13,8 +13,8 @@
       ${data.error}
     </span>
   </label>
-  <input class="form-control" type="text" id=inputId
-    name=data.name value=data.value autocomplete="off"
+  <input class="form-control${data.error && ' form-control-error'}" type="text"
+    id=inputId name=data.name value=data.value autocomplete="off"
     maxlength=data.maxlength/>
 
 </div>
