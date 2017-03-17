@@ -1,7 +1,6 @@
 'use strict';
 
 require('marko/node-require').install();
-
 const marko = require('marko');
 const cheerio = require('cheerio');
 const {expect, assert} = require('chai');
@@ -15,9 +14,9 @@ describe('<gov-checkboxes/>', () => {
 
   it('should error if you don\'t supply a name attribute', () => {
     const templateSrc =
-      `<gov-checkboxes legend="Favourite colour?">
-         <gov-checkboxes:checkbox label="Red" value="red"/>
-         <gov-checkboxes:checkbox label="Blue" value="blue"/>
+      `<gov-checkboxes legend="Happy or sad?">
+         <gov-checkboxes:checkbox label="Happy" value="happy"/>
+         <gov-checkboxes:checkbox label="Sad" value="sad"/>
        </gov-checkboxes>`;
 
     try {
@@ -31,9 +30,9 @@ describe('<gov-checkboxes/>', () => {
 
   it('should error if you don\'t supply a legend attribute', () => {
     const templateSrc =
-      `<gov-checkboxes name="colour">
-         <gov-checkboxes:checkbox label="Red" value="red"/>
-         <gov-checkboxes:checkbox label="Blue" value="blue"/>
+      `<gov-checkboxes name="mood">
+         <gov-checkboxes:checkbox label="Happy" value="happy"/>
+         <gov-checkboxes:checkbox label="Sad" value="sad"/>
        </gov-checkboxes>`;
 
     try {
@@ -47,7 +46,7 @@ describe('<gov-checkboxes/>', () => {
 
   it('should render the correct markup', () => {
     const templateSrc =
-      '<gov-checkboxes name="colour" legend="Favourite colour?"/>';
+      '<gov-checkboxes name="mood" legend="Happy or sad?"/>';
 
     const output = marko.load(templatePath, templateSrc).renderToString({});
 
@@ -55,7 +54,25 @@ describe('<gov-checkboxes/>', () => {
       '<div class="form-group">' +
         '<fieldset>' +
           '<legend>' +
-            '<span class="visuallyhidden">Favourite colour?</span>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
+          '</legend>' +
+        '</fieldset>' +
+      '</div>'
+    );
+  });
+
+  it('should add a form hint using the hint attribute', () => {
+    const templateSrc =
+      '<gov-checkboxes name="mood" legend="Happy or sad?" hint="Your mood"/>';
+
+    const output = marko.load(templatePath, templateSrc).renderToString({});
+
+    expect(output).to.equal(
+      '<div class="form-group">' +
+        '<fieldset>' +
+          '<legend>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
+            '<span class="form-hint">Your mood</span>' +
           '</legend>' +
         '</fieldset>' +
       '</div>'
@@ -72,29 +89,74 @@ describe('<gov-checkboxes/>', () => {
        </gov-checkboxes>`;
 
     const data = {
-      legend: 'Favourite colour?',
-      name: 'colour',
+      legend: 'Happy or sad?',
+      name: 'mood',
       checkboxes: [
-        {label: 'Red', value: 'red'},
-        {label: 'Blue', value: 'blue'}
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'}
       ],
-      error: 'Please pick a colour'
+      error: 'Please tell me how you feel'
     };
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
-    const error = $('legend > span.visuallyhidden + span.error-message').text();
+    const error = $('legend > span.form-label-bold + span.error-message').text();
     const errorId = $('.error-message').attr('id');
 
-    expect(formGroupClasses).to.equal('form-group error');
+    expect(formGroupClasses).to.equal('form-group form-group-error');
     expect(error).to.equal(data.error);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
 
-  it('should check boxes which have values in the values array attr', () => {
+  it('should select the checkbox which has it\'s value in the value attr', () => {
     const templateSrc =
       `<gov-checkboxes legend=data.legend name=data.name values=data.values>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[0].label
+           value=data.checkboxes[0].value/>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[1].label
+           value=data.checkboxes[1].value/>
+       </gov-checkboxes>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      name: 'mood',
+      checkboxes: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'}
+      ],
+      values: ['happy']
+    };
+
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
+
+    expect(output).to.equal(
+      '<div class="form-group">' +
+        '<fieldset>' +
+          '<legend>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
+          '</legend>' +
+          '<div class="multiple-choice">' +
+            '<input id="checkbox-mood-0" name="mood" value="happy" type="checkbox" ' +
+              'checked>' +
+            '<label for="checkbox-mood-0">' +
+              'Happy' +
+            '</label>' +
+          '</div>' +
+          '<div class="multiple-choice">' +
+            '<input id="checkbox-mood-1" name="mood" value="sad" type="checkbox">' +
+            '<label for="checkbox-mood-1">' +
+              'Sad' +
+            '</label>' +
+          '</div>' +
+        '</fieldset>' +
+      '</div>'
+    );
+  });
+
+  it('should remove inline style if there is more than 2 checkboxes', () => {
+    const templateSrc =
+      `<gov-checkboxes legend=data.legend name=data.name>
          <gov-checkboxes:checkbox label=value=data.checkboxes[0].label
            value=data.checkboxes[0].value/>
          <gov-checkboxes:checkbox label=value=data.checkboxes[1].label
@@ -104,50 +166,53 @@ describe('<gov-checkboxes/>', () => {
        </gov-checkboxes>`;
 
     const data = {
-      legend: 'Favourite colour?',
-      name: 'colour',
+      legend: 'Happy or sad?',
+      name: 'mood',
       checkboxes: [
-        {label: 'Red', value: 'red'},
-        {label: 'Blue', value: 'blue'},
-        {label: 'Green', value: 'green'}
-      ],
-      values: ['red', 'green']
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'},
+        {label: 'Neither', value: 'neither'}
+      ]
     };
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
+    const $ = cheerio.load(output);
+    const classes = $('fieldset').attr('class');
 
-    expect(output).to.equal(
-      '<div class="form-group">' +
-        '<fieldset>' +
-          '<legend>' +
-            '<span class="visuallyhidden">Favourite colour?</span>' +
-          '</legend>' +
-          '<label for="checkbox-colour-0" class="block-label">' +
-            '<input id="checkbox-colour-0" name="colour" value="red" ' +
-              'type="checkbox" checked="checked">' +
-            'Red' +
-          '</label>' +
-          '<label for="checkbox-colour-1" class="block-label">' +
-            '<input id="checkbox-colour-1" name="colour" value="blue" ' +
-              'type="checkbox">' +
-            'Blue' +
-          '</label>' +
-          '<label for="checkbox-colour-2" class="block-label">' +
-            '<input id="checkbox-colour-2" name="colour" value="green" ' +
-              'type="checkbox" checked="checked">' +
-            'Green' +
-          '</label>' +
-        '</fieldset>' +
-      '</div>'
-    );
+    expect(classes).to.equal(undefined);
+  });
+
+  it('should add vissuallyhidden class to legend if hide-legend true', () => {
+    const templateSrc =
+      `<gov-checkboxes legend=data.legend name=data.name hide-legend=(true)>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[0].label
+           value=data.checkboxes[0].value/>
+         <gov-checkboxes:checkbox label=value=data.checkboxes[1].label
+           value=data.checkboxes[1].value/>
+       </gov-checkboxes>`;
+
+    const data = {
+      legend: 'Happy or sad?',
+      name: 'mood',
+      checkboxes: [
+        {label: 'Happy', value: 'happy'},
+        {label: 'Sad', value: 'sad'}
+      ]
+    };
+
+    const output = marko.load(templatePath, templateSrc).renderToString(data);
+    const $ = cheerio.load(output);
+    const classes = $('legend > span:first-child').attr('class');
+
+    expect(classes).to.equal('visuallyhidden');
   });
 
   describe('<gov-checkboxes:checkbox/>', () => {
     it('should error if you don\'t supply a label attribute', () => {
       const templateSrc =
-        `<gov-checkboxes legend="Favourite colour?" name="colour">
-           <gov-checkboxes:checkbox value="red"/>
-           <gov-checkboxes:checkbox label="Blue" value="blue"/>
+        `<gov-checkboxes legend="Happy or sad?" name="mood">
+           <gov-checkboxes:checkbox value="happy"/>
+           <gov-checkboxes:checkbox label="Sad" value="sad"/>
          </gov-checkboxes>`;
 
       try {
@@ -161,9 +226,9 @@ describe('<gov-checkboxes/>', () => {
 
     it('should error if you don\'t supply a value attribute', () => {
       const templateSrc =
-        `<gov-checkboxes legend="Favourite colour?" name="colour">
-           <gov-checkboxes:checkbox label="Red"/>
-           <gov-checkboxes:checkbox label="Blue" value="blue"/>
+        `<gov-checkboxes legend="Happy or sad?" name="mood">
+           <gov-checkboxes:checkbox label="Happy"/>
+           <gov-checkboxes:checkbox label="Sad" value="sad"/>
          </gov-checkboxes>`;
 
       try {
@@ -185,11 +250,11 @@ describe('<gov-checkboxes/>', () => {
          </gov-checkboxes>`;
 
       const data = {
-        legend: 'Favourite colour?',
-        name: 'colour',
+        legend: 'Happy or sad?',
+        name: 'mood',
         checkboxes: [
-          {label: 'Red', value: 'red'},
-          {label: 'Blue', value: 'blue'}
+          {label: 'Happy', value: 'happy'},
+          {label: 'Sad', value: 'sad'}
         ]
       };
 
@@ -199,18 +264,20 @@ describe('<gov-checkboxes/>', () => {
         '<div class="form-group">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Favourite colour?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="checkbox-colour-0" class="block-label">' +
-              '<input id="checkbox-colour-0" name="colour" value="red" ' +
-                'type="checkbox">' +
-              'Red' +
-            '</label>' +
-            '<label for="checkbox-colour-1" class="block-label">' +
-              '<input id="checkbox-colour-1" name="colour" value="blue" ' +
-                'type="checkbox">' +
-              'Blue' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-0" name="mood" value="happy" type="checkbox">' +
+              '<label for="checkbox-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-1" name="mood" value="sad" type="checkbox">' +
+              '<label for="checkbox-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
           '</fieldset>' +
         '</div>'
       );
@@ -224,14 +291,14 @@ describe('<gov-checkboxes/>', () => {
          </gov-checkboxes>`;
 
       const data = {
-        legend: 'Favourite colour?',
-        name: 'colour',
-        checkbox: {label: 'Red', value: 'red'}
+        legend: 'Happy or sad?',
+        name: 'mood',
+        checkbox: {label: 'Happy', value: 'happy'}
       };
 
       const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
-      const inputId = $('input[value=red]').attr('id');
+      const inputId = $('input[value=happy]').attr('id');
 
       expect(inputId).to.equal(`checkbox-${data.name}-0`);
     });
@@ -244,14 +311,14 @@ describe('<gov-checkboxes/>', () => {
          </gov-checkboxes>`;
 
       const data = {
-        legend: 'Favourite colour?',
-        name: 'colour',
-        checkbox: {label: 'Red', value: 'red', id: 'my-checkbox'}
+        legend: 'Happy or sad?',
+        name: 'mood',
+        checkbox: {label: 'Happy', value: 'happy', id: 'my-checkbox'}
       };
 
       const output = marko.load(templatePath, templateSrc).renderToString(data);
       const $ = cheerio.load(output);
-      const inputId = $('input[value=red]').attr('id');
+      const inputId = $('input[value=happy]').attr('id');
 
       expect(inputId).to.equal(data.checkbox.id);
     });
@@ -259,14 +326,27 @@ describe('<gov-checkboxes/>', () => {
     it('should add a form hint using the hint attribute', () => {
       const templateSrc =
         `<gov-checkboxes legend=data.legend name=data.name>
-           <gov-checkboxes:checkbox value=data.checkbox.value
-             hint=data.checkbox.hint label=data.checkbox.label/>
+           <gov-checkboxes:checkbox value=data.checkboxes[0].value
+             label=data.checkboxes[0].label hint=data.checkboxes[0].hint/>
+           <gov-checkboxes:checkbox value=data.checkboxes[1].value
+             label=data.checkboxes[1].label hint=data.checkboxes[1].hint/>
          </gov-checkboxes>`;
 
       const data = {
-        legend: 'Favourite colour?',
-        name: 'colour',
-        checkbox: {label: 'Red', value: 'red', hint: 'Blood is this colour'}
+        legend: 'Happy or sad?',
+        name: 'mood',
+        checkboxes: [
+          {
+            label: 'Happy',
+            value: 'happy',
+            hint: 'Select this if you are smiling'
+          },
+          {
+            label: 'Sad',
+            value: 'sad',
+            hint: 'This is the mood of a ghost'
+          }
+        ]
       };
 
       const output = marko.load(templatePath, templateSrc).renderToString(data);
@@ -275,14 +355,28 @@ describe('<gov-checkboxes/>', () => {
         '<div class="form-group">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Favourite colour?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="checkbox-colour-0" class="block-label">' +
-              '<input id="checkbox-colour-0" name="colour" value="red" ' +
-                'type="checkbox">' +
-              '<span class="heading-small">Red</span><br>' +
-              'Blood is this colour' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-0" name="mood" value="happy" type="checkbox">' +
+              '<label for="checkbox-mood-0">' +
+                '<span class="heading-small">' +
+                  'Happy' +
+                '</span>' +
+                '<br>' +
+                'Select this if you are smiling' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-1" name="mood" value="sad" type="checkbox">' +
+              '<label for="checkbox-mood-1">' +
+                '<span class="heading-small">' +
+                  'Sad' +
+                '</span>' +
+                '<br>' +
+                'This is the mood of a ghost' +
+              '</label>' +
+            '</div>' +
           '</fieldset>' +
         '</div>'
       );
@@ -291,20 +385,26 @@ describe('<gov-checkboxes/>', () => {
     it('should add a data-target attr to label when provided reveal id', () => {
       const templateSrc =
         `<gov-checkboxes legend=data.legend name=data.name>
-           <gov-checkboxes:checkbox value=data.checkbox.value
-             reveal=data.checkbox.reveal hint=data.checkbox.hint
-             label=data.checkbox.label/>
+           <gov-checkboxes:checkbox value=data.checkboxes[0].value
+             label=data.checkboxes[0].label/>
+           <gov-checkboxes:checkbox value=data.checkboxes[1].value
+             label=data.checkboxes[1].label reveal=data.checkboxes[1].reveal/>
          </gov-checkboxes>`;
 
       const data = {
-        legend: 'Favourite colour?',
-        name: 'colour',
-        checkbox: {
-          reveal: 'spooky-ghost',
-          label: 'Grey',
-          value: 'grey',
-          hint: 'This is the colour of a ghost'
-        }
+        legend: 'Happy or sad?',
+        name: 'mood',
+        checkboxes: [
+          {
+            label: 'Happy',
+            value: 'happy'
+          },
+          {
+            reveal: 'cheer-up-message',
+            label: 'Sad',
+            value: 'sad'
+          }
+        ]
       };
 
       const output = marko.load(templatePath, templateSrc).renderToString(data);
@@ -313,15 +413,72 @@ describe('<gov-checkboxes/>', () => {
         '<div class="form-group">' +
           '<fieldset>' +
             '<legend>' +
-              '<span class="visuallyhidden">Favourite colour?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="checkbox-colour-0" class="block-label" ' +
-              'data-target="spooky-ghost">' +
-              '<input id="checkbox-colour-0" name="colour" value="grey" ' +
-                'type="checkbox">' +
-              '<span class="heading-small">Grey</span><br>' +
-              'This is the colour of a ghost' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-0" name="mood" value="happy" type="checkbox">' +
+              '<label for="checkbox-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice" data-target="cheer-up-message">' +
+              '<input id="checkbox-mood-1" name="mood" value="sad" type="checkbox">' +
+              '<label for="checkbox-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
+          '</fieldset>' +
+        '</div>'
+      );
+    });
+
+    it('should render mark up in body after the wrapper div', () => {
+      const templateSrc =
+        `<gov-checkboxes legend=data.legend name=data.name>
+           <gov-checkboxes:checkbox value=data.checkboxes[0].value
+             label=data.checkboxes[0].label/>
+           <gov-checkboxes:checkbox value=data.checkboxes[1].value
+             label=data.checkboxes[1].label>
+             <p>Bonus paragraph</p>
+           </gov-checkboxes:checkbox>
+         </gov-checkboxes>`;
+
+      const data = {
+        legend: 'Happy or sad?',
+        name: 'mood',
+        checkboxes: [
+          {
+            label: 'Happy',
+            value: 'happy'
+          },
+          {
+            label: 'Sad',
+            value: 'sad'
+          }
+        ]
+      };
+
+      const output = marko.load(templatePath, templateSrc).renderToString(data);
+
+      expect(output).to.equal(
+        '<div class="form-group">' +
+          '<fieldset>' +
+            '<legend>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
+            '</legend>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-0" name="mood" value="happy" type="checkbox">' +
+              '<label for="checkbox-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="checkbox-mood-1" name="mood" value="sad" type="checkbox">' +
+              '<label for="checkbox-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
+            '<p>Bonus paragraph</p>' +
           '</fieldset>' +
         '</div>'
       );

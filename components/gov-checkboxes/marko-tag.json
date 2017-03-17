@@ -9,6 +9,8 @@
   },
   "@error": "string",
   "@values": "object",
+  "@hint": "String",
+  "@hide-legend": "boolean",
   "@checkboxes <checkbox>[]": {
     "@value": {
       "required": true,
