@@ -142,9 +142,11 @@ describe('<gov-textarea/>', () => {
     });
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
+    const inputClasses = $('textarea').attr('class');
     const errorMsg = $('label .form-label + span.error-message').text();
 
-    expect(formGroupClasses).to.equal('form-group error');
+    expect(formGroupClasses).to.equal('form-group form-group-error');
+    expect(inputClasses).to.equal('form-control form-control-error');
     expect(errorMsg).to.equal(error);
   });
 });

@@ -1,4 +1,4 @@
-<div class="form-group${(data.error ? ' error' : '')}">
+<div class="form-group${(data.error ? ' form-group-error' : '')}">
   <var inputId=(data.id || `textarea-${data.name}`)/>
 
   <label for=inputId>
@@ -12,6 +12,7 @@
       ${data.error}
     </span>
   </label>
-  <textarea class="form-control" id=inputId rows=(data.rows ? data.rows : 8)
-    name=data.name maxlength=data.maxlength>${data.value}</textarea>
+  <textarea class="form-control${data.error && ' form-control-error'}"
+    id=inputId rows=(data.rows ? data.rows : 8) name=data.name
+    maxlength=data.maxlength>${data.value}</textarea>
 </div>
