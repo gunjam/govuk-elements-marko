@@ -1,8 +1,8 @@
-<div class="form-group${data.layout}${data.error ? ' error' : ''}">
-  <fieldset>
+<div class="form-group${data.error ? ' form-group-error' : ''}">
+  <fieldset class=data.layout>
 
     <legend>
-      <span class=(data.hideLegend ? "visuallyhidden" : "form-label")>
+      <span class=(data.hideLegend ? "visuallyhidden" : "form-label-bold")>
         ${data.legend}
       </span>
       <span if(data.hint) class="form-hint">
@@ -17,21 +17,22 @@
     <for(radio in data.radios | status-var=loop)>
       <var radioId=(radio.id || "radio-${data.name}-${loop.getIndex()}")/>
 
-      <label for=radioId class="block-label" data-target=radio.reveal>
+      <div class="multiple-choice" data-target=radio.reveal>
         <input id=radioId name=data.name value=radio.value type="radio"
           checked=(radio.value === data.value)/>
-
-        <if(radio.hint)>
-          <span class="heading-small">
+        <label for=radioId>
+          <if(radio.hint)>
+            <span class="heading-small">
+              ${radio.label}
+            </span>
+            <br/>
+            ${radio.hint}
+          </if>
+          <else>
             ${radio.label}
-          </span>
-          <br/>
-          ${radio.hint}
-        </if>
-        <else>
-          ${radio.label}
-        </else>
-      </label>
+          </else>
+        </label>
+      </div>
 
       <invoke if(radio.renderBody) radio.renderBody(out)/>
     </for>

@@ -51,10 +51,10 @@ describe('<gov-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
-      '<div class="form-group inline">' +
-        '<fieldset>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
           '<legend>' +
-            '<span class="form-label">Happy or sad?</span>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
           '</legend>' +
         '</fieldset>' +
       '</div>'
@@ -68,10 +68,10 @@ describe('<gov-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderToString({});
 
     expect(output).to.equal(
-      '<div class="form-group inline">' +
-        '<fieldset>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
           '<legend>' +
-            '<span class="form-label">Happy or sad?</span>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
             '<span class="form-hint">Your mood</span>' +
           '</legend>' +
         '</fieldset>' +
@@ -101,10 +101,10 @@ describe('<gov-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
     const formGroupClasses = $('.form-group').attr('class');
-    const error = $('legend > span.form-label + span.error-message').text();
+    const error = $('legend > span.form-label-bold + span.error-message').text();
     const errorId = $('.error-message').attr('id');
 
-    expect(formGroupClasses).to.equal('form-group inline error');
+    expect(formGroupClasses).to.equal('form-group form-group-error');
     expect(error).to.equal(data.error);
     expect(errorId).to.equal(`error-message-${data.name}`);
   });
@@ -131,20 +131,24 @@ describe('<gov-radios/>', () => {
     const output = marko.load(templatePath, templateSrc).renderToString(data);
 
     expect(output).to.equal(
-      '<div class="form-group inline">' +
-        '<fieldset>' +
+      '<div class="form-group">' +
+        '<fieldset class="inline">' +
           '<legend>' +
-            '<span class="form-label">Happy or sad?</span>' +
+            '<span class="form-label-bold">Happy or sad?</span>' +
           '</legend>' +
-          '<label for="radio-mood-0" class="block-label">' +
+          '<div class="multiple-choice">' +
             '<input id="radio-mood-0" name="mood" value="happy" type="radio" ' +
               'checked>' +
-            'Happy' +
-          '</label>' +
-          '<label for="radio-mood-1" class="block-label">' +
+            '<label for="radio-mood-0">' +
+              'Happy' +
+            '</label>' +
+          '</div>' +
+          '<div class="multiple-choice">' +
             '<input id="radio-mood-1" name="mood" value="sad" type="radio">' +
-            'Sad' +
-          '</label>' +
+            '<label for="radio-mood-1">' +
+              'Sad' +
+            '</label>' +
+          '</div>' +
         '</fieldset>' +
       '</div>'
     );
@@ -173,9 +177,9 @@ describe('<gov-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('fieldset').attr('class');
 
-    expect(classes).to.equal('form-group');
+    expect(classes).to.equal(undefined);
   });
 
   it('should set inline style when layout attribute is "inline"', () => {
@@ -202,9 +206,9 @@ describe('<gov-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('fieldset').attr('class');
 
-    expect(classes).to.equal('form-group inline');
+    expect(classes).to.equal('inline');
   });
 
   it('should remove inline style when layout attribute is "stacked"', () => {
@@ -228,9 +232,9 @@ describe('<gov-radios/>', () => {
 
     const output = marko.load(templatePath, templateSrc).renderToString(data);
     const $ = cheerio.load(output);
-    const classes = $('div.form-group').attr('class');
+    const classes = $('fieldset').attr('class');
 
-    expect(classes).to.equal('form-group');
+    expect(classes).to.equal(undefined);
   });
 
   it('should add vissuallyhidden class to legend if hide-legend true', () => {
@@ -314,21 +318,23 @@ describe('<gov-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
-              '<span class="form-label">Happy or sad?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="radio-mood-0" class="block-label">' +
-              '<input id="radio-mood-0" name="mood" value="happy" ' +
-                'type="radio">' +
-              'Happy' +
-            '</label>' +
-            '<label for="radio-mood-1" class="block-label">' +
-              '<input id="radio-mood-1" name="mood" value="sad" ' +
-                'type="radio">' +
-              'Sad' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-0" name="mood" value="happy" type="radio">' +
+              '<label for="radio-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-1" name="mood" value="sad" type="radio">' +
+              '<label for="radio-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
           '</fieldset>' +
         '</div>'
       );
@@ -378,9 +384,9 @@ describe('<gov-radios/>', () => {
       const templateSrc =
         `<gov-radios legend=data.legend name=data.name>
            <gov-radios:radio value=data.radios[0].value
-             label=data.radios[0].label/>
+             label=data.radios[0].label hint=data.radios[0].hint/>
            <gov-radios:radio value=data.radios[1].value
-             label=data.radios[1].label/>
+             label=data.radios[1].label hint=data.radios[1].hint/>
          </gov-radios>`;
 
       const data = {
@@ -403,21 +409,31 @@ describe('<gov-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
-              '<span class="form-label">Happy or sad?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="radio-mood-0" class="block-label">' +
-              '<input id="radio-mood-0" name="mood" value="happy" ' +
-                'type="radio">' +
-              'Happy' +
-            '</label>' +
-            '<label for="radio-mood-1" class="block-label">' +
-              '<input id="radio-mood-1" name="mood" value="sad" ' +
-                'type="radio">' +
-              'Sad' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-0" name="mood" value="happy" type="radio">' +
+              '<label for="radio-mood-0">' +
+                '<span class="heading-small">' +
+                  'Happy' +
+                '</span>' +
+                '<br>' +
+                'Select this if you are smiling' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-1" name="mood" value="sad" type="radio">' +
+              '<label for="radio-mood-1">' +
+                '<span class="heading-small">' +
+                  'Sad' +
+                '</span>' +
+                '<br>' +
+                'This is the mood of a ghost' +
+              '</label>' +
+            '</div>' +
           '</fieldset>' +
         '</div>'
       );
@@ -429,7 +445,7 @@ describe('<gov-radios/>', () => {
            <gov-radios:radio value=data.radios[0].value
              label=data.radios[0].label/>
            <gov-radios:radio value=data.radios[1].value
-             label=data.radios[1].label/>
+             label=data.radios[1].label reveal=data.radios[1].reveal/>
          </gov-radios>`;
 
       const data = {
@@ -438,14 +454,12 @@ describe('<gov-radios/>', () => {
         radios: [
           {
             label: 'Happy',
-            value: 'happy',
-            hint: 'Select this if you are smiling'
+            value: 'happy'
           },
           {
             reveal: 'cheer-up-message',
             label: 'Sad',
-            value: 'sad',
-            hint: 'This is the mood of a ghost'
+            value: 'sad'
           }
         ]
       };
@@ -453,27 +467,29 @@ describe('<gov-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
-              '<span class="form-label">Happy or sad?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="radio-mood-0" class="block-label">' +
-              '<input id="radio-mood-0" name="mood" value="happy" ' +
-                'type="radio">' +
-              'Happy' +
-            '</label>' +
-            '<label for="radio-mood-1" class="block-label">' +
-              '<input id="radio-mood-1" name="mood" value="sad" ' +
-                'type="radio">' +
-              'Sad' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-0" name="mood" value="happy" type="radio">' +
+              '<label for="radio-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice" data-target="cheer-up-message">' +
+              '<input id="radio-mood-1" name="mood" value="sad" type="radio">' +
+              '<label for="radio-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
           '</fieldset>' +
         '</div>'
       );
     });
 
-    it('should render mark up in body at the end of the label tag', () => {
+    it('should render mark up in body after the wrapper div', () => {
       const templateSrc =
         `<gov-radios legend=data.legend name=data.name>
            <gov-radios:radio value=data.radios[0].value
@@ -490,14 +506,11 @@ describe('<gov-radios/>', () => {
         radios: [
           {
             label: 'Happy',
-            value: 'happy',
-            hint: 'Select this if you are smiling'
+            value: 'happy'
           },
           {
-            reveal: 'cheer-up-message',
             label: 'Sad',
-            value: 'sad',
-            hint: 'This is the mood of a ghost'
+            value: 'sad'
           }
         ]
       };
@@ -505,21 +518,23 @@ describe('<gov-radios/>', () => {
       const output = marko.load(templatePath, templateSrc).renderToString(data);
 
       expect(output).to.equal(
-        '<div class="form-group inline">' +
-          '<fieldset>' +
+        '<div class="form-group">' +
+          '<fieldset class="inline">' +
             '<legend>' +
-              '<span class="form-label">Happy or sad?</span>' +
+              '<span class="form-label-bold">Happy or sad?</span>' +
             '</legend>' +
-            '<label for="radio-mood-0" class="block-label">' +
-              '<input id="radio-mood-0" name="mood" value="happy" ' +
-                'type="radio">' +
-              'Happy' +
-            '</label>' +
-            '<label for="radio-mood-1" class="block-label">' +
-              '<input id="radio-mood-1" name="mood" value="sad" ' +
-                'type="radio">' +
-              'Sad' +
-            '</label>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-0" name="mood" value="happy" type="radio">' +
+              '<label for="radio-mood-0">' +
+                'Happy' +
+              '</label>' +
+            '</div>' +
+            '<div class="multiple-choice">' +
+              '<input id="radio-mood-1" name="mood" value="sad" type="radio">' +
+              '<label for="radio-mood-1">' +
+                'Sad' +
+              '</label>' +
+            '</div>' +
             '<p>Bonus paragraph</p>' +
           '</fieldset>' +
         '</div>'
