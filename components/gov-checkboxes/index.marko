@@ -1,0 +1,42 @@
+$ const values = input.values || [];
+$ const arrayOfValues = Array.isArray(values) ? values : [values];
+
+<div class=['form-group', input.error && 'form-group-error']>
+  <fieldset>
+
+    <legend>
+      <span class=(input.hideLegend ? "visually-hidden" : "form-label-bold")>
+        ${input.legend}
+      </span>
+      <span.form-hint if(input.hint)>
+        ${input.hint}
+      </span>
+      <span.error-message if(input.error) id=`error-message-${input.name}`>
+        ${input.error}
+      </span>
+    </legend>
+
+    <for(index, checkbox in input.checkboxes)>
+      $ const checkboxId = (checkbox.id || `checkbox-${input.name}-${index}`);
+      $ const isChecked = arrayOfValues.includes(checkbox.value);
+
+      <div.multiple-choice data-target=checkbox.reveal>
+        <input id=checkboxId name=input.name value=checkbox.value
+          type="checkbox" checked=isChecked/>
+        <label for=checkboxId>
+          <if(checkbox.hint)>
+            <span.heading-small>
+              ${checkbox.label}
+            </span>
+            <br/>
+            ${checkbox.hint}
+          </if>
+          <else>
+            ${checkbox.label}
+          </else>
+        </label>
+      </div>
+    </for>
+
+  </fieldset>
+</div>

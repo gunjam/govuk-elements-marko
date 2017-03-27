@@ -9,7 +9,7 @@
   },
   "@error": "string",
   "@values": "object",
-  "@hint": "String",
+  "@hint": "string",
   "@hide-legend": "boolean",
   "@checkboxes <checkbox>[]": {
     "@value": {
