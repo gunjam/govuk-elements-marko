@@ -17,7 +17,7 @@ $ const layout = input.layout || input.radios.length < 3 && 'inline';
     </legend>
 
     <for(index, radio in input.radios)>
-      $ const radioId = radio.id || "radio-${input.name}-${index}";
+      $ const radioId = radio.id || `radio-${input.name}-${index}`;
 
       <div.multiple-choice data-target=radio.reveal>
         <input id=radioId name=input.name value=radio.value type="radio"
