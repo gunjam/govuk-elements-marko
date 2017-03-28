@@ -1,16 +1,16 @@
-<div if(data.errors) class="error-summary" role="group"
+<div.error-summary if(input.errors) role="group"
   aria-labelledby="error-summary-heading" tabindex="-1">
 
-  <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
-    ${data.heading}
+  <h1.heading-medium.error-summary-heading id="error-summary-heading">
+    ${input.heading}
   </h1>
-  <p if(data.summary)>
-    ${data.summary}
+  <p if(input.summary)>
+    ${input.summary}
   </p>
 
-  <ul class="error-summary-list">
-    <li for(input, error in data.errors)>
-      <a href="#error-message-${input}">
+  <ul.error-summary-list>
+    <li for(name, error in input.errors)>
+      <a href="#error-message-${name}">
         ${error}
       </a>
     </li>
