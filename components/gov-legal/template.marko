@@ -1,7 +1,10 @@
+$ const language = input.lang || (out.stream.req || {}).language;
+$ const warning = language === 'cy' ? 'Rhybudd' : 'Warning';
+
 <p.notice.text>
   <i.icon.icon-important>
     <span.visuallyhidden>
-      ${input.warning}
+      ${warning}
     </span>
   </i>
   <strong.bold-small>
