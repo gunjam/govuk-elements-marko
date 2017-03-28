@@ -1,28 +1,30 @@
-<div class="form-group${data.error ? ' form-group-error' : ''}">
-  <fieldset class=data.layout>
+$ const radios = input.radios || [];
+$ const layout = input.layout || input.radios.length < 3 && 'inline';
+
+<div class=['form-group', input.error && 'form-group-error']>
+  <fieldset class=(layout === 'inline' && 'inline')>
 
     <legend>
-      <span class=(data.hideLegend ? "visuallyhidden" : "form-label-bold")>
-        ${data.legend}
+      <span class=(input.hideLegend ? 'visuallyhidden' : 'form-label-bold')>
+        ${input.legend}
       </span>
-      <span if(data.hint) class="form-hint">
-        ${data.hint}
+      <span.form-hint if(input.hint)>
+        ${input.hint}
       </span>
-      <span if(data.error) id="error-message-${data.name}"
-        class="error-message">
-        ${data.error}
+      <span.error-message if(input.error) id="error-message-${input.name}">
+        ${input.error}
       </span>
     </legend>
 
-    <for(radio in data.radios | status-var=loop)>
-      <var radioId=(radio.id || "radio-${data.name}-${loop.getIndex()}")/>
+    <for(index, radio in input.radios)>
+      $ const radioId = radio.id || "radio-${input.name}-${index}";
 
-      <div class="multiple-choice" data-target=radio.reveal>
-        <input id=radioId name=data.name value=radio.value type="radio"
-          checked=(radio.value === data.value)/>
+      <div.multiple-choice data-target=radio.reveal>
+        <input id=radioId name=input.name value=radio.value type="radio"
+          checked=(radio.value === input.value)/>
         <label for=radioId>
           <if(radio.hint)>
-            <span class="heading-small">
+            <span.heading-small>
               ${radio.label}
             </span>
             <br/>
@@ -34,7 +36,7 @@
         </label>
       </div>
 
-      <invoke if(radio.renderBody) radio.renderBody(out)/>
+      <include(radio.renderBody)/>
     </for>
 
   </fieldset>
