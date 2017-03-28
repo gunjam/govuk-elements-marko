@@ -1,18 +1,18 @@
-<div class="form-group${(data.error ? ' form-group-error' : '')}">
-  <var inputId=(data.id || `textarea-${data.name}`)/>
+$ const inputId = input.id || 'textarea-' + input.name;
 
+<div class=['form-group', input.error && 'form-group-error']>
   <label for=inputId>
-    <span class="form-label">
-      ${data.label}
+    <span.form-label>
+      ${input.label}
     </span>
-    <span if(data.hint) class="form-hint">
-      ${data.hint}
+    <span.form-hint if(input.hint)>
+      ${input.hint}
     </span>
-    <span if(data.error) id="error-message-${data.name}" class="error-message">
-      ${data.error}
+    <span.error-message if(input.error) id="error-message-${input.name}">
+      ${input.error}
     </span>
   </label>
-  <textarea class="form-control${data.error && ' form-control-error'}"
-    id=inputId rows=(data.rows ? data.rows : 8) name=data.name
-    maxlength=data.maxlength>${data.value}</textarea>
+  <textarea class=['form-control', input.error && 'form-control-error']
+    id=inputId rows=(input.rows || 8) name=input.name
+    maxlength=input.maxlength>${input.value}</textarea>
 </div>
