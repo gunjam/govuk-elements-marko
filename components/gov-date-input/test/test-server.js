@@ -584,7 +584,7 @@ test('suffix camel', context => {
   );
 });
 
-test('suffix camel', context => {
+test('suffix object', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', suffix: 'object'
   });
