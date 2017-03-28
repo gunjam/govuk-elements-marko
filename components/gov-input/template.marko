@@ -1,20 +1,25 @@
-<div class=((data.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group') + (data.error ? ' form-group-error' : ''))
-  id=(data.hidden && 'group-${data.name}')>
+$ const wrapperClasses = [
+  input.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group',
+  input.error && 'form-group-error'
+];
+$ const inputId = (input.id || 'input-${input.name}');
 
-  <var inputId=(data.id || 'input-${data.name}')/>
+<div class=wrapperClasses id=(input.hidden && 'group-${input.name}')>
+
   <label for=inputId>
-    <span class="form-label">
-      ${data.label}
+    <span.form-label>
+      ${input.label}
     </span>
-    <span if(data.hint) class="form-hint">
-      ${data.hint}
+    <span.form-hint if(input.hint)>
+      ${input.hint}
     </span>
-    <span if(data.error) id="error-message-${data.name}" class="error-message">
-      ${data.error}
+    <span.error-message if(input.error) id="error-message-${input.name}">
+      ${input.error}
     </span>
   </label>
-  <input class="form-control${data.error && ' form-control-error'}" type="text"
-    id=inputId name=data.name value=data.value autocomplete="off"
-    maxlength=data.maxlength/>
+
+  <input class=['form-control', input.error && 'form-control-error'] type="text"
+    id=inputId name=input.name value=input.value autocomplete="off"
+    maxlength=input.maxlength/>
 
 </div>
