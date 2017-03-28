@@ -2,7 +2,7 @@ $ const wrapperClasses = [
   input.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group',
   input.error && 'form-group-error'
 ];
-$ const inputId = (input.id || 'input-${input.name}');
+$ const inputId = (input.id || 'input-' + input.name);
 
 <div class=wrapperClasses id=(input.hidden && 'group-${input.name}')>
 
