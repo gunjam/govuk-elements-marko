@@ -1,7 +1,7 @@
-<div.phase-banner-beta>
+<div.phase-banner>
   <p>
     <strong.phase-tag>
-      BETA
+      ${input.phase ? input.phase.toUpperCase() : 'BETA'}
     </strong>
     <span>
       <include(input.renderBody)/>
