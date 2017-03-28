@@ -11,13 +11,13 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
       <span.form-hint if(input.hint)>
         ${input.hint}
       </span>
-      <span.error-message if(input.error) id=`error-message-${input.name}`>
+      <span.error-message if(input.error) id="error-message-${input.name}">
         ${input.error}
       </span>
     </legend>
 
     <for(index, checkbox in input.checkboxes)>
-      $ const checkboxId = (checkbox.id || `checkbox-${input.name}-${index}`);
+      $ const checkboxId = (checkbox.id || "checkbox-${input.name}-${index}");
       $ const isChecked = arrayOfValues.includes(checkbox.value);
 
       <div.multiple-choice data-target=checkbox.reveal>
