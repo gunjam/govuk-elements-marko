@@ -2,6 +2,9 @@
   "name": "govuk-elements-marko",
   "description": "GOV.UK elements as Marko components.",
   "version": "3.0.0",
+  "engines" : {
+    "node" : ">4.0.0"
+  },
   "keywords": [
     "marko-taglib",
     "marko",
