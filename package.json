@@ -35,5 +35,8 @@
     "rules": {
       "max-lines": 0
     }
+  },
+  "dependencies": {
+    "marko": "^4.2.0"
   }
 }
