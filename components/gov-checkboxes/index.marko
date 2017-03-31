@@ -18,7 +18,7 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
 
     <for(index, checkbox in input.checkboxes)>
       $ const checkboxId = (checkbox.id || `checkbox-${input.name}-${index}`);
-      $ const isChecked = arrayOfValues.includes(checkbox.value);
+      $ const isChecked = arrayOfValues.indexOf(checkbox.value) > -1;
 
       <div.multiple-choice data-target=checkbox.reveal>
         <input id=checkboxId name=input.name value=checkbox.value
