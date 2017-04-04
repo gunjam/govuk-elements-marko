@@ -2,5 +2,9 @@ language: node_js
 node_js:
   - "6"
   - "4"
+before_script:
+  - npm install -g codecov
 script:
   - npm test
+  - npm run coverage
+  - codecov

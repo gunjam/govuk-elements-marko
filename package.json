@@ -15,7 +15,8 @@
     "url": "https://github.com/gunjam/govuk-elements-marko"
   },
   "scripts": {
-    "test": "xo && nyc marko test"
+    "test": "xo && nyc marko test",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
   "maintainers": [
