@@ -625,12 +625,92 @@ test('suffix object', context => {
   );
 });
 
-test('hidden', context => {
+test('group-classes undefined', context => {
   const output = context.render({
-    name: 'birth', legend: 'Date of birth', hidden: true
+    name: 'birth', legend: 'Date of birth'
   });
   assert.equal(output.html, html`
-    <div class="panel panel-border-narrow js-hidden" id="group-birth">
+    <div class="form-group">
+      <fieldset>
+        <legend>
+          <span class="form-label-bold">Date of birth</span>
+        </legend>
+        <div class="form-date">
+          <div class="form-group form-group-day">
+            <label for="input-birth-day" class="form-label">
+              Day
+            </label>
+            <input class="form-control" id="input-birth-day"
+              type="number" name="birth-day" pattern="[0-9]*" min="0"
+              max="31">
+          </div>
+          <div class="form-group form-group-month">
+            <label for="input-birth-month" class="form-label">
+              Month
+            </label>
+            <input class="form-control" id="input-birth-month"
+              type="number" name="birth-month" pattern="[0-9]*"
+              min="0" max="12">
+          </div>
+          <div class="form-group form-group-year">
+            <label for="input-birth-year" class="form-label">
+              Year
+            </label>
+            <input class="form-control" id="input-birth-year"
+              type="number" name="birth-year" pattern="[0-9]*" min="0">
+          </div>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
+test('group-classes \'\'', context => {
+  const output = context.render({
+    name: 'birth', legend: 'Date of birth', groupClasses: ''
+  });
+  assert.equal(output.html, html`
+    <div>
+      <fieldset>
+        <legend>
+          <span class="form-label-bold">Date of birth</span>
+        </legend>
+        <div class="form-date">
+          <div class="form-group form-group-day">
+            <label for="input-birth-day" class="form-label">
+              Day
+            </label>
+            <input class="form-control" id="input-birth-day"
+              type="number" name="birth-day" pattern="[0-9]*" min="0"
+              max="31">
+          </div>
+          <div class="form-group form-group-month">
+            <label for="input-birth-month" class="form-label">
+              Month
+            </label>
+            <input class="form-control" id="input-birth-month"
+              type="number" name="birth-month" pattern="[0-9]*"
+              min="0" max="12">
+          </div>
+          <div class="form-group form-group-year">
+            <label for="input-birth-year" class="form-label">
+              Year
+            </label>
+            <input class="form-control" id="input-birth-year"
+              type="number" name="birth-year" pattern="[0-9]*" min="0">
+          </div>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
+test('group-classes form-group-compound', context => {
+  const output = context.render({
+    name: 'birth', legend: 'Date of birth', groupClasses: 'form-group-compound'
+  });
+  assert.equal(output.html, html`
+    <div class="form-group-compound">
       <fieldset>
         <legend>
           <span class="form-label-bold">Date of birth</span>

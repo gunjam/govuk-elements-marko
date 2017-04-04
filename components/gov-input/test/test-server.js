@@ -106,12 +106,42 @@ test('maxlength', context => {
   );
 });
 
-test('hidden', context => {
+test('group-classes undefined', context => {
   const output = context.render({
-    name: 'full-name', label: 'Full name', hidden: true
+    name: 'full-name', label: 'Full name'
   });
   assert.equal(output.html, html`
-    <div class="panel panel-border-narrow js-hidden" id="group-full-name">
+    <div class="form-group">
+      <label for="input-full-name">
+        <span class="form-label">Full name</span>
+      </label>
+      <input class="form-control" type="text" id="input-full-name"
+        name="full-name" autocomplete="off">
+    </div>`
+  );
+});
+
+test('group-classes \'\'', context => {
+  const output = context.render({
+    name: 'full-name', label: 'Full name', groupClasses: ''
+  });
+  assert.equal(output.html, html`
+    <div>
+      <label for="input-full-name">
+        <span class="form-label">Full name</span>
+      </label>
+      <input class="form-control" type="text" id="input-full-name"
+        name="full-name" autocomplete="off">
+    </div>`
+  );
+});
+
+test('group-classes form-group-compound', context => {
+  const output = context.render({
+    name: 'full-name', label: 'Full name', groupClasses: 'form-group-compound'
+  });
+  assert.equal(output.html, html`
+    <div class="form-group-compound">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
       </label>

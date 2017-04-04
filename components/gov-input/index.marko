@@ -1,10 +1,10 @@
 $ const wrapperClasses = [
-  input.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group',
+  typeof input.groupClasses === 'undefined' ? 'form-group' : input.groupClasses,
   input.error && 'form-group-error'
 ];
-$ const inputId = (input.id || 'input-' + input.name);
+$ const inputId = input.id || 'input-' + input.name;
 
-<div class=wrapperClasses id=(input.hidden && 'group-${input.name}')>
+<div class=wrapperClasses>
 
   <label for=inputId>
     <span.form-label>

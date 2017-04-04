@@ -19,10 +19,13 @@ $ {
   const value = input.value || {
     day: input.valueDay, month: input.valueMonth, year: input.valueYear
   };
+  const wrapperClasses = [
+    typeof input.groupClasses === 'undefined' ? 'form-group' : input.groupClasses,
+    input.error && 'form-group-error'
+  ];
 }
 
-<div class=[input.hidden ? 'panel panel-border-narrow js-hidden' : 'form-group',
-  input.error && 'form-group-error'] id=(input.hidden && "group-${input.name}")>
+<div class=wrapperClasses>
   <fieldset>
 
     <legend>
