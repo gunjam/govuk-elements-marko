@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/gunjam/govuk-elements-marko.png?branch=master)](https://travis-ci.org/gunjam/govuk-elements-marko)
+[![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/gunjam/govuk-elements-marko.svg?maxAge=2592000)](https://codecov.io/github/gunjam/govuk-elements-marko?branch=master)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 # GOV.UK Marko components
