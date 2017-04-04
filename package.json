@@ -2,8 +2,8 @@
   "name": "govuk-elements-marko",
   "description": "GOV.UK elements as Marko components.",
   "version": "3.0.0",
-  "engines" : {
-    "node" : ">4.0.0"
+  "engines": {
+    "node": ">4.0.0"
   },
   "keywords": [
     "marko-taglib",
@@ -15,7 +15,7 @@
     "url": "https://github.com/gunjam/govuk-elements-marko"
   },
   "scripts": {
-    "test": "xo && marko test"
+    "test": "xo && nyc marko test"
   },
   "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
   "maintainers": [
@@ -23,6 +23,7 @@
   ],
   "devDependencies": {
     "marko-devtools": "^1.0.2",
+    "nyc": "^10.2.0",
     "xo": "^0.18.1"
   },
   "license": "Apache-2.0",

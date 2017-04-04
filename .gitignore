@@ -12,3 +12,6 @@ npm-debug.log
 
 # Compiled marko templates
 *.marko.js
+
+# Code coverage reports
+.nyc_output
