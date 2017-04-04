@@ -18,7 +18,7 @@ test('phase', context => {
   assert.equal(output.html, html`
     <div class="phase-banner">
       <p>
-        <strong class="phase-tag">ALPHA</strong>
+        <strong class="phase-tag">alpha</strong>
         <span></span>
       </p>
     </div>`
