@@ -27,7 +27,7 @@ attribute.
 
 For example:
 
-```html
+```marko
 <gov-input name='full-name' label='Full name'/>
 ```
 
@@ -74,7 +74,7 @@ the express request object.
 
 Example:
 
-```html
+```marko
 <gov-date-input name="date-of-birth" legend="What is your date of birth?"
   hint="For example, 31 3 1980"/>
 ```
@@ -142,7 +142,7 @@ legend, you can set the 'hide-legend' to true. This will add a
 
 Example:
 
-```html
+```marko
 <gov-checkboxes legend="Which types of waste do you transport regularly?"
   name="waste-types">
   <@checkbox value="waste-animal" label="Waste from animal carcasses"/>
@@ -213,7 +213,7 @@ legend you can set the 'hide-legend' to true. This will add a
 
 Example:
 
-```html
+```marko
 <gov-radios legend="Do you already have a personal user account?" name="account">
   <@radio value="yes" label="Yes"/>
   <@radio value="no" label="No"/>
@@ -269,7 +269,7 @@ name attribute.
 
 Example:
 
-```html
+```marko
 <gov-textarea name='what-wrong' label='What went wrong'/>
 ```
 
@@ -311,7 +311,7 @@ error summary section will not be rendered.
 
 Example:
 
-```html
+```marko
 <gov-error-summary heading="There's a problem" summary="Fix the following"
   errors={'full-name': 'You must provide a name.'}/>
 ```
@@ -346,7 +346,7 @@ progressive disclosure pattern](http://govuk-elements.herokuapp.com/typography/#
 
 Example:
 
-```html
+```marko
 <gov-prog-disclosure summary="Help with nationality">  
   <p>
     If you’re not sure about your nationality, try to find out from an official
@@ -394,7 +394,7 @@ be set to Welsh by setting the 'lang' attribute to `cy`.
 
 Example:
 
-```html
+```marko
 <gov-legal content="You can be fined up to £5,000 if you don’t register."/>
 ```
 
@@ -423,7 +423,7 @@ attribute changes the text in the phase tag, defaults to BETA.
 
 Example:
 
-```html
+```marko
 <gov-phase-banner phase="alpha">
   This is a new service – your <a href="/feedback">feedback</a> will help us to
   improve it.
