@@ -6,7 +6,7 @@ test('render', context => {
   assert.equal(output.html, html`
     <div class="phase-banner">
       <p>
-        <strong class="phase-tag">BETA</strong>
+        <strong class="phase-tag">Beta</strong>
         <span></span>
       </p>
     </div>`
@@ -30,7 +30,7 @@ test('render-body', context => {
   assert.equal(output.html, html`
     <div class="phase-banner">
       <p>
-        <strong class="phase-tag">BETA</strong>
+        <strong class="phase-tag">Beta</strong>
         <span>Please leave some feedback</span>
       </p>
     </div>`
