@@ -2,23 +2,25 @@
 [![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/gunjam/govuk-elements-marko.svg?maxAge=2592000)](https://codecov.io/github/gunjam/govuk-elements-marko?branch=master)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-# GOV.UK Marko components
-
 A set of [Marko](http://markojs.com) components implementing
 [GOV.UK elements](https://govuk-elements.herokuapp.com/).
 
-## Installing
+# Installing
 
-`npm install govuk-elements-marko --save`
+```
+npm install govuk-elements-marko --save
+```
 
-Note: you will need to have the GOV.UK elements sass compiling in your service
+**Note:** you will need to have the GOV.UK elements sass compiling in your service
 in order for the components to be styled correctly.
 
-`npm install govuk-elements-sass --save`
+```
+npm install govuk-elements-sass --save
+```
 
-## Components
+# Components
 
-### &lt;gov-input/&gt;
+## &lt;gov-input/&gt;
 
 The `<gov-input/>` tag will render a standard GOV.UK input and label pair.
 
@@ -43,7 +45,7 @@ Will produce the following markup:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **name** - sets input name attribute (required)
 * **label** - sets label text (required)
 * **hint** - sets label hint text
@@ -54,7 +56,7 @@ Will produce the following markup:
 * **value** - sets input value attribute
 * **maxlength** - sets input maxlength attribute
 
-### &lt;gov-date-input/&gt;
+## &lt;gov-date-input/&gt;
 
 `<gov-date-input\>` will generate the mark up for the [GOV.UK date input
 pattern](http://govuk-elements.herokuapp.com/form-elements/example-date/). It
@@ -112,7 +114,7 @@ Will produce the following markup:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **name** - sets input name attribute (required)
 * **legend** - sets legend text (required)
 * **hint** - sets legend hint text
@@ -129,7 +131,7 @@ Will produce the following markup:
 * **lang** - setting to 'cy' uses Welsh labels, anything else defaults to
 English
 
-### &lt;gov-checkboxes/&gt;
+## &lt;gov-checkboxes/&gt;
 
 Use `<gov-checkboxes/>` to generate a GOV.UK checkbox group!
 
@@ -180,7 +182,7 @@ Will produce the following mark up:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **&lt;gov-checkboxes/&gt;**
   * **name** - sets input name attribute for all inputs (required)
   * **legend** - sets legend text (required)
@@ -196,7 +198,7 @@ Will produce the following mark up:
   * **reveal** - sets `data-target` attribute for [conditionally
     revealing content](https://govuk-elements.herokuapp.com/form-elements/#form-toggle-content).
 
-### &lt;gov-radios/&gt;
+## &lt;gov-radios/&gt;
 
 Use `<gov-radios/>` to generate a GOV.UK radio button group!
 
@@ -242,7 +244,7 @@ Will produce the following mark up:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **&lt;gov-radios/&gt;**
   * **name** - sets input name attribute for all inputs (required)
   * **legend** - sets legend text (required)
@@ -260,7 +262,7 @@ Will produce the following mark up:
   * **reveal** - sets `data-target` attribute for [conditionally
     revealing content](https://govuk-elements.herokuapp.com/form-elements/#form-toggle-content).
 
-### &lt;gov-textarea/&gt;
+## &lt;gov-textarea/&gt;
 
 The `<gov-textarea/>` tag will render a textarea and label pair.
 
@@ -285,7 +287,7 @@ Will produce the following markup:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **name** - sets textarea name attribute (required)
 * **label** - sets label text (required)
 * **hint** - sets label hint text
@@ -295,7 +297,7 @@ Will produce the following markup:
 * **maxlength** - textarea textarea maxlength attribute
 * **rows** - sets textarea rows attribute
 
-### &lt;gov-error-summary/&gt;
+## &lt;gov-error-summary/&gt;
 
 `<gov-error-summary/>` can be used to display a GOV.UK Elements error summary
 section at the top of your page, listing form validation errors. The list will
@@ -333,13 +335,13 @@ Will produce the following markup:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **errors** - errors object, keys match input names, associated values the
   error messages
 * **heading** - sets heading text
 * **summary** - sets summary text
 
-### &lt;gov-prog-disclosure/&gt;
+## &lt;gov-prog-disclosure/&gt;
 
 This tag will create an summary/details tag pair following the [GOV.UK
 progressive disclosure pattern](http://govuk-elements.herokuapp.com/typography/#typography-hidden-text).
@@ -381,10 +383,10 @@ Will produce the following markup:
 </details>
 ```
 
-#### Attributes
+### Attributes
 * **summary** - sets summary text
 
-### &lt;gov-legal/&gt;
+## &lt;gov-legal/&gt;
 
 `<gov-legal/>` can be used for displaying legal text in bold with a warning
 icon.
@@ -411,12 +413,12 @@ Will produce:
 </p>
 ```
 
-#### Attributes
+### Attributes
 * **content** - sets content for the legal message
 * **lang** - specifies the language for the visually hidden warning message,
   `lang="cy"` sets to Welsh, anything else defaults to English
 
-### &lt;gov-phase-banner/&gt;
+## &lt;gov-phase-banner/&gt;
 
 This tag will generate a GOV.UK phase banner. Setting the value of the `phase`
 attribute changes the text in the phase tag, defaults to BETA.
@@ -442,5 +444,5 @@ Will produce:
 </div>
 ```
 
-#### Attributes
+### Attributes
 * **phase** - sets content phase tag, defaults to beta.
