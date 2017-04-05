@@ -1,0 +1,18 @@
+$ const inputId = input.id || 'textarea-' + input.name;
+
+<div class=['form-group', input.error && 'form-group-error']>
+  <label for=inputId>
+    <span.form-label>
+      ${input.label}
+    </span>
+    <span.form-hint if(input.hint)>
+      ${input.hint}
+    </span>
+    <span.error-message if(input.error) id="error-message-${input.name}">
+      ${input.error}
+    </span>
+  </label>
+  <textarea class=['form-control', input.error && 'form-control-error']
+    id=inputId rows=(input.rows || 8) name=input.name
+    maxlength=input.maxlength>${input.value}</textarea>
+</div>

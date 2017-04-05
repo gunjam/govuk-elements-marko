@@ -1,0 +1,43 @@
+$ const radios = input.radios || [];
+$ const layout = input.layout || radios.length < 3 && 'inline';
+
+<div class=['form-group', input.error && 'form-group-error']>
+  <fieldset class=(layout === 'inline' && 'inline')>
+
+    <legend>
+      <span class=(input.hideLegend ? 'visually-hidden' : 'form-label-bold')>
+        ${input.legend}
+      </span>
+      <span.form-hint if(input.hint)>
+        ${input.hint}
+      </span>
+      <span.error-message if(input.error) id="error-message-${input.name}">
+        ${input.error}
+      </span>
+    </legend>
+
+    <for(index, radio in radios)>
+      $ const radioId = radio.id || `radio-${input.name}-${index}`;
+
+      <div.multiple-choice data-target=radio.reveal>
+        <input id=radioId name=input.name value=radio.value type="radio"
+          checked=(input.value && radio.value === input.value)/>
+        <label for=radioId>
+          <if(radio.hint)>
+            <span.heading-small>
+              ${radio.label}
+            </span>
+            <br/>
+            ${radio.hint}
+          </if>
+          <else>
+            ${radio.label}
+          </else>
+        </label>
+      </div>
+
+      <include(radio.renderBody)/>
+    </for>
+
+  </fieldset>
+</div>
