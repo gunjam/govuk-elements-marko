@@ -21,7 +21,7 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
 
       <div.multiple-choice data-target=radio.reveal>
         <input id=radioId name=input.name value=radio.value type="radio"
-          checked=(input.value && radio.value === input.value)/>
+          checked=(radio.value === String(input.value))/>
         <label for=radioId>
           <if(radio.hint)>
             <span.heading-small>

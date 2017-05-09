@@ -267,6 +267,45 @@ test('value', context => {
   );
 });
 
+test('value: \'\'', context => {
+  const output = context.render({
+    legend: 'Things you do',
+    name: 'do-things',
+    value: '',
+    radios: [
+      {
+        label: 'Fly around',
+        value: 'fly'
+      },
+      {
+        label: 'Swim about',
+        value: 'swim'
+      }
+    ]
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <fieldset class="inline">
+        <legend>
+          <span class="form-label-bold">Things you do</span>
+        </legend>
+        <div class="multiple-choice">
+          <input id="radio-do-things-0" name="do-things" value="fly" type="radio">
+          <label for="radio-do-things-0">
+            Fly around
+          </label>
+        </div>
+        <div class="multiple-choice">
+          <input id="radio-do-things-1" name="do-things" value="swim" type="radio">
+          <label for="radio-do-things-1">
+            Swim about
+          </label>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
 test('layout default < 3', context => {
   const output = context.render({
     legend: 'Things you do',
