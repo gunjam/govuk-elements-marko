@@ -1,10 +1,9 @@
-$ const wrapperClasses = [
-  typeof input.groupClasses === 'undefined' ? 'form-group' : input.groupClasses,
-  input.error && 'form-group-error'
-];
 $ const inputId = input.id || 'input-' + input.name;
 
-<div class=wrapperClasses>
+<div class=[
+  typeof input.groupClasses === 'undefined' ? 'form-group' : input.groupClasses,
+  input.error && 'form-group-error'
+]>
 
   <label for=inputId>
     <span.form-label>
@@ -20,6 +19,6 @@ $ const inputId = input.id || 'input-' + input.name;
 
   <input class=['form-control', input.error && 'form-control-error'] type="text"
     id=inputId name=input.name value=input.value autocomplete="off"
-    maxlength=input.maxlength/>
+    ${input['*']}/>
 
 </div>

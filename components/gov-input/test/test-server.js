@@ -91,9 +91,10 @@ test('value', context => {
   );
 });
 
-test('maxlength', context => {
+test('other', context => {
   const output = context.render({
-    name: 'full-name', label: 'Full name', maxlength: '9'
+    name: 'full-name', label: 'Full name',
+    '*': {maxlength: '9', 'data-test': 'test'}
   });
   assert.equal(output.html, html`
     <div class="form-group">
@@ -101,7 +102,7 @@ test('maxlength', context => {
         <span class="form-label">Full name</span>
       </label>
       <input class="form-control" type="text" id="input-full-name"
-        name="full-name" autocomplete="off" maxlength="9">
+        name="full-name" autocomplete="off" maxlength="9" data-test="test">
     </div>`
   );
 });

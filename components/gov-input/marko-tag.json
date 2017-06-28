@@ -12,5 +12,5 @@
   "@id": "string",
   "@error": "string",
   "@value": "string",
-  "@maxlength": "integer"
+  "@*": "string"
 }
