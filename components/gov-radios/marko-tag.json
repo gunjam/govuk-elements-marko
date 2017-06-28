@@ -23,6 +23,7 @@
     },
     "@hint": "string",
     "@reveal": "string",
-    "@id": "string"
+    "@id": "string",
+    "@*": "string"
   }
 }

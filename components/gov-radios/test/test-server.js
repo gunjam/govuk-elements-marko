@@ -228,6 +228,36 @@ test('radios reveal', context => {
   );
 });
 
+test('radios other', context => {
+  const output = context.render({
+    legend: 'Things you do',
+    name: 'do-things',
+    radios: [{
+      label: 'Fly around',
+      hint: 'In the sky',
+      value: 'fly',
+      id: 'my-radio',
+      '*': {'data-click': 'click:radio:fly'}
+    }]
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <fieldset class="inline">
+        <legend>
+          <span class="form-label-bold">Things you do</span>
+        </legend>
+        <div class="multiple-choice">
+          <input id="my-radio" name="do-things" value="fly" type="radio"
+            data-click="click:radio:fly">
+          <label for="my-radio">
+            <span class="heading-small">Fly around</span><br>In the sky
+          </label>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
 test('value', context => {
   const output = context.render({
     legend: 'Things you do',
