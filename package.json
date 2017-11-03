@@ -23,9 +23,9 @@
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
   "devDependencies": {
-    "marko-devtools": "^1.0.2",
-    "nyc": "^10.2.0",
-    "xo": "^0.18.1"
+    "marko-devtools": "^1.0.16",
+    "nyc": "^11.3.0",
+    "xo": "^0.18.2"
   },
   "license": "Apache-2.0",
   "xo": {
@@ -42,6 +42,6 @@
     }
   },
   "dependencies": {
-    "marko": "^4.2.4"
+    "marko": "^4.5.6"
   }
 }
