@@ -1,9 +1,9 @@
-<div.error-summary if(input.errors) role="group"
+<div.error-summary if(input.errors) role="alert"
   aria-labelledby="error-summary-heading" tabindex="-1">
 
-  <h1.heading-medium.error-summary-heading id="error-summary-heading">
+  <h2.heading-medium.error-summary-heading id="error-summary-heading">
     ${input.heading}
-  </h1>
+  </h2>
   <p if(input.summary)>
     ${input.summary}
   </p>

@@ -321,11 +321,11 @@ Example:
 Will produce the following markup:
 
 ```html
-<div role="group" aria-labelledby="error-summary-heading" tabindex="-1"
+<div role="alert" aria-labelledby="error-summary-heading" tabindex="-1"
   class="error-summary">
-  <h1 id="error-summary-heading" class="heading-medium error-summary-heading">
+  <h2 id="error-summary-heading" class="heading-medium error-summary-heading">
     There's a problem
-  </h1>
+  </h2>
   <p>Fix the following</p>
   <ul class="error-summary-list">
     <li>
