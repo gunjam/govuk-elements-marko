@@ -23,7 +23,7 @@
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
   "devDependencies": {
-    "marko-devtools": "^1.0.16",
+    "marko-cli": "^2.1.2",
     "nyc": "^11.3.0",
     "xo": "^0.18.2"
   },
