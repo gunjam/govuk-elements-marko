@@ -1,4 +1,4 @@
-<div.error-summary if(input.errors) role="alert"
+<div.error-summary if(input.errors && Object.keys(input.errors).length > 0) role="alert"
   aria-labelledby="error-summary-heading" tabindex="-1">
 
   <h2.heading-medium.error-summary-heading id="error-summary-heading">

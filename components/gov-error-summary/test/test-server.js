@@ -65,3 +65,12 @@ test('summary', context => {
     </div>`
   );
 });
+
+test('empty errors object', context => {
+  const output = context.render({
+    heading: 'There\'s been a problem',
+    summary: 'Check these fields:',
+    errors: {}
+  });
+  assert.equal(output.html, '');
+});
