@@ -1,39 +1,33 @@
-static {
-  const labels = {
-    en: {day: 'Day', month: 'Month', year: 'Year'},
-    cy: {day: 'Dydd', month: 'Mis', year: 'Blwyddyn'}
-  };
-  const suffixes = {
-    camel: {day: 'Day', month: 'Month', year: 'Year'},
-    kebab: {day: '-day', month: '-month', year: '-year'},
-    object: {day: '[day]', month: '[month]', year: '[year]'}
-  };
-}
+static const labels = {
+  en: {day: 'Day', month: 'Month', year: 'Year'},
+  cy: {day: 'Dydd', month: 'Mis', year: 'Blwyddyn'}
+};
+static const suffixes = {
+  camel: {day: 'Day', month: 'Month', year: 'Year'},
+  kebab: {day: '-day', month: '-month', year: '-year'},
+  object: {day: '[day]', month: '[month]', year: '[year]'}
+};
 
-$ {
-  const lang = input.lang || (out.stream.req || {}).language;
-  const label = labels[lang] || labels.en;
-  const suffix = suffixes[input.suffix] || suffixes.kebab;
-  const inputId = input.id || `input-${input.name}`;
-  const inputClasses = ['form-control', input.error && 'form-control-error'];
-  const value = input.value || {
-    day: input.valueDay, month: input.valueMonth, year: input.valueYear
-  };
-  const wrapperClasses = [
-    typeof input.groupClasses === 'undefined' ? 'form-group' : input.groupClasses,
-    input.error && 'form-group-error'
-  ];
-}
+$ const lang = input.lang || (out.stream.req || {}).language;
+$ const label = labels[lang] || labels.en;
+$ const suffix = suffixes[input.suffix] || suffixes.kebab;
+$ const inputId = input.id || `input-${input.name}`;
+$ const inputClasses = ['form-control', input.error && 'form-control-error'];
+$ const value = input.value || {
+  day: input.valueDay, month: input.valueMonth, year: input.valueYear
+};
 
-<div class=wrapperClasses>
+<div class=['form-group', input.groupClasses, input.error && 'form-group-error']>
   <fieldset>
 
     <legend>
-      <span.form-label-bold>
-        ${input.legend}
-      </span>
-      <span.form-hint if(input.hint) id="${input.name}-hint">
-        ${input.hint}
+      <span.visually-hidden body-only-if(!input.hideLegend)>
+        <span.form-label-bold>
+          ${input.legend}
+        </span>
+        <span.form-hint if(input.hint) id="${input.name}-hint">
+          ${input.hint}
+        </span>
       </span>
       <span.error-message if(input.error) id="error-message-${input.name}">
         ${input.error}

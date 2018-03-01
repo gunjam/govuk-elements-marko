@@ -8,6 +8,7 @@
     "type": "string"
   },
   "@hint": "string",
+  "@hide-legend": "boolean",
   "@group-classes": "string",
   "@id": "string",
   "@error": "string",

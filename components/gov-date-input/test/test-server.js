@@ -665,12 +665,12 @@ test('group-classes undefined', context => {
   );
 });
 
-test('group-classes \'\'', context => {
+test('group-classes', context => {
   const output = context.render({
-    name: 'birth', legend: 'Date of birth', groupClasses: ''
+    name: 'birth', legend: 'Date of birth', groupClasses: 'form-group-compound'
   });
   assert.equal(output.html, html`
-    <div>
+    <div class="form-group form-group-compound">
       <fieldset>
         <legend>
           <span class="form-label-bold">Date of birth</span>
@@ -705,24 +705,30 @@ test('group-classes \'\'', context => {
   );
 });
 
-test('group-classes form-group-compound', context => {
+test('hide-legend', context => {
   const output = context.render({
-    name: 'birth', legend: 'Date of birth', groupClasses: 'form-group-compound'
+    name: 'birth', legend: 'Date of birth', hint: 'For example, 19 5 1992',
+    hideLegend: true
   });
   assert.equal(output.html, html`
-    <div class="form-group-compound">
+    <div class="form-group">
       <fieldset>
         <legend>
-          <span class="form-label-bold">Date of birth</span>
+          <span class="visually-hidden">
+            <span class="form-label-bold">Date of birth</span>
+            <span id="birth-hint" class="form-hint">
+              For example, 19 5 1992
+            </span>
+          </span>
         </legend>
         <div class="form-date">
           <div class="form-group form-group-day">
             <label for="input-birth-day" class="form-label">
               Day
             </label>
-            <input class="form-control" id="input-birth-day"
-              type="number" name="birth-day" pattern="[0-9]*" min="0"
-              max="31">
+            <input aria-describedby="birth-hint" class="form-control"
+              id="input-birth-day" type="number" name="birth-day"
+              pattern="[0-9]*" min="0" max="31">
           </div>
           <div class="form-group form-group-month">
             <label for="input-birth-month" class="form-label">
