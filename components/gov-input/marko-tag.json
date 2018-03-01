@@ -9,6 +9,7 @@
   },
   "@hint": "string",
   "@group-classes": "string",
+  "@input-classes": "string",
   "@id": "string",
   "@error": "string",
   "@value": "string",

@@ -122,12 +122,12 @@ test('group-classes undefined', context => {
   );
 });
 
-test('group-classes \'\'', context => {
+test('group-classes', context => {
   const output = context.render({
-    name: 'full-name', label: 'Full name', groupClasses: ''
+    name: 'full-name', label: 'Full name', groupClasses: 'form-group-compound'
   });
   assert.equal(output.html, html`
-    <div>
+    <div class="form-group form-group-compound">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
       </label>
@@ -137,16 +137,16 @@ test('group-classes \'\'', context => {
   );
 });
 
-test('group-classes form-group-compound', context => {
+test('input-classes', context => {
   const output = context.render({
-    name: 'full-name', label: 'Full name', groupClasses: 'form-group-compound'
+    name: 'full-name', label: 'Full name', inputClasses: 'form-control-1-4'
   });
   assert.equal(output.html, html`
-    <div class="form-group-compound">
+    <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
       </label>
-      <input class="form-control" type="text" id="input-full-name"
+      <input class="form-control form-control-1-4" type="text" id="input-full-name"
         name="full-name" autocomplete="off">
     </div>`
   );
