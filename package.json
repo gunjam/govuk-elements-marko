@@ -1,7 +1,7 @@
 {
   "name": "govuk-elements-marko",
   "description": "GOV.UK elements as Marko components.",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "engines": {
     "node": ">4.0.0"
   },
