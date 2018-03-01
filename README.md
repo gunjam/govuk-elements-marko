@@ -49,8 +49,9 @@ Will produce the following markup:
 * **name** - sets input name attribute (required)
 * **label** - sets label text (required)
 * **hint** - sets label hint text
-* **group-classes** - overrides form-group class on wrapper div, set to empty
-  string (`''`) to remove completely
+* **group-classes** - appends further classes `<div class="form-group">`
+* **input-classes** - appends further classes `<input class="form-control">`;
+  eg. `form-control-1-4` for quarter width.
 * **id** - override generated input id attribute
 * **error** - sets error message text
 * **value** - sets input value attribute
@@ -118,8 +119,7 @@ Will produce the following markup:
 * **name** - sets input name attribute (required)
 * **legend** - sets legend text (required)
 * **hint** - sets legend hint text
-* **group-classes** - overrides form-group class on wrapper div, set to empty
-  string (`''`) to remove completely
+* **group-classes** - appends further classes `<div class="form-group">`
 * **id** - overrides the name part of the input ids
 * **error** - sets error message text
 * **value** - set input values using object, eg. `value={day: '1', month: '2', year: '2017'}`
