@@ -29,7 +29,7 @@ test('legend', context => {
 
 test('hint', context => {
   const output = context.render({
-    legend: 'Things you do', name: 'do-things', hint: 'For real tho'
+    legend: 'Things you do', hint: 'For real tho'
   });
   assert.equal(output.html, html`
     <div class="form-group">
@@ -37,6 +37,23 @@ test('hint', context => {
         <legend>
           <span class="form-label-bold">Things you do</span>
           <span class="form-hint">For real tho</span>
+        </legend>
+      </fieldset>
+    </div>`
+  );
+});
+
+test('body-text', context => {
+  const output = context.render({
+    legend: 'Things you do', bodyText: 'Select all that apply', hint: 'Real things only'
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <fieldset>
+        <legend>
+          <span class="form-label-bold">Things you do</span>
+          <span class="body-text">Select all that apply</span>
+          <span class="form-hint">Real things only</span>
         </legend>
       </fieldset>
     </div>`

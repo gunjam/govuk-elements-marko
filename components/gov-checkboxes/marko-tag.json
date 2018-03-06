@@ -10,6 +10,7 @@
   "@error": "string",
   "@values": "object",
   "@hint": "string",
+  "@body-text": "string",
   "@hide-legend": "boolean",
   "@checkboxes <checkbox>[]": {
     "@value": {

@@ -8,6 +8,9 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
       <span class=(input.hideLegend ? 'visually-hidden' : 'form-label-bold')>
         ${input.legend}
       </span>
+      <span.body-text if(input.bodyText)>
+        ${input.bodyText}
+      </span>
       <span.form-hint if(input.hint)>
         ${input.hint}
       </span>
