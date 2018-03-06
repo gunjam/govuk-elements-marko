@@ -161,6 +161,50 @@ test('checkboxes value', context => {
   );
 });
 
+test('checkboxes name', context => {
+  const output = context.render({
+    legend: 'Things you do',
+    name: 'do-things',
+    checkboxes: [
+      {
+        label: 'Fly around',
+        value: 'true',
+        name: 'fly'
+      },
+      {
+        label: 'Jump up and down',
+        value: 'true',
+        name: 'jump'
+      },
+      {
+        label: 'Climb',
+        value: 'climb'
+      }
+    ]
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <fieldset>
+        <legend>
+          <span class="form-label-bold">Things you do</span>
+        </legend>
+        <div class="multiple-choice">
+          <input id="checkbox-fly-0" name="fly" value="true" type="checkbox">
+          <label for="checkbox-fly-0">Fly around</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="checkbox-jump-1" name="jump" value="true" type="checkbox">
+          <label for="checkbox-jump-1">Jump up and down</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="checkbox-do-things-2" name="do-things" value="climb" type="checkbox">
+          <label for="checkbox-do-things-2">Climb</label>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
 test('checkboxes hint', context => {
   const output = context.render({
     legend: 'Things you do',

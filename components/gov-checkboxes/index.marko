@@ -20,10 +20,11 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
     </legend>
 
     <for(index, checkbox in input.checkboxes)>
-      $ const checkboxId = (checkbox.id || `checkbox-${input.name}-${index}`);
+      $ const checkboxName = checkbox.name || input.name;
+      $ const checkboxId = (checkbox.id || `checkbox-${checkboxName}-${index}`);
       $ const isChecked = arrayOfValues.indexOf(checkbox.value) > -1;
 
-      <gov-checkbox name=(checkbox.name || input.name) value=checkbox.value
+      <gov-checkbox name=checkboxName value=checkbox.value
         label=checkbox.label hint=checkbox.hint id=checkboxId
         reveal=checkbox.reveal checked=isChecked/>
     </for>

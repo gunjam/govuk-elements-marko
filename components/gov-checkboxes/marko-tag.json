@@ -3,10 +3,7 @@
     "required": true,
     "type": "string"
   },
-  "@name": {
-    "required": true,
-    "type": "string"
-  },
+  "@name": "string",
   "@error": "string",
   "@values": "object",
   "@hint": "string",
