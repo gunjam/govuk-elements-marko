@@ -1,0 +1,18 @@
+$ const checkboxId = input.id || `checkbox-${input.name}`;
+
+<div.multiple-choice data-target=input.reveal>
+  <input id=checkboxId name=input.name value=input.value
+    type="checkbox" checked=input.checked/>
+  <label for=checkboxId>
+    <if(input.hint)>
+      <span.heading-small>
+        ${input.label}
+      </span>
+      <br/>
+      ${input.hint}
+    </if>
+    <else>
+      ${input.label}
+    </else>
+  </label>
+</div>
