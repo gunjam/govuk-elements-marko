@@ -16,18 +16,26 @@
   },
   "scripts": {
     "test": "xo && nyc marko test",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov marko test"
   },
   "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
   "maintainers": [
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
   "devDependencies": {
-    "marko-cli": "^2.1.2",
-    "nyc": "^11.3.0",
-    "xo": "^0.18.2"
+    "marko-cli": "^2.2.2",
+    "nyc": "^11.4.1",
+    "xo": "^0.20.3"
   },
   "license": "Apache-2.0",
+  "nyc": {
+    "extension": [
+      ".marko.js"
+    ],
+    "exclude": [
+      "**/test-**.js"
+    ]
+  },
   "xo": {
     "space": true,
     "env": [
@@ -42,6 +50,6 @@
     }
   },
   "dependencies": {
-    "marko": "^4.5.6"
+    "marko": "~4.7.5"
   }
 }
