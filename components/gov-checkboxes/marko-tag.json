@@ -10,6 +10,9 @@
   "@body-text": "string",
   "@hide-legend": "boolean",
   "@checkboxes <checkbox>[]": {
+    "@name": {
+      "type": "string"
+    },
     "@value": {
       "required": true,
       "type": "string"
