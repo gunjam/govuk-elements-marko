@@ -131,6 +131,37 @@ Will produce the following markup:
 * **lang** - setting to 'cy' uses Welsh labels, anything else defaults to
 English
 
+## &lt;gov-checkbox/&gt;
+
+Use `<gov-checkbox/>` to generate a GOV.UK checkbox!
+
+The input id will be set as 'checkbox' followed by a dash and the input's name
+attribute, eg. `checkbox-cat`.
+
+Example:
+
+```marko
+<gov-checkbox label="I have a cat" name="cat" value="true"/>
+```
+
+Will produce the following mark up:
+
+```html
+<div class="multiple-choice">
+  <input id="checkbox-cat" name="cat" value="true" type="checkbox"/>
+  <label for="checkbox-cat">I have a cat</label>
+</div>
+```
+
+### Attributes
+* **&lt;gov-checkbox/&gt;**
+  * **name** - sets name attribute value, overrides group name if it exists
+  * **value** - sets input value attribute (required)
+  * **label** - sets label text (required)
+  * **hint** - sets label hint text
+  * **reveal** - sets `data-target` attribute for [conditionally
+    revealing content](https://govuk-elements.herokuapp.com/form-elements/#form-toggle-content).
+
 ## &lt;gov-checkboxes/&gt;
 
 Use `<gov-checkboxes/>` to generate a GOV.UK checkbox group!
@@ -146,7 +177,7 @@ Example:
 
 ```marko
 <gov-checkboxes legend="Which types of waste do you transport regularly?"
-  name="waste-types">
+  name="waste-types" body-text="Select all that apply">
   <@checkbox value="waste-animal" label="Waste from animal carcasses"/>
   <@checkbox value="waste-mines" label="Waste from mines or quarries"/>
   <@checkbox value="waste-farm" label="Farm or agricultural waste"/>
@@ -161,6 +192,9 @@ Will produce the following mark up:
     <legend>
       <span class="form-label-bold">
         Which types of waste do you transport regularly?
+      </span>
+      <span class="body-text">
+        Select all that apply
       </span>
     </legend>
     <div class="multiple-choice">
@@ -184,14 +218,16 @@ Will produce the following mark up:
 
 ### Attributes
 * **&lt;gov-checkboxes/&gt;**
-  * **name** - sets input name attribute for all inputs (required)
+  * **name** - sets input name attribute for all inputs
   * **legend** - sets legend text (required)
   * **hide-legend** - boolean, adds visually-hidden class to legend if `true`
   * **hint** - sets legend hint text
+  * **body-text** - sets legend body text
   * **error** - sets error message text
   * **values** - array of values, checkboxes with matching values will be
     rendered checked
 * **&lt;@checkbox/&gt;**
+  * **name** - sets name attribute value, overrides group name if it exists
   * **value** - sets input value attribute (required)
   * **label** - sets label text (required)
   * **hint** - sets label hint text
