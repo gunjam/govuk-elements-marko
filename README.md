@@ -230,6 +230,8 @@ Will produce the following mark up:
   * **name** - sets name attribute value, overrides group name if it exists
   * **value** - sets input value attribute (required)
   * **label** - sets label text (required)
+  * **checked** - boolean, checkes checkbox. Overrides matching values from
+    &lt;gov-checkboxes/&gt values attribute if it exists
   * **hint** - sets label hint text
   * **reveal** - sets `data-target` attribute for [conditionally
     revealing content](https://govuk-elements.herokuapp.com/form-elements/#form-toggle-content).
