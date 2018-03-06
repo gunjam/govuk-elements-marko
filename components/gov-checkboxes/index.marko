@@ -20,22 +20,9 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
       $ const checkboxId = (checkbox.id || `checkbox-${input.name}-${index}`);
       $ const isChecked = arrayOfValues.indexOf(checkbox.value) > -1;
 
-      <div.multiple-choice data-target=checkbox.reveal>
-        <input id=checkboxId name=input.name value=checkbox.value
-          type="checkbox" checked=isChecked/>
-        <label for=checkboxId>
-          <if(checkbox.hint)>
-            <span.heading-small>
-              ${checkbox.label}
-            </span>
-            <br/>
-            ${checkbox.hint}
-          </if>
-          <else>
-            ${checkbox.label}
-          </else>
-        </label>
-      </div>
+      <gov-checkbox name=(checkbox.name || input.name) value=checkbox.value
+        label=checkbox.label hint=checkbox.hint id=checkboxId
+        reveal=checkbox.reveal checked=isChecked/>
     </for>
 
   </fieldset>
