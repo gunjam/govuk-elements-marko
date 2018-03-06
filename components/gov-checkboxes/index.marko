@@ -22,7 +22,7 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
     <for(index, checkbox in input.checkboxes)>
       $ const checkboxName = checkbox.name || input.name;
       $ const checkboxId = (checkbox.id || `checkbox-${checkboxName}-${index}`);
-      $ const isChecked = arrayOfValues.indexOf(checkbox.value) > -1;
+      $ const isChecked = checkbox.checked || arrayOfValues.indexOf(checkbox.value) > -1;
 
       <gov-checkbox name=checkboxName value=checkbox.value
         label=checkbox.label hint=checkbox.hint id=checkboxId

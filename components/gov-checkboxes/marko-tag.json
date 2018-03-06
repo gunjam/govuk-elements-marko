@@ -23,6 +23,7 @@
     },
     "@hint": "string",
     "@reveal": "string",
+    "@checked": "boolean",
     "@id": "string"
   }
 }

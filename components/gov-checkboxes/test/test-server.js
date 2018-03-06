@@ -289,6 +289,32 @@ test('checkboxes reveal', context => {
   );
 });
 
+test('checkboxes checked', context => {
+  const output = context.render({
+    legend: 'Things you do',
+    name: 'do-things',
+    checkboxes: [{
+      label: 'Fly around',
+      value: 'fly',
+      id: 'my-checkbox',
+      checked: true
+    }]
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <fieldset>
+        <legend>
+          <span class="form-label-bold">Things you do</span>
+        </legend>
+        <div class="multiple-choice">
+          <input id="my-checkbox" name="do-things" value="fly" type="checkbox" checked>
+          <label for="my-checkbox">Fly around</label>
+        </div>
+      </fieldset>
+    </div>`
+  );
+});
+
 test('checkboxes renderBody', context => {
   const output = context.render({
     legend: 'Things you do',
