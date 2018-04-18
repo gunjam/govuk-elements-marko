@@ -56,6 +56,7 @@ Will produce the following markup:
 * **error** - sets error message text
 * **value** - sets input value attribute
 * **maxlength** - sets input maxlength attribute
+* **hide-label** - adds visually-hidden to the input label (true/false)
 
 ## &lt;gov-date-input/&gt;
 

@@ -151,3 +151,33 @@ test('input-classes', context => {
     </div>`
   );
 });
+
+test('hide-label true', context => {
+  const output = context.render({
+    name: 'full-name', label: 'Full name', hideLabel: true
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <label for="input-full-name" class="visually-hidden">
+        <span class="form-label">Full name</span>
+      </label>
+      <input class="form-control" type="text" id="input-full-name"
+        name="full-name" autocomplete="off">
+    </div>`
+  );
+});
+
+test('hide-label false', context => {
+  const output = context.render({
+    name: 'full-name', label: 'Full name', hideLabel: false
+  });
+  assert.equal(output.html, html`
+    <div class="form-group">
+      <label for="input-full-name">
+        <span class="form-label">Full name</span>
+      </label>
+      <input class="form-control" type="text" id="input-full-name"
+        name="full-name" autocomplete="off">
+    </div>`
+  );
+});
