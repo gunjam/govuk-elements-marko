@@ -13,5 +13,6 @@
   "@id": "string",
   "@error": "string",
   "@value": "string",
-  "@*": "string"
+  "@*": "string",
+  "@hide-label": "boolean"
 }

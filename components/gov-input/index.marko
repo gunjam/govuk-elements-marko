@@ -2,7 +2,7 @@ $ const inputId = input.id || 'input-' + input.name;
 
 <div class=['form-group', input.groupClasses, input.error && 'form-group-error']>
 
-  <label for=inputId>
+  <label for=inputId class=[input.hideLabel && 'visually-hidden']>
     <span.form-label>
       ${input.label}
     </span>
