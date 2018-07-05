@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function (strings) {
+module.exports = function (strings, ...expressions) {
   return strings.reduce((acc, val, index) => {
     return acc +
-      (val + (arguments[index + 1] || ''))
+      (val + (expressions[index + 1] || ''))
         .replace(/\s*>\s*/g, '>')
         .replace(/\s*<\s*/g, '<')
         .replace('\n', '')
