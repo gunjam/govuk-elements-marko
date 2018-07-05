@@ -1,4 +1,5 @@
 $ const inputId = input.id || 'input-' + input.name;
+$ const extraOptions = input['*'] || {};
 
 <div class=['form-group', input.groupClasses, input.error && 'form-group-error']>
 
@@ -16,6 +17,6 @@ $ const inputId = input.id || 'input-' + input.name;
 
   <input class=['form-control', input.inputClasses, input.error && 'form-control-error']
     type="text" id=inputId name=input.name value=input.value autocomplete="off"
-    ${input['*']}/>
+    ...extraOptions/>
 
 </div>

@@ -101,8 +101,8 @@ test('other', context => {
       <label for="input-full-name">
         <span class="form-label">Full name</span>
       </label>
-      <input class="form-control" type="text" id="input-full-name"
-        name="full-name" autocomplete="off" maxlength="9" data-test="test">
+      <input maxlength="9" data-test="test" class="form-control" type="text"
+        id="input-full-name" name="full-name" autocomplete="off">
     </div>`
   );
 });
@@ -181,3 +181,18 @@ test('hide-label false', context => {
     </div>`
   );
 });
+
+// Test('extra', context => {
+//   const output = context.render({
+//     name: 'full-name', label: 'Full name', maxlength: '50'
+//   });
+//   assert.equal(output.html.toString(), html`
+//     <div class="form-group">
+//       <label for="input-full-name">
+//         <span class="form-label">Full name</span>
+//       </label>
+//       <input class="form-control form-control-1-4" type="text" id="input-full-name"
+//         name="full-name" autocomplete="off" maxlength="50">
+//     </div>`
+//   );
+// });

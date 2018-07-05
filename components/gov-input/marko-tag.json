@@ -13,6 +13,6 @@
   "@id": "string",
   "@error": "string",
   "@value": "string",
-  "@*": "string",
+  "@*": "object",
   "@hide-label": "boolean"
 }
