@@ -24,6 +24,6 @@
     "@hint": "string",
     "@reveal": "string",
     "@id": "string",
-    "@*": "string"
+    "@*": "object"
   }
 }

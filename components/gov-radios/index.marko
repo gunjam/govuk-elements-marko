@@ -18,10 +18,11 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
 
     <for(index, radio in radios)>
       $ const radioId = radio.id || `radio-${input.name}-${index}`;
+      $ const extraOptions = radio['*'] || {};
 
       <div.multiple-choice data-target=radio.reveal>
         <input id=radioId name=input.name value=radio.value type="radio"
-          checked=(radio.value === String(input.value)) ${radio['*']}/>
+          checked=(radio.value === String(input.value)) ...extraOptions/>
         <label for=radioId>
           <if(radio.hint)>
             <span.heading-small>

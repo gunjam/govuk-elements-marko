@@ -247,8 +247,8 @@ test('radios other', context => {
           <span class="form-label-bold">Things you do</span>
         </legend>
         <div class="multiple-choice">
-          <input id="my-radio" name="do-things" value="fly" type="radio"
-            data-click="click:radio:fly">
+          <input data-click="click:radio:fly" id="my-radio" name="do-things"
+            value="fly" type="radio">
           <label for="my-radio">
             <span class="heading-small">Fly around</span><br>In the sky
           </label>
