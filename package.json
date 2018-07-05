@@ -22,10 +22,13 @@
   "maintainers": [
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
+  "peerDependencies": {
+    "marko": "^4.11.5"
+  },
   "devDependencies": {
-    "marko-cli": "^2.2.2",
-    "nyc": "^11.4.1",
-    "xo": "^0.20.3"
+    "marko-cli": "^3.1.6",
+    "nyc": "^12.0.2",
+    "xo": "^0.21.1"
   },
   "license": "Apache-2.0",
   "nyc": {
@@ -48,8 +51,5 @@
     "rules": {
       "max-lines": 0
     }
-  },
-  "dependencies": {
-    "marko": "~4.7.5"
   }
 }
