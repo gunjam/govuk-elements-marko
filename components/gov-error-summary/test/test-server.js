@@ -3,14 +3,14 @@ const html = require('../../../html');
 
 test('empty', context => {
   const output = context.render({});
-  assert.equal(output.html, '');
+  assert.equal(output.html.toString(), '');
 });
 
 test('errors', context => {
   const output = context.render({
     errors: {name: 'Enter a name.', colour: 'Pick a colour.'}
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div role="alert" aria-labelledby="error-summary-heading"
       tabindex="-1" class="error-summary">
       <h2 id="error-summary-heading"
@@ -29,7 +29,7 @@ test('heading', context => {
     heading: 'There\'s been a problem',
     errors: {name: 'Enter a name.', colour: 'Pick a colour.'}
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div role="alert" aria-labelledby="error-summary-heading"
       tabindex="-1" class="error-summary">
       <h2 id="error-summary-heading"
@@ -50,7 +50,7 @@ test('summary', context => {
     summary: 'Check these fields:',
     errors: {name: 'Enter a name.', colour: 'Pick a colour.'}
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div role="alert" aria-labelledby="error-summary-heading"
       tabindex="-1" class="error-summary">
       <h2 id="error-summary-heading"
@@ -72,5 +72,5 @@ test('empty errors object', context => {
     summary: 'Check these fields:',
     errors: {}
   });
-  assert.equal(output.html, '');
+  assert.equal(output.html.toString(), '');
 });

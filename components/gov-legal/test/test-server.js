@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('content', context => {
   const output = context.render({content: 'Don\'t break the law!'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <p class="notice text">
       <i class="icon icon-important">
         <span class="visuallyhidden">Warning</span>
@@ -15,7 +15,7 @@ test('content', context => {
 
 test('lang en', context => {
   const output = context.render({content: 'Don\'t break the law!'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <p class="notice text">
       <i class="icon icon-important">
         <span class="visuallyhidden">Warning</span>
@@ -27,7 +27,7 @@ test('lang en', context => {
 
 test('lang cy', context => {
   const output = context.render({content: 'Don\'t break the law!', lang: 'cy'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <p class="notice text">
       <i class="icon icon-important">
         <span class="visuallyhidden">Rhybudd</span>

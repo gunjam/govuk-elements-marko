@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('name', context => {
   const output = context.render({name: 'birth'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -41,7 +41,7 @@ test('name', context => {
 
 test('legend', context => {
   const output = context.render({name: 'birth', legend: 'Date of birth'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -81,7 +81,7 @@ test('hint', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', hint: 'For example, 19 5 1992'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -127,7 +127,7 @@ test('id', context => {
     hint: 'For example, 19 5 1992',
     id: 'dob'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -170,7 +170,7 @@ test('error', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', error: 'This is person is too old'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-error">
       <fieldset>
         <legend>
@@ -220,7 +220,7 @@ test('value', context => {
       year: '2015'
     }
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -262,7 +262,7 @@ test('value-day', context => {
     legend: 'Date of birth',
     valueDay: '03'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -305,7 +305,7 @@ test('value-month', context => {
     valueDay: '03',
     valueMonth: '04'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -349,7 +349,7 @@ test('value-year', context => {
     valueMonth: '04',
     valueYear: '2015'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -389,7 +389,7 @@ test('maxyear', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', maxyear: '2017'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -429,7 +429,7 @@ test('lang en', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', lang: 'en'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -469,7 +469,7 @@ test('lang cy', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', lang: 'cy'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -509,7 +509,7 @@ test('suffix kebab', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', suffix: 'kebab'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -549,7 +549,7 @@ test('suffix camel', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', suffix: 'camel'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -589,7 +589,7 @@ test('suffix object', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', suffix: 'object'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -629,7 +629,7 @@ test('group-classes undefined', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -669,7 +669,7 @@ test('group-classes', context => {
   const output = context.render({
     name: 'birth', legend: 'Date of birth', groupClasses: 'form-group-compound'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-compound">
       <fieldset>
         <legend>
@@ -710,7 +710,7 @@ test('hide-legend', context => {
     name: 'birth', legend: 'Date of birth', hint: 'For example, 19 5 1992',
     hideLegend: true
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>

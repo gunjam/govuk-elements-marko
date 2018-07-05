@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('render', context => {
   const output = context.render({});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -16,7 +16,7 @@ test('render', context => {
 
 test('legend', context => {
   const output = context.render({legend: 'Things you do'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -31,7 +31,7 @@ test('hint', context => {
   const output = context.render({
     legend: 'Things you do', hint: 'For real tho'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -47,7 +47,7 @@ test('body-text', context => {
   const output = context.render({
     legend: 'Things you do', bodyText: 'Select all that apply', hint: 'Real things only'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -64,7 +64,7 @@ test('error', context => {
   const output = context.render({
     legend: 'Things you do', name: 'do-things', error: 'Check something'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-error">
       <fieldset>
         <legend>
@@ -82,7 +82,7 @@ test('hide-legend', context => {
   const output = context.render({
     legend: 'Things you do', name: 'do-things', hideLegend: true
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -99,7 +99,7 @@ test('name', context => {
     name: 'do-things',
     checkboxes: [{}]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -122,7 +122,7 @@ test('checkboxes label', context => {
       label: 'Fly around'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -146,7 +146,7 @@ test('checkboxes value', context => {
       value: 'fly'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -182,7 +182,7 @@ test('checkboxes name', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -215,7 +215,7 @@ test('checkboxes hint', context => {
       value: 'fly'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -243,7 +243,7 @@ test('checkboxes id', context => {
       id: 'my-checkbox'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -272,7 +272,7 @@ test('checkboxes reveal', context => {
       reveal: 'hidden-field'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -300,7 +300,7 @@ test('checkboxes checked', context => {
       checked: true
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -328,7 +328,7 @@ test('checkboxes renderBody', context => {
       renderBody: 'After checkbox'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -366,7 +366,7 @@ test('values array', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -415,7 +415,7 @@ test('values string', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>

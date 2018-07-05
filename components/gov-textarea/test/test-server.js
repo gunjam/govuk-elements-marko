@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('name', context => {
   const output = context.render({name: 'feedback'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label"></span>
@@ -16,7 +16,7 @@ test('name', context => {
 
 test('label', context => {
   const output = context.render({name: 'feedback', label: 'Feedback'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>
@@ -31,7 +31,7 @@ test('hint', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', hint: 'Tell us about your experience'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>
@@ -47,7 +47,7 @@ test('id', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', id: 'feedback-box'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="feedback-box">
         <span class="form-label">Feedback</span>
@@ -62,7 +62,7 @@ test('error', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', error: 'We need feedback.'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-error">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>
@@ -80,7 +80,7 @@ test('value', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', value: 'Hammond Eggs'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>
@@ -95,7 +95,7 @@ test('maxlength', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', maxlength: '9'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>
@@ -110,7 +110,7 @@ test('rows', context => {
   const output = context.render({
     name: 'feedback', label: 'Feedback', rows: 10
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="textarea-feedback">
         <span class="form-label">Feedback</span>

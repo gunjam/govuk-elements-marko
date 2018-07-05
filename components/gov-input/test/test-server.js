@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('name', context => {
   const output = context.render({name: 'full-name'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label"></span>
@@ -16,7 +16,7 @@ test('name', context => {
 
 test('label', context => {
   const output = context.render({name: 'full-name', label: 'Full name'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -31,7 +31,7 @@ test('hint', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', hint: 'Your name'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -47,7 +47,7 @@ test('id', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', id: 'name-field'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="name-field">
         <span class="form-label">Full name</span>
@@ -62,7 +62,7 @@ test('error', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', error: 'Enter a name.'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-error">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -80,7 +80,7 @@ test('value', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', value: 'Hammond Eggs'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -96,7 +96,7 @@ test('other', context => {
     name: 'full-name', label: 'Full name',
     '*': {maxlength: '9', 'data-test': 'test'}
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -111,7 +111,7 @@ test('group-classes undefined', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -126,7 +126,7 @@ test('group-classes', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', groupClasses: 'form-group-compound'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-compound">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -141,7 +141,7 @@ test('input-classes', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', inputClasses: 'form-control-1-4'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>
@@ -156,7 +156,7 @@ test('hide-label true', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', hideLabel: true
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name" class="visually-hidden">
         <span class="form-label">Full name</span>
@@ -171,7 +171,7 @@ test('hide-label false', context => {
   const output = context.render({
     name: 'full-name', label: 'Full name', hideLabel: false
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <label for="input-full-name">
         <span class="form-label">Full name</span>

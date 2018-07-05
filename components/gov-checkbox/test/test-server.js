@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('name', context => {
   const output = context.render({name: 'contact-by-text-phone'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" type="checkbox">
       <label for="checkbox-contact-by-text-phone"></label>
@@ -15,7 +15,7 @@ test('label', context => {
     name: 'contact-by-text-phone',
     label: 'I need to be contacted using a text phone'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" type="checkbox">
       <label for="checkbox-contact-by-text-phone">I need to be contacted using a text phone</label>
@@ -28,7 +28,7 @@ test('value', context => {
     label: 'I need to be contacted using a text phone',
     value: 'true'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" value="true" type="checkbox">
       <label for="checkbox-contact-by-text-phone">I need to be contacted using a text phone</label>
@@ -42,7 +42,7 @@ test('hint', context => {
     hint: 'Hint.',
     value: 'true'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" value="true" type="checkbox">
       <label for="checkbox-contact-by-text-phone">
@@ -62,7 +62,7 @@ test('checked', context => {
     value: 'true',
     checked: true
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" value="true" type="checkbox" checked>
       <label for="checkbox-contact-by-text-phone">
@@ -83,7 +83,7 @@ test('reveal', context => {
     checked: true,
     reveal: 'section'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div data-target="section" class="multiple-choice">
       <input id="checkbox-contact-by-text-phone" name="contact-by-text-phone" value="true" type="checkbox" checked>
       <label for="checkbox-contact-by-text-phone">
@@ -105,7 +105,7 @@ test('id', context => {
     reveal: 'section',
     id: 'my-checkbox'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div data-target="section" class="multiple-choice">
       <input id="my-checkbox" name="contact-by-text-phone" value="true" type="checkbox" checked>
       <label for="my-checkbox">

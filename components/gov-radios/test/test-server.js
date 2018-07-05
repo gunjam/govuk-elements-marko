@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('render', context => {
   const output = context.render({});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -16,7 +16,7 @@ test('render', context => {
 
 test('legend', context => {
   const output = context.render({legend: 'Things you do'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -31,7 +31,7 @@ test('hint', context => {
   const output = context.render({
     legend: 'Things you do', name: 'do-things', hint: 'For real tho'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -47,7 +47,7 @@ test('error', context => {
   const output = context.render({
     legend: 'Things you do', name: 'do-things', error: 'Check something'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group form-group-error">
       <fieldset class="inline">
         <legend>
@@ -65,7 +65,7 @@ test('hide-legend', context => {
   const output = context.render({
     legend: 'Things you do', name: 'do-things', hideLegend: true
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -82,7 +82,7 @@ test('name', context => {
     name: 'do-things',
     radios: [{}]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -105,7 +105,7 @@ test('radios label', context => {
       label: 'Fly around'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -129,7 +129,7 @@ test('radios value', context => {
       value: 'fly'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -154,7 +154,7 @@ test('radios hint', context => {
       value: 'fly'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -182,7 +182,7 @@ test('radios id', context => {
       id: 'my-radio'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -211,7 +211,7 @@ test('radios reveal', context => {
       reveal: 'hidden-field'
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -240,7 +240,7 @@ test('radios other', context => {
       '*': {'data-click': 'click:radio:fly'}
     }]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -274,7 +274,7 @@ test('value', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -313,7 +313,7 @@ test('value: \'\'', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -351,7 +351,7 @@ test('layout default < 3', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -393,7 +393,7 @@ test('layout default > 2', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -442,7 +442,7 @@ test('layout set inline', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>
@@ -487,7 +487,7 @@ test('layout set stacked', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset>
         <legend>
@@ -526,7 +526,7 @@ test('radio renderbody', context => {
       }
     ]
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <div class="form-group">
       <fieldset class="inline">
         <legend>

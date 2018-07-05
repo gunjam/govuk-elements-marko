@@ -3,7 +3,7 @@ const html = require('../../../html');
 
 test('summary', context => {
   const output = context.render({summary: 'More information'});
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <details>
       <summary>
         <span class="summary">
@@ -20,7 +20,7 @@ test('render-body', context => {
   const output = context.render({
     summary: 'More information', renderBody: 'Lots and lots of information'
   });
-  assert.equal(output.html, html`
+  assert.equal(output.html.toString(), html`
     <details>
       <summary>
         <span class="summary">
