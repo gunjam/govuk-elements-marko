@@ -1,0 +1,16 @@
+# Tests and helpers
+components/**/test
+html.js
+
+# Compiled Marko templates
+*.marko.js
+
+# Code coverage reports
+.nyc_output
+coverage
+
+# Travis config
+.travis.yml
+
+# Ignore the other ignore?
+.gitignore
