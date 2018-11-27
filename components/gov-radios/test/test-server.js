@@ -1,4 +1,4 @@
-const assert = require('assert');
+const {assert} = require('chai');
 const html = require('../../../html');
 
 test('render', context => {
@@ -250,8 +250,8 @@ test('radios other', context => {
           <span class="form-label-bold">Things you do</span>
         </legend>
         <div class="multiple-choice">
-          <input data-click="click:radio:fly" id="my-radio" name="do-things"
-            value="fly" type="radio">
+          <input id="my-radio" name="do-things" value="fly" type="radio"
+            data-click="click:radio:fly">
           <label for="my-radio">
             <span class="form-label-bold">Fly around</span>
             In the sky

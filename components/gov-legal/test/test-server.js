@@ -1,4 +1,4 @@
-const assert = require('assert');
+const {assert} = require('chai');
 const html = require('../../../html');
 
 test('content', context => {

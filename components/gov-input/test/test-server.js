@@ -1,4 +1,4 @@
-const assert = require('assert');
+const {assert} = require('chai');
 const html = require('../../../html');
 
 test('name', context => {
@@ -101,8 +101,8 @@ test('other', context => {
       <label for="input-full-name">
         <span class="form-label">Full name</span>
       </label>
-      <input maxlength="9" data-test="test" class="form-control" type="text"
-        id="input-full-name" name="full-name" autocomplete="off">
+      <input class="form-control" type="text" id="input-full-name"
+        name="full-name" autocomplete="off" maxlength="9" data-test="test">
     </div>`
   );
 });
