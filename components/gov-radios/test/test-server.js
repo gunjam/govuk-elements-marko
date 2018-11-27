@@ -163,7 +163,8 @@ test('radios hint', context => {
         <div class="multiple-choice">
           <input id="radio-do-things-0" name="do-things" value="fly" type="radio">
           <label for="radio-do-things-0">
-            <span class="heading-small">Fly around</span><br>In the sky
+            <span class="form-label-bold">Fly around</span>
+            In the sky
           </label>
         </div>
       </fieldset>
@@ -191,7 +192,8 @@ test('radios id', context => {
         <div class="multiple-choice">
           <input id="my-radio" name="do-things" value="fly" type="radio">
           <label for="my-radio">
-            <span class="heading-small">Fly around</span><br>In the sky
+            <span class="form-label-bold">Fly around</span>
+            In the sky
           </label>
         </div>
       </fieldset>
@@ -220,7 +222,8 @@ test('radios reveal', context => {
         <div data-target="hidden-field" class="multiple-choice">
           <input id="my-radio" name="do-things" value="fly" type="radio">
           <label for="my-radio">
-            <span class="heading-small">Fly around</span><br>In the sky
+            <span class="form-label-bold">Fly around</span>
+            In the sky
           </label>
         </div>
       </fieldset>
@@ -250,7 +253,8 @@ test('radios other', context => {
           <input data-click="click:radio:fly" id="my-radio" name="do-things"
             value="fly" type="radio">
           <label for="my-radio">
-            <span class="heading-small">Fly around</span><br>In the sky
+            <span class="form-label-bold">Fly around</span>
+            In the sky
           </label>
         </div>
       </fieldset>

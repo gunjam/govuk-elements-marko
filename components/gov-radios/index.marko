@@ -25,10 +25,9 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
           checked=(radio.value === String(input.value)) ...extraOptions/>
         <label for=radioId>
           <if(radio.hint)>
-            <span.heading-small>
+            <span.form-label-bold>
               ${radio.label}
             </span>
-            <br/>
             ${radio.hint}
           </if>
           <else>
