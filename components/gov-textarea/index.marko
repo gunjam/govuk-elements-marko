@@ -5,12 +5,16 @@ $ const inputId = input.id || 'textarea-' + input.name;
     <span.form-label>
       ${input.label}
     </span>
-    <span.form-hint if(input.hint)>
-      ${input.hint}
-    </span>
-    <span.error-message if(input.error) id="error-message-${input.name}">
-      ${input.error}
-    </span>
+    <if(input.hint)>
+      <span.form-hint>
+        ${input.hint}
+      </span>
+    </if>
+    <if(input.error)>
+      <span.error-message id="error-message-${input.name}">
+        ${input.error}
+      </span>
+    </if>
   </label>
   <textarea class=['form-control', input.error && 'form-control-error']
     id=inputId rows=(input.rows || 8) name=input.name

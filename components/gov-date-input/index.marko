@@ -25,13 +25,17 @@ $ const value = input.value || {
         <span.form-label-bold>
           ${input.legend}
         </span>
-        <span.form-hint if(input.hint) id="${input.name}-hint">
-          ${input.hint}
+        <if(input.hint)>
+          <span.form-hint id="${input.name}-hint">
+            ${input.hint}
+          </span>
+        </if>
+      </span>
+      <if(input.error)>
+        <span.error-message id="error-message-${input.name}">
+          ${input.error}
         </span>
-      </span>
-      <span.error-message if(input.error) id="error-message-${input.name}">
-        ${input.error}
-      </span>
+      </if>
     </legend>
 
     <div.form-date>

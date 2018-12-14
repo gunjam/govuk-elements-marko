@@ -8,12 +8,16 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
       <span class=(input.hideLegend ? 'visually-hidden' : 'form-label-bold')>
         ${input.legend}
       </span>
-      <span.form-hint if(input.hint)>
-        ${input.hint}
-      </span>
-      <span.error-message if(input.error) id="error-message-${input.name}">
-        ${input.error}
-      </span>
+      <if(input.hint)>
+        <span.form-hint>
+          ${input.hint}
+        </span>
+      </if>
+      <if(input.error)>
+        <span.error-message id="error-message-${input.name}">
+          ${input.error}
+        </span>
+      </if>
     </legend>
 
     <for(index, radio in radios)>
