@@ -25,8 +25,8 @@ test('phase', context => {
   );
 });
 
-test('render-body', context => {
-  const output = context.render({renderBody: 'Please leave some feedback'});
+test('renderBody', context => {
+  const output = context.render({renderBody: out => out.w('Please leave some feedback')});
   assert.equal(output.html.toString(), html`
     <div class="phase-banner">
       <p>

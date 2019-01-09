@@ -14,7 +14,7 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
         </span>
       </if>
       <if(input.error)>
-        <span.error-message id="error-message-${input.name}">
+        <span.error-message id=`error-message-${input.name}`>
           ${input.error}
         </span>
       </if>
@@ -40,7 +40,7 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
         </label>
       </div>
 
-      <include(radio.renderBody)/>
+      <${radio.renderBody}/>
     </for>
 
   </fieldset>

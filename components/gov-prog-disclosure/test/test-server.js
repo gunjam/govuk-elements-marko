@@ -16,9 +16,9 @@ test('summary', context => {
   );
 });
 
-test('render-body', context => {
+test('renderBody', context => {
   const output = context.render({
-    summary: 'More information', renderBody: 'Lots and lots of information'
+    summary: 'More information', renderBody: out => out.w('Lots and lots of information')
   });
   assert.equal(output.html.toString(), html`
     <details>

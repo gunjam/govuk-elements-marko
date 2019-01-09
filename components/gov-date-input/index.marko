@@ -26,13 +26,13 @@ $ const value = input.value || {
           ${input.legend}
         </span>
         <if(input.hint)>
-          <span.form-hint id="${input.name}-hint">
+          <span.form-hint id=`${input.name}-hint`>
             ${input.hint}
           </span>
         </if>
       </span>
       <if(input.error)>
-        <span.error-message id="error-message-${input.name}">
+        <span.error-message id=`error-message-${input.name}`>
           ${input.error}
         </span>
       </if>
@@ -40,28 +40,28 @@ $ const value = input.value || {
 
     <div.form-date>
       <div.form-group.form-group-day>
-        <label.form-label for="${inputId}-day">
+        <label.form-label for=`${inputId}-day`>
           ${label.day}
         </label>
-        <input aria-describedby=(input.hint && "${input.name}-hint")
-          class=inputClasses id="${inputId}-day" type="number"
-          name="${input.name}${suffix.day}" pattern="[0-9]*" min="0" max="31"
+        <input aria-describedby=(input.hint && `${input.name}-hint`)
+          class=inputClasses id=`${inputId}-day` type="number"
+          name=`${input.name}${suffix.day}` pattern="[0-9]*" min="0" max="31"
           value=value.day>
       </div>
       <div.form-group.form-group-month>
-        <label.form-label for="${inputId}-month">
+        <label.form-label for=`${inputId}-month`>
           ${label.month}
         </label>
-        <input class=inputClasses id="${inputId}-month" type="number"
-          name="${input.name}${suffix.month}" pattern="[0-9]*" min="0" max="12"
+        <input class=inputClasses id=`${inputId}-month` type="number"
+          name=`${input.name}${suffix.month}` pattern="[0-9]*" min="0" max="12"
           value=value.month>
       </div>
       <div.form-group.form-group-year>
-        <label.form-label for="${inputId}-year">
+        <label.form-label for=`${inputId}-year`>
           ${label.year}
         </label>
-        <input class=inputClasses id="${inputId}-year" type="number"
-          name="${input.name}${suffix.year}" pattern="[0-9]*"
+        <input class=inputClasses id=`${inputId}-year` type="number"
+          name=`${input.name}${suffix.year}` pattern="[0-9]*"
           min="0" max=input.maxyear value=value.year>
       </div>
     </div>

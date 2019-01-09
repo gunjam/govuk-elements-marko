@@ -34,7 +34,7 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
         label=checkbox.label hint=checkbox.hint id=checkboxId
         reveal=checkbox.reveal checked=isChecked/>
 
-      <include(checkbox.renderBody)/>
+      <${checkbox.renderBody}/>
     </for>
 
   </fieldset>

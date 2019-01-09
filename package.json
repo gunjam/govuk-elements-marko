@@ -23,11 +23,11 @@
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
   "peerDependencies": {
-    "marko": "^4.11.5"
+    "marko": "^4.14.16"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "marko-cli": "^4.2.2",
+    "marko-cli": "^5.0.0",
     "nyc": "^13.1.0",
     "xo": "^0.23.0"
   },

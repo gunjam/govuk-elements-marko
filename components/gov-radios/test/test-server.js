@@ -514,7 +514,7 @@ test('layout set stacked', context => {
   );
 });
 
-test('radio renderbody', context => {
+test('radio renderBody', context => {
   const output = context.render({
     legend: 'Things you do',
     name: 'do-things',
@@ -522,7 +522,7 @@ test('radio renderbody', context => {
       {
         label: 'Fly around',
         value: 'fly',
-        renderBody: 'or'
+        renderBody: out => out.w('or')
       },
       {
         label: 'Swim about',

@@ -325,7 +325,7 @@ test('checkboxes renderBody', context => {
       value: 'fly',
       id: 'my-checkbox',
       reveal: 'hidden-field',
-      renderBody: 'After checkbox'
+      renderBody: out => out.w('After checkbox')
     }]
   });
   assert.equal(output.html.toString(), html`
