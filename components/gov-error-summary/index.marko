@@ -11,7 +11,7 @@
     </if>
 
     <ul.error-summary-list>
-      <for(name, error in input.errors)>
+      <for|name, error| in=input.errors>
         <li>
           <a href=`#error-message-${name}`>
             ${error}

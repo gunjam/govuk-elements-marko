@@ -20,7 +20,7 @@ $ const layout = input.layout || radios.length < 3 && 'inline';
       </if>
     </legend>
 
-    <for(index, radio in radios)>
+    <for|index, radio| in=radios>
       $ const radioId = radio.id || `radio-${input.name}-${index}`;
       $ const extraOptions = radio['*'] || {};
 

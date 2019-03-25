@@ -25,7 +25,7 @@ $ const arrayOfValues = Array.isArray(values) ? values : [values];
       </if>
     </legend>
 
-    <for(index, checkbox in input.checkboxes)>
+    <for|index, checkbox| in=input.checkboxes>
       $ const checkboxName = checkbox.name || input.name;
       $ const checkboxId = (checkbox.id || `checkbox-${checkboxName}-${index}`);
       $ const isChecked = checkbox.checked || arrayOfValues.indexOf(checkbox.value) > -1;
