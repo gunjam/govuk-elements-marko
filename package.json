@@ -15,8 +15,8 @@
     "url": "https://github.com/gunjam/govuk-elements-marko"
   },
   "scripts": {
-    "test": "xo && nyc marko test",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov marko test"
+    "test": "xo && c8 marko test",
+    "coverage": "c8 --reporter=lcov --reporter=text-lcov marko test"
   },
   "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
   "maintainers": [
@@ -26,13 +26,13 @@
     "marko": "^4.18.9"
   },
   "devDependencies": {
+    "c8": "^5.0.1",
     "chai": "^4.2.0",
     "marko-cli": "^7.0.10",
-    "nyc": "^14.1.1",
     "xo": "^0.24.0"
   },
   "license": "Apache-2.0",
-  "nyc": {
+  "c8": {
     "extension": [
       ".marko.js"
     ],
