@@ -15,8 +15,10 @@
     "url": "https://github.com/gunjam/govuk-elements-marko"
   },
   "scripts": {
-    "test": "xo && c8 marko test",
-    "coverage": "c8 --reporter=lcov --reporter=text-lcov marko test"
+    "test": "npm run test:lint && npm run test:coverage",
+    "test:lint": "xo",
+    "test:unit": "marko test",
+    "test:coverage": "c8 marko test"
   },
   "author": "Niall Molloy <niallmolloy.digitaldwp@gmail.com>",
   "maintainers": [
@@ -33,6 +35,11 @@
   },
   "license": "Apache-2.0",
   "c8": {
+    "check-coverage": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
     "extension": [
       ".marko.js"
     ],

@@ -2,9 +2,8 @@ language: node_js
 node_js:
   - "8"
   - "10"
-before_script:
-  - npm install -g codecov
-script:
-  - npm test
-  - npm run coverage
-  - codecov
+  - "12"
+jobs:
+  include:
+    - stage: report coverage
+      script: npx c8 --reporter=lcov --reporter=text marko test && npx codecov
