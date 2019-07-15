@@ -21,7 +21,7 @@ $ const value = input.value || {
   <fieldset>
 
     <legend>
-      <span.visually-hidden body-only-if(!input.hideLegend)>
+      <${input.hideLegend ? 'span' : null} class="visually-hidden">
         <span.form-label-bold>
           ${input.legend}
         </span>
@@ -30,7 +30,7 @@ $ const value = input.value || {
             ${input.hint}
           </span>
         </if>
-      </span>
+      </>
       <if(input.error)>
         <span.error-message id=`error-message-${input.name}`>
           ${input.error}
