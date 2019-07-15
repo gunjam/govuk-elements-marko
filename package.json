@@ -23,12 +23,12 @@
     "Niall Molloy <niallmolloy.digitaldwp@gmail.com>"
   ],
   "peerDependencies": {
-    "marko": "^4.16.3"
+    "marko": "^4.18.9"
   },
   "devDependencies": {
+    "@marko/test": "^6.0.9",
     "chai": "^4.2.0",
-    "marko-cli": "^6.0.6",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "xo": "^0.24.0"
   },
   "license": "Apache-2.0",
